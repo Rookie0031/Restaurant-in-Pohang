@@ -7,45 +7,9 @@
 
 import Foundation
 
-
-class CartegoryList : ObservableObject {
-    enum foodCagtegory: String {
-        case Western = "양식"
-        case Korean = "한식"
-        case Chinese = "중식"
-        case Japanes = "일식"
-        case Asian = "기타"
-        case Dessert = "카페/디저트"
-
-    }
-
-    enum peopleCategory: String {
-        case solo = ""
-        case couple = "Europe"
-        case smallGroup = "South America"
-        case bigGroup = "North America"
-
-    }
+var foodCategory : [String] = ["양식","한식","중식","일식","아시안", "카페/디저트"]
+var peopleCategory : [String] = ["혼밥!","둘이서", "3~4명", "단체로!"]
+var priceCategory : [String] = ["6000원 이하", "6000원~8000원", "8000원~10000원", "10000원 이상"]
+var locationCategory : [String] = ["포항공대 내부", "효자시장", "SK아파트 근처", "시청근처", "이동", "유강", "기타"]
 
 
-    enum priceCategory: String {
-        case cheap = "6000원 이하"
-        case mediumPrice = "6000원~8000원"
-        case expensive  = "8000원~10000원"
-        case luxurious = "10000원 이상"
-    }
-
-
-    enum locationCategory: String {
-        case school = "포항공내 내부"
-        case market = "효자시장"
-        case skApart = "SK아파트 근처"
-        case cityHall = "시청근처"
-        case edong = "이동"
-        case ukang = "유강"
-        case others = "기타"
-    }
-
-    
-    
-}

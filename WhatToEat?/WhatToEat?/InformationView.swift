@@ -36,9 +36,6 @@ struct InformationView: View {
             .frame(width: 300, alignment: .leading)
             .padding(.leading,10)
             
-//            CustomButton(destination: MainPageView(), buttonContent: "나의 먹킷리스트에 추가!")
-//
-            
             NavigationLink(destination: MainPageView(), isActive: $isActive) {
                 Button(action: {
                     isActive = true

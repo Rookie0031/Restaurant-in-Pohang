@@ -8,14 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
-        NavigationView {
-//            Text("Hello, world!")
-//                .padding()
-            
-            InformationView()
-            Spacer()
-        }
+        MainPageView()
     }
 }
 

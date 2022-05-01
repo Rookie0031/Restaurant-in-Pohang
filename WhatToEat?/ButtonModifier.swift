@@ -14,8 +14,7 @@ struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .customButtonText()
-            .padding(.leading, 10)
-            .frame(width: 300, height: 40, alignment: .leading)
+            .frame(width: 300, height: 40, alignment: .center)
             .foregroundColor(.white)
             .background(.orange)
             .cornerRadius(10)
@@ -31,16 +30,34 @@ extension View {
 struct CategoryModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 30))
-            .padding()
-            .overlay(RoundedRectangle(cornerRadius: 30)
-                .stroke(.orange, lineWidth: 3))
+            .customInfoSubTitle()
+            .padding(EdgeInsets(.init(top:10, leading: 10, bottom: 10, trailing: 10)))
+            .overlay(RoundedRectangle(cornerRadius: 10)
+                .stroke(.black, lineWidth: 0))
     }
 }
 
 extension View {
-    func customCategoryFormat() -> some View {
+    func customCategory() -> some View {
         modifier(CategoryModifier())
     }
 }
+
+//struct CategoryModifier2: ViewModifier {
+//    func body(content: Content) -> some View {
+//        content
+//            .customInfoSubTitle()
+//            .padding(EdgeInsets(.init(top:10, leading: 10, bottom: 10, trailing: 10)))
+//            .overlay(RoundedRectangle(cornerRadius: 10)
+//                .stroke(.black, lineWidth: 3))
+//    }
+//}
+//
+//extension View {
+//    func customCategoryPicked() -> some View {
+//        modifier(CategoryModifier2())
+//    }
+//}
+
+
 
