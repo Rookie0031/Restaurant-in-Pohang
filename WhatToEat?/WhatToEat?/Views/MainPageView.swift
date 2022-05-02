@@ -21,13 +21,13 @@ struct MainPageView: View {
     
     @State var isListViewActive = false
     
+    @State var isActive = false
+    
     var body: some View {
         
-        VStack{
-            
-            Text("맛집을 찾아봐요!")
-                .customTitle()
-                .padding()
+       NavigationView {
+                    
+        VStack(alignment: .leading, spacing: 20){
             
             
             Group {
@@ -54,14 +54,16 @@ struct MainPageView: View {
                                     .background(RoundedRectangle(cornerRadius: 10).fill(.white))
                             }
                             .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
-                                }
-                            }
                         }
-                        .frame(width: 300, height: 30)
-                        .padding(.bottom, 10)
                     }
-            Divider()
-                .frame(width: 300)
+                }
+                .frame(width: 300, height: 30)
+
+                
+                Divider()
+                    .frame(width: 300)
+                
+            }
             
             Group {
                 Text("몇명이서 먹을건가요?")
@@ -87,14 +89,15 @@ struct MainPageView: View {
                                     .background(RoundedRectangle(cornerRadius: 10).fill(.white))
                             }
                             .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
-                                }
-                            }
                         }
-                        .frame(width: 300, height: 30)
-                        .padding(.bottom, 10)
                     }
-            Divider()
-                .frame(width: 300)
+                }
+                .frame(width: 300, height: 30)
+                
+                Divider()
+                    .frame(width: 300)
+            }
+            
             
             Group {
                 Text("원하는 가격대가 있나요?")
@@ -120,15 +123,16 @@ struct MainPageView: View {
                                     .background(RoundedRectangle(cornerRadius: 10).fill(.white))
                             }
                             .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
-                                }
-                            }
                         }
-                        .frame(width: 300, height: 30)
-                        .padding(.bottom, 10)
                     }
+                }
+                .frame(width: 300, height: 30)
+                
+                Divider()
+                    .frame(width: 300)
+            }
             
-            Divider()
-                .frame(width: 300)
+            
             
             Group {
                 Text("선호하는 위치가 있나요?")
@@ -154,28 +158,32 @@ struct MainPageView: View {
                                     .background(RoundedRectangle(cornerRadius: 10).fill(.white))
                             }
                             .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
-                                }
-                            }
                         }
-                        .frame(width: 300, height: 30)
-                        .padding(.bottom, 10)
                     }
+                }
+                .frame(width: 300, height: 30)
+                
+                Divider()
+                    .frame(width: 300)
+            }
             
-            Divider()
-                .frame(width: 300)
-                .padding(.bottom, 30)
             
-            NavigationLink(destination: LoadingView()) {
-                    Text("맛집 추천 받기!")
+            Spacer()
+            
+            NavigationLink(destination: LoadingView(), isActive: $isActive) {
+                Button(action: {
+                    isActive = true
+                }) {
+                    Text("맛집 추천받기!")
                         .customButtonFormat()
                 }
+            }
             .padding()
-            
-            
-            
 
-        
-        }
+                }
+        .navigationBarTitle("맛집을 찾아봐요!")
+        .padding()
+            }
     }
 }
 
@@ -185,21 +193,3 @@ struct MainPageView_Previews: PreviewProvider {
     }
 }
 
-
-//        VStack {
-//            Text("맛집을 찾아서!")
-//                .customTitle()
-//                .padding()
-//
-//
-//            VStack {
-//                Text("어떤 음식이 땡기나요?")
-//                    .customInfoTitle()
-//
-//
-//
-//            }
-//            .frame(width: 300, alignment: .leading)
-//
-//
-//        }

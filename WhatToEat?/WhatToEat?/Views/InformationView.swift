@@ -16,6 +16,7 @@ struct InformationView: View {
             Text("참서리는 어때요?")
                 .customTitle()
             
+            
             Image("참서리")
                 .resizable()
                 .customImageDetail()
@@ -39,7 +40,6 @@ struct InformationView: View {
             NavigationLink(destination: MainPageView(), isActive: $isActive) {
                 Button(action: {
                     isActive = true
-                    print("it runs")
                 }) {
                     Text("나의 먹킷리스트에 추가!")
                         .customButtonFormat()

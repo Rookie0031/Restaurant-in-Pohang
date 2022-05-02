@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoadingView: View {
     var body: some View {
-        
+    
         VStack {
             
             Text("맛집을 선정 중이에요!")
@@ -23,6 +23,8 @@ struct LoadingView: View {
                 .customInfoContent2()
             
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 
