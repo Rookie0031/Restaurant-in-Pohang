@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "name": "참서리",
+        "description": "음식이 맛있어요!",
+        "category": "한식",
+        "people": "3~4명",
+        "price": "6000원~8000원",
+        "location": "효자시장",
+        "transportation" : "자차"
+        "isFavorite": false,
+        "imageName": "참서리"
+    },
+    
+    {
+        "id": 2,
+        "name": "버거킹",
+        "description": "음식이 맛있어요!",
+        "category": "한식",
+        "people": "3~4명",
+        "price": "6000원~8000원",
+        "location": "효자시장",
+        "transportation" : "자차"
+        "isFavorite": false,
+        "imageName": "버거킹"
+    },
+    
+    {
+        "id": 3,
+        "name": "가정초밥",
+        "description": "웨이팅이 길어 인기가 많다!",
+        "category": "일식",
+        "people": "1~2명",
+        "price": "1000원 이상",
+        "location": "효자시장",
+        "transportation" : "걸어서!"
+        "isFavorite": false,
+        "imageName": "가정초밥"
+    },
+    
+    {
+        "id": 4,
+        "name": "요식상회",
+        "description": "음식이 맛있어요!, 직원들이 친절해요!",
+        "category": "일식",
+        "people": "3~4명",
+        "price": "10000원 이상",
+        "location": "효자시장",
+        "transportation" : "걸어서!"
+        "isFavorite": false,
+        "imageName": "요식상회"
+    },
+    
+    {
+        "id": 5,
+        "name": "홍운반점",
+        "description": "음식이 맛있어요!, 주차하기 편해요!"
+        "category": "중식",
+        "people": "3~4명",
+        "price": "6000원~8000원",
+        "location": "효자시장",
+        "transportation" : "택시타고! or 자차!"
+        "isFavorite": false,
+        "imageName": "홍운반점"
+    },
+    
+    {
+        "id": 6,
+        "name": "밀회관",
+        "description": "음식이 맛있어요!",
+        "category": "술(소주/맥주/와인 등등)",
+        "people": "3~4명",
+        "price": "10000원 이상",
+        "location": "sk아파트 효자동 쪽",
+        "transportation" : "택시타고! or 자차!"
+        "isFavorite": false,
+        "imageName": "밀회관"
+    },
+    
+    
+]
