@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A93A010E281E324A0069B86A /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A010D281E324A0069B86A /* TextModifier.swift */; };
 		A93A0110281E37D00069B86A /* FoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A010F281E37D00069B86A /* FoodInfoView.swift */; };
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A93A010D281E324A0069B86A /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		A93A010F281E37D00069B86A /* FoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoView.swift; sourceTree = "<group>"; };
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				A93A0117281E58460069B86A /* LoadingView.swift */,
 				A9F3D196281F7DE800844B39 /* InformationRowView.swift */,
 				A9B96084281C10F2004779A6 /* ContentView.swift */,
+				A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				A93A0116281E54230069B86A /* CustomButton.swift in Sources */,
 				A9B96091281C1149004779A6 /* MainPageView.swift in Sources */,
 				A9F3D197281F7DE800844B39 /* InformationRowView.swift in Sources */,
+				A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */,
 				A93A011E281E75940069B86A /* CategoryList.swift in Sources */,
 				A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */,
 				A93A0110281E37D00069B86A /* FoodInfoView.swift in Sources */,

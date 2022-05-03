@@ -23,8 +23,6 @@ struct LoadingView: View {
                 .customInfoContent2()
             
         }
-        .navigationBarTitle("")
-        .navigationBarHidden(true)
     }
 }
 

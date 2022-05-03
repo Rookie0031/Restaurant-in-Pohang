@@ -14,22 +14,22 @@ struct ContentView: View {
 
     var body: some View {
         
-//        NavigationView {
-        VStack() {
+        NavigationView {
             TabView(selection: $selection) {
                 FoodListView().tabItem { Image(systemName: "square.text.square") }.tag(1)
+
                 MainPageView().tabItem { Image(systemName: "house") }.tag(2)
                 BucketListView().tabItem { Image(systemName: "person") }.tag(3)
+
+            }
+            .navigationTitle(selection == 1 ? "어떤 맛집이 있을까요?" : selection == 2 ? "맛집을 찾아봐요!" : "나의 먹킷리스트")
             }
         }
-            
-//        }
-//        .navigationBarHidden(true)
     }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(ModelData())
     }
 }

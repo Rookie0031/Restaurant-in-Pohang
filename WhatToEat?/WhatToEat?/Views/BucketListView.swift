@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct BucketListView: View {
-    var body: some View {
-        
-        NavigationView{
-            
-            List(restaurants, id: \.id) {restaurant in
-                InformationRowView(restaurant: restaurant)
-            }
-            .navigationTitle("나의 먹킷리스트")
-            
-            }
+    
+    @EnvironmentObject var modelData: ModelData
+    @State private var showFavoritesOnly = true
+    
+    var filteredRestaurants: [RestaurantData] {
+        modelData.restaurants.filter { value in
+            (!showFavoritesOnly || value.isFavorite)
         }
     }
+    
+    var body: some View {
+        
+        List(filteredRestaurants, id: \.id) {restaurant in
+            InformationRowView(restaurant: restaurant)
+        }
+        
+    }
+}
 
 struct BucketListView_Previews: PreviewProvider {
+    
     static var previews: some View {
         BucketListView()
+            .environmentObject(ModelData())
+        
     }
 }

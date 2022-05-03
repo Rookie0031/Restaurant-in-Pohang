@@ -25,14 +25,13 @@ struct MainPageView: View {
     
     var body: some View {
         
-       NavigationView {
-                    
         VStack(alignment: .leading, spacing: 20){
             
-            
+
             Group {
                 Text("어떤 음식이 땡기나요?")
                     .customInfoTitle()
+                    .padding(.top, 20)
                     .frame(width: 300, alignment: .leading)
                 
                 ScrollView(.horizontal, showsIndicators: false) {
@@ -180,10 +179,8 @@ struct MainPageView: View {
             }
             .padding()
 
-                }
-        .navigationBarTitle("맛집을 찾아봐요!")
-        .padding()
-            }
+        }
+
     }
 }
 

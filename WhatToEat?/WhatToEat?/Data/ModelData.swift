@@ -11,7 +11,10 @@ import SwiftUI
 
 // import jason Data
 
-var restaurants : [RestaurantData] = load("restaurantData.json")
+
+final class ModelData : ObservableObject {
+    @Published var restaurants : [RestaurantData] = load("restaurantData.json")
+}
 
 func load<T: Decodable>(_ filename: String) -> T {
     let data: Data
@@ -48,27 +51,27 @@ func foodFilter () -> [[String]] {
     var asian : [String] = []
     var cafe : [String] = []
     
-    for num in 0...restaurants.count - 1 {
+    for num in 0...ModelData().restaurants.count - 1 {
         
         
-        switch restaurants[num].category {
+        switch ModelData().restaurants[num].category {
         case "양식" :
-            western.append(restaurants[num].name)
+            western.append(ModelData().restaurants[num].name)
 
         case "한식" :
-            korean.append(restaurants[num].name)
+            korean.append(ModelData().restaurants[num].name)
 
         case "중식" :
-            chinese.append(restaurants[num].name)
+            chinese.append(ModelData().restaurants[num].name)
 
         case "일식" :
-            japanese.append(restaurants[num].name)
+            japanese.append(ModelData().restaurants[num].name)
 
         case "아시안" :
-            asian.append(restaurants[num].name)
+            asian.append(ModelData().restaurants[num].name)
 
         case "카페/디저트" :
-            cafe.append(restaurants[num].name)
+            cafe.append(ModelData().restaurants[num].name)
             
         default :
             print("정보에 오류가 있는 거 같아요.")
