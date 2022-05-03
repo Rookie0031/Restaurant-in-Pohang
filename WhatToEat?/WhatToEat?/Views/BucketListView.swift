@@ -12,19 +12,14 @@ struct BucketListView: View {
         
         NavigationView{
             
-        List{
-            NavigationLink(destination: InformationView()){
-                InformationRowView(restaurant: restaurants[0])}
-            NavigationLink(destination: InformationView()){
-                InformationRowView(restaurant: restaurants[0])}
-            NavigationLink(destination: InformationView()){
-                InformationRowView(restaurant: restaurants[0])}
+            List(restaurants, id: \.id) {restaurant in
+                InformationRowView(restaurant: restaurant)
+            }
+            .navigationTitle("나의 먹킷리스트")
             
-        }
-        .navigationTitle("나의 먹킷리스트")
+            }
         }
     }
-}
 
 struct BucketListView_Previews: PreviewProvider {
     static var previews: some View {

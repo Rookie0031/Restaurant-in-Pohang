@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftUI
-import CoreLocation
 
 struct RestaurantData: Hashable, Codable {
     var id: Int
@@ -27,15 +26,3 @@ struct RestaurantData: Hashable, Codable {
 
 }
 
-//{
-//    "id": 1,
-//    "name": "참서리",
-//    "description": "음식이 맛있어요!",
-//    "category": "한식",
-//    "people": "3~4명",
-//    "price": "6000원~8000원",
-//    "location": "효자시장",
-//    "transportation" : "자차"
-//    "isFavorite": false,
-//    "imageName": "참서리"
-//},

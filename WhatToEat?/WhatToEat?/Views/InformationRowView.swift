@@ -11,6 +11,7 @@ struct InformationRowView: View {
     
     var restaurant : RestaurantData
     
+    
     var body: some View {
         HStack {
             restaurant.image
