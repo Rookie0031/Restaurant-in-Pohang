@@ -1,11 +1,4 @@
-# Personal Short term proejct 
 
-## Total Project term : 13days
-### Ideation/Design : 5days
-### Development : 6days
-### Revision/Presentation: 2days
-
-This app was designed and developed by myself.
 
 # :iphone: 포항의맛집
 ### 포항의 맛집을 추천받고, 마음에 드는 맛집으로 먹킷리스트를 만들어보세요!
@@ -51,3 +44,10 @@ This app was designed and developed by myself.
 ## :lock_with_ink_pen: License
 - All the license of food picture is on Naver or individual blogger.
 
+## About Proejct managing
+### Total Project term : 13days
+### Ideation/Design : 5days
+### Development : 6days
+### Revision/Presentation: 2days
+
+### This app was designed and developed all by myself.
