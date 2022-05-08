@@ -45,9 +45,9 @@
 - All the license of food picture is on Naver or individual blogger.
 
 ## About Proejct managing
-### Total Project term : 13days
-### Ideation/Design : 5days
-### Development : 6days
-### Revision/Presentation: 2days
+- Total Project term : 13days
+- Ideation/Design : 5days
+- Development : 6days
+- Revision/Presentation: 2days
 
-### This app was designed and developed all by myself.
+#### This app was designed and developed all by myself.
