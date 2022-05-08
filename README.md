@@ -13,13 +13,14 @@
 ## :pushpin: Features & Design
 
 [App features]
+- Restaurant Category Choice (Korean, Chinese, Japanes, etc)
 - Restaurant list and detailed information of it
-- Restaurant recommendation by category 
-- Favorite list making
+- Restaurant recommendation by choosing category 
+- Favorite restaurant list making
 
 [UI Design]
-- Color psychology
-- Gestalt Theory
+- Gestalt Theory (Similarity & Closure)
+- Color Psychology (Primary Color : Orange)
 
 
 ## :people_hugging: Authors
