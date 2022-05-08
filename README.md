@@ -39,13 +39,12 @@ This app was designed and developed by myself.
 
 ## :sparkles: Skills & Tech Stack
 - SwiftUI
-- WebKit
-- MapKit
 
 ## :books: Documentation
 
 [Documentation](https://github.com/MMMIIIN/Gominsee)
 [Documentation](https://github.com/MMMIIIN/wwdc2022)
+ Apple Developer Documentation, SwiftUI Tutorial
  
 
 
