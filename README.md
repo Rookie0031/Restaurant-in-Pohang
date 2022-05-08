@@ -6,6 +6,7 @@
 - 포항 맛집리스트를 볼 수 있고, 카테고리 선택으로 맛집을 추천받을 수 있습니다.
 - 맛집 즐겨찾기를 통해 먹킷리스트를 만들고 관리할 수 있습니다.
 
+   
 - You can search restaurant in Pohang and get recommendation among them!
 - You can make your own restaurant list!
 
