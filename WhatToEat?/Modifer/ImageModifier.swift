@@ -8,12 +8,12 @@
 import Foundation
 import SwiftUI
 
-// 1. ImageSizeModifer
+// 1. customImage detail
 struct ImageModifier1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 300, height: 300, alignment: .center)
-            .cornerRadius(10)
+            .frame(width: 250, height: 250, alignment: .center)
+            .cornerRadius(25)
     }
 }
 
@@ -59,8 +59,8 @@ extension View {
 struct ImageModifier4: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 350, height: 225)
-            .cornerRadius(10)
+            .frame(width: 310, height: 225)
+            .cornerRadius(17)
     }
 }
 

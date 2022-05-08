@@ -14,6 +14,7 @@ struct TextModifier1: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 28).weight(.medium))
+            .foregroundColor(.primaryBlack)
     }
 }
 
@@ -29,6 +30,7 @@ struct TextModifier2: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 20).weight(.heavy))
+            .foregroundColor(.primaryBlack)
     }
 }
 
@@ -44,6 +46,7 @@ struct TextModifier3: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16).weight(.bold))
+//            .foregroundColor(.subBlack)
     }
 }
 
@@ -59,6 +62,7 @@ struct TextModifier4: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 14).weight(.medium))
+            .foregroundColor(.detailBlack)
     }
 }
 
@@ -73,6 +77,7 @@ struct TextModifier5: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 20).weight(.regular))
+            .foregroundColor(.subBlack)
     }
 }
 
@@ -82,11 +87,12 @@ extension View {
     }
 }
 
-// 5. customInfoContent2
+// 5. customInfoContent2 + button text
 struct TextModifier6: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16).weight(.heavy))
+//            .foregroundColor(.subBlack)
     }
 }
 
@@ -95,5 +101,22 @@ extension View {
         modifier(TextModifier6())
     }
 }
+
+// 6. FoodDescription
+struct TextModifier7: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 20).weight(.bold))
+            .foregroundColor(.subBlack)
+    }
+}
+
+extension View {
+    func customDescrbText() -> some View {
+        modifier(TextModifier7())
+    }
+}
+
+
 
 

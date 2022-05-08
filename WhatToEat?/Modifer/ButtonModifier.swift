@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 
-// 1. ImageSizeModifer
+// 1. custom button format
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content

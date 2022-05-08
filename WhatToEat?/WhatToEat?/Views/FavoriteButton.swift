@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FavoriteButton: View {
     @Binding var isSet: Bool
-    // 여기 바인딩을 왜 써야되는거지??
+    // 이 구조체의 인풋으로 isSet이 필요한데... 근데 왜 여기 바인딩이 필요하지?? 
 
     var body: some View {
         Button {
