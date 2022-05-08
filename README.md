@@ -12,9 +12,12 @@
 
 ## :pushpin: Features & Design
 
+[App features]
 - Restaurant list and detailed information of it
 - Restaurant recommendation by category 
 - Favorite list making
+
+[UI Design]
 - Color psychology
 - Gestalt Theory
 
