@@ -32,7 +32,9 @@
 
 
 ## :fireworks: Screenshots
-https://user-images.githubusercontent.com/103009135/167294800-7375ef80-29da-4b75-b087-d7d746c97c6e.png 
+
+![FoodListApp](https://user-images.githubusercontent.com/103009135/167294800-7375ef80-29da-4b75-b087-d7d746c97c6e.png )
+
 
 
 ## :sparkles: Skills & Tech Stack
