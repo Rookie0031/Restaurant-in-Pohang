@@ -10,11 +10,13 @@
 - You can make your own restaurant list!
 
 
-## :pushpin: Features
+## :pushpin: Features & Design
 
 - Restaurant list and detailed information of it
 - Restaurant recommendation by category 
 - Favorite list making
+- Color psychology
+- Gestalt Theory
 
 
 ## :people_hugging: Authors
