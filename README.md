@@ -42,9 +42,9 @@ This app was designed and developed by myself.
 
 ## :books: Documentation
 
-[Documentation](https://github.com/MMMIIIN/Gominsee)
-[Documentation](https://github.com/MMMIIIN/wwdc2022)
- Apple Developer Documentation, SwiftUI Tutorial
+- [Documentation](https://github.com/MMMIIIN/Gominsee). 
+- [Documentation](https://github.com/MMMIIIN/wwdc2022). 
+- Apple Developer Documentation, SwiftUI Tutorial. 
  
 
 
