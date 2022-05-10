@@ -26,14 +26,7 @@ struct FoodInfoViewReco: View {
         if foodInfo.id < 100 {
             
             VStack {
-                
-                
-                ZStack {
-                    
-                    RoundedRectangle(cornerRadius: 15)
-                        .foregroundColor(.orange).opacity(0.06)
-                        .frame(width: 330, height: 350)
-                    
+
                     VStack{
                         
                         HStack {
@@ -44,7 +37,7 @@ struct FoodInfoViewReco: View {
                             
                             Spacer()
                             
-                            FavoriteButton(isSet: $modelData.restaurants[foodInfoIndex].isFavorite)
+                            FavoriteButton(isFavorite: $modelData.restaurants[foodInfoIndex].isFavorite)
                         }
                         .frame(width: 250, alignment: .leading)
                         
@@ -53,21 +46,23 @@ struct FoodInfoViewReco: View {
                             .resizable()
                             .customImageDetail()
                     }
+                    .frame(width: 300)
                     .padding(.bottom, 20)
-                    
-                }
-                
+                    .padding(.vertical , 10)
+                    .background(.orange.opacity(0.06))
+                    .cornerRadius(15)
+
                 
                 
                 
                 VStack {
                     Group {
                         
-                        ZStack {
+//                        ZStack {
                             
-                            RoundedRectangle(cornerRadius: 15)
-                                .foregroundColor(.orange).opacity(0.06)
-                                .frame(width: 330, height: 160)
+//                            RoundedRectangle(cornerRadius: 15)
+//                                .foregroundColor(.orange).opacity(0.06)
+//                                .frame(width: 330, height: 160)
                             
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("가게이름 : \(foodInfo.name)")
@@ -85,11 +80,15 @@ struct FoodInfoViewReco: View {
                                     .customDescrbText()
                                 
                             }
-                            .frame(width: 300, alignment: .leading)
+                            .frame(width: 270, alignment: .leading)
                             .padding(.leading,30)
+                            .padding(.vertical , 10)
+                            .background(.orange.opacity(0.06))
+                            .cornerRadius(15)
+
                             //                    .background(.orange).opacity(0.3)
                             
-                        }
+//                        }
                         
                     }
                 }
