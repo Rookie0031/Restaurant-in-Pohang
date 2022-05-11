@@ -18,7 +18,6 @@ struct ContentView: View {
             
             TabView(selection: $selection) {
                 FoodListView().tabItem { Image(systemName: "square.text.square") }.tag(1)
-                
                 MainPageView().tabItem { Image(systemName: "house") }.tag(2)
                 BucketListView().tabItem { Image(systemName: "person") }.tag(3)
                 

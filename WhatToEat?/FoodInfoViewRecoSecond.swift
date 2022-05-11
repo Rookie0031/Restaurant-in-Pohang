@@ -51,7 +51,7 @@ struct FoodInfoViewRecoSecond: View {
                             
                             Spacer()
                             
-                            FavoriteButton(isSet: $modelData.restaurants[foodInfoIndex].isFavorite)
+                            FavoriteButton(isFavorite: $modelData.restaurants[foodInfoIndex].isFavorite)
                         }
                         .frame(width: 250, alignment: .leading)
                         

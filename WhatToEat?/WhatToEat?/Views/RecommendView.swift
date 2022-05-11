@@ -201,7 +201,7 @@ struct MainPageView: View {
                     Spacer()
                     
                     
-                    NavigationLink(destination: FoodInfoViewReco(foodInfo: filteredGroupFinal.count == 0 ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
+                    NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.count == 0 ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
                         
                         Button(action: {
                             isActive = true

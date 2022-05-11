@@ -43,7 +43,6 @@ func load<T: Decodable>(_ filename: String) -> T {
 
 // Filter food category from jason Data
 
-
 func foodFilter () -> [[String]] {
     
     var western : [String] = []

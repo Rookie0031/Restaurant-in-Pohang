@@ -6,13 +6,13 @@
 //
 import SwiftUI
 
-struct FavoriteButtonBox: View {
-    @Binding var isSet: Bool
+struct FavoriteButtonSub: View {
+    @Binding var isFavorite: Bool
     // 이 구조체의 인풋으로 isSet이 필요한데... 근데 왜 여기 바인딩이 필요하지??
     
     var body: some View {
         Button(action: {
-            isSet.toggle()
+            isFavorite.toggle()
         }) {
             Text("먹킷리스트에 추가할까요?")
                 .customButtonFormat()
@@ -22,7 +22,7 @@ struct FavoriteButtonBox: View {
 
 struct FavoriteButtonBox_Previews: PreviewProvider {
     static var previews: some View {
-        FavoriteButtonBox(isSet: .constant(true))
+        FavoriteButtonSub(isFavorite: .constant(true))
     }
 }
 

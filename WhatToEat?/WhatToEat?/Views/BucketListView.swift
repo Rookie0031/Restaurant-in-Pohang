@@ -20,17 +20,16 @@ struct BucketListView: View {
     
     var body: some View {
         
-        
+
         List(filteredRestaurants, id: \.id) {restaurant in
             
             NavigationLink{
-                FoodInfoViewReco(foodInfo: restaurant)
+                FoodInfoView(foodInfo: restaurant)
             } label: {
                 InformationRowView(restaurant: restaurant)
 
             }
         }
-        
     }
 }
 

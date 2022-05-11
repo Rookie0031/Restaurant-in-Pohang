@@ -8,22 +8,20 @@
 import SwiftUI
 
 struct FavoriteButton: View {
-    @Binding var isSet: Bool
-    // 이 구조체의 인풋으로 isSet이 필요한데... 근데 왜 여기 바인딩이 필요하지?? 
-
+    @Binding var isFavorite: Bool
     var body: some View {
         Button {
-            isSet.toggle()
+            isFavorite.toggle()
         } label: {
-            Label("Toggle Favorite", systemImage: isSet ? "star.fill" : "star")
+            Label("Toggle Favorite", systemImage: isFavorite ? "star.fill" : "star")
                 .labelStyle(.iconOnly)
-                .foregroundColor(isSet ? .yellow : .gray)
+                .foregroundColor(isFavorite ? .yellow : .gray)
         }
     }
 }
 
-struct FavoriteButton_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteButton(isSet: .constant(true))
-    }
-}
+//struct FavoriteButton_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FavoriteButton(isSet: .constant(true))
+//    }
+//}

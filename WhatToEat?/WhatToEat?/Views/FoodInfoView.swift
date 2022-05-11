@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FoodInfoViewReco: View {
+struct FoodInfoView: View {
     
     // 만약에 foodInfo 에 추천으로 받아왔으면 이페이지가 띄워지고,
     //
@@ -130,7 +130,7 @@ struct RestaurantVie11w2_Previews: PreviewProvider {
     static var restaurants = ModelData().restaurants
     static var previews: some View {
         
-        FoodInfoViewReco(foodInfo: restaurants[3])
+        FoodInfoView(foodInfo: restaurants[3])
             .environmentObject(ModelData())
             .previewInterfaceOrientation(.portrait)
     }

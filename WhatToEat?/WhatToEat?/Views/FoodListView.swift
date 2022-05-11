@@ -10,13 +10,10 @@ import SwiftUI
 struct FoodListView: View {
     
     var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
-    
-    
+
     @State private var foodFilterResult = foodFilter()
-    
     @State var currentIndex = 0
     @State var isListViewActive = false
-    
     
     var body: some View {
         
@@ -94,7 +91,6 @@ struct FoodListView: View {
             }
             
         }
-        
     }
 }
 
