@@ -14,7 +14,7 @@
 ## :pushpin: Features & Design
 
 [App features]
-- Restaurant category Ccoice (Korean, Chinese, Japanes, etc)
+- Restaurant category Choice (Korean, Chinese, Japanes, etc)
 - Restaurant list and detailed information of it
 - Restaurant recommendation by choosing category 
 - Favorite restaurant list making
