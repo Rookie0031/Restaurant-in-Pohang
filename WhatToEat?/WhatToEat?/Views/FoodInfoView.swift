@@ -5,13 +5,13 @@
 //  Created by Jisu Jang on 2022/05/04.
 //
 
+// food 인포 id에 따라 뷰가 바뀌는 구조 다시 짜보기
+
+
 import SwiftUI
 
 struct FoodInfoView: View {
-    
-    // 만약에 foodInfo 에 추천으로 받아왔으면 이페이지가 띄워지고,
-    //
-    
+
     @EnvironmentObject var modelData : ModelData
     var foodInfo : RestaurantData
     
@@ -57,13 +57,7 @@ struct FoodInfoView: View {
                 
                 VStack {
                     Group {
-                        
-//                        ZStack {
-                            
-//                            RoundedRectangle(cornerRadius: 15)
-//                                .foregroundColor(.orange).opacity(0.06)
-//                                .frame(width: 330, height: 160)
-                            
+
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("가게이름 : \(foodInfo.name)")
                                     .customDescrbText()
@@ -85,11 +79,6 @@ struct FoodInfoView: View {
                             .padding(.vertical , 10)
                             .background(.orange.opacity(0.06))
                             .cornerRadius(15)
-
-                            //                    .background(.orange).opacity(0.3)
-                            
-//                        }
-                        
                     }
                 }
                 .padding()
@@ -101,11 +90,13 @@ struct FoodInfoView: View {
                         FoodListView()
                     } label:{
                         Text("다른 맛집리스트도 살펴볼래요!")
+                            .navigationTitle("맛집을 찾아봐요!")
                             .customButtonFormat()
                     }
                     
                     NavigationLink{
                         BucketListView()
+                            .navigationTitle("뭘 먹을까?")
                     } label: {
                         Text("먹킷리스트로 가볼래요!")
                             .customButtonFormat()
@@ -115,15 +106,11 @@ struct FoodInfoView: View {
             }
             
         } else {
-            
             NoRecoView()
         }
-        
-        
+
     }
-    
-    
-    
+
 }
 
 struct RestaurantVie11w2_Previews: PreviewProvider {

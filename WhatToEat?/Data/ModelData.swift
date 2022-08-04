@@ -5,7 +5,7 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 
-import Foundation
+//import Foundation
 import SwiftUI
 
 
@@ -14,7 +14,6 @@ import SwiftUI
 
 final class ModelData : ObservableObject {
     @Published var restaurants : [RestaurantData] = load("restaurantData.json")
-    //    @Published var restaurants : [RestaurantData] = load("parsed.json")
     @Published var nillData : [RestaurantData] = load("nillData.json")
 }
 

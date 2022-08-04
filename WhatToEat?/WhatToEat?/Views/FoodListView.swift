@@ -19,9 +19,7 @@ struct FoodListView: View {
         
         GeometryReader { geometry in
             ZStack {
-                
                 VStack(alignment:.leading, spacing: 10) {
-                    
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack {
                             ForEach(foodCategory, id: \.self) { value in
@@ -53,7 +51,7 @@ struct FoodListView: View {
                                 value in
                                 
                                 NavigationLink {
-                                    FoodInfoViewRecoSecond(foodInfo: ModelData().restaurants.filter{$0.name == value}.first!)
+                                    FoodInfoViewSecond(foodInfo: ModelData().restaurants.filter{$0.name == value}.first!)
                                     
                                 } label: {
                                     

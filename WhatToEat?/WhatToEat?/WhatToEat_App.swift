@@ -9,11 +9,10 @@ import SwiftUI
 
 @main
 struct WhatToEat_App: App {
-    let modelData = ModelData()
+    @StateObject private var modelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
-
             ContentView()
                 .environmentObject(modelData)
         }

@@ -4,10 +4,16 @@
 //
 //  Created by Jisu Jang on 2022/04/29.
 //
+// category 전부 enum으로 빼기
+// State var filtered data 이름 바꾸고, final class안으로 갖다넣기
+// current index는 state data로 바꿔서 final class안으로 넣기
+//
+
+
 
 import SwiftUI
 
-struct MainPageView: View {
+struct RecommendView: View {
     
     
     var foodCategory : [String] = ["양식","한식","중식","일식","기타", "카페/디저트"]
@@ -20,7 +26,6 @@ struct MainPageView: View {
     @State var filteredGroupC : [RestaurantData] = []
     @State var filteredGroupD : [RestaurantData] = []
     @State var filteredGroupFinal : [RestaurantData] = []
-    //    @State var nillData : [RestaurantData] = NillRestaurantData
     
     @State var currentIndex1 : Int = 0
     @State var currentIndex2 : Int = 0
@@ -33,19 +38,13 @@ struct MainPageView: View {
     @State var isNill : Bool = false
     
     @EnvironmentObject var modelData : ModelData
-    
-    
-    //    var foodInfo : RestaurantData
-    
+
     var body: some View {
         
         GeometryReader { geometry in
             
             ZStack {
-                //            Rectangle()
-                //                .foregroundColor(.lightGray)
-                //                .ignoresSafeArea()
-                
+            
                 VStack(alignment: .leading, spacing: 20) {
                     
                     
@@ -217,21 +216,9 @@ struct MainPageView: View {
                     .padding()
                     
                 }
-                //            .foregroundColor(Color.backGround)
-                
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
             
         }
-    }
-}
-
-struct RestaurantView_Previews: PreviewProvider {
-    static var restaurants = ModelData().restaurants
-    static var previews: some View {
-        
-        MainPageView()
-            .environmentObject(ModelData())
-            .previewInterfaceOrientation(.portrait)
     }
 }

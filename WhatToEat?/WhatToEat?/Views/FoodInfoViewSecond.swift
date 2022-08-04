@@ -1,40 +1,21 @@
-//
-//  FoodInfoViewRecoSecond.swift
-//  WhatToEat?
-//
-//  Created by Jisu Jang on 2022/05/07.
-//
-
-//
-//  FoodInfoViewReco.swift
-//  WhatToEat?
-//
-//  Created by Jisu Jang on 2022/05/04.
-//
 
 import SwiftUI
 
-struct FoodInfoViewRecoSecond: View {
-    
-    // 만약에 foodInfo 에 추천으로 받아왔으면 이페이지가 띄워지고,
-    //
+struct FoodInfoViewSecond: View {
     
     @EnvironmentObject var modelData : ModelData
-    var foodInfo : RestaurantData
+//    @EnvironmentObject var modelData2 = ModelData()
     
+    var foodInfo : RestaurantData
     var foodInfoIndex: Int {
-        modelData.restaurants.firstIndex(where: { $0.id == foodInfo.id })!
-    }
+        modelData.restaurants.firstIndex(where: { $0.id == foodInfo.id })!}
     
     @State var isActive : Bool = false
     
     var body: some View {
         
         if foodInfo.id < 100 {
-            
             VStack {
-                
-                
                 ZStack {
                     
                     RoundedRectangle(cornerRadius: 15)
@@ -42,7 +23,6 @@ struct FoodInfoViewRecoSecond: View {
                         .frame(width: 330, height: 350)
                     
                     VStack{
-                        
                         HStack {
                             Text("\(foodInfo.name) 어때요?")
                                 .customTitle()
@@ -64,14 +44,9 @@ struct FoodInfoViewRecoSecond: View {
                     
                 }
                 
-                
-                
-                
                 VStack {
                     Group {
-                        
                         ZStack {
-                            
                             RoundedRectangle(cornerRadius: 15)
                                 .foregroundColor(.orange).opacity(0.06)
                                 .frame(width: 330, height: 160)
@@ -87,7 +62,6 @@ struct FoodInfoViewRecoSecond: View {
                                 Text("위치 : \(foodInfo.location)")
                                     .customDescrbText()
                                 
-                                
                                 Text("리뷰 : \(foodInfo.description)")
                                     .customDescrbText()
                                 
@@ -102,11 +76,11 @@ struct FoodInfoViewRecoSecond: View {
                 }
                 .padding()
                 
-                
                 Group {
                     
                     NavigationLink{
                         FoodListView()
+                            .navigationTitle("맛집을 찾아봐요!")
                     } label:{
                         Text("다른 맛집리스트도 살펴볼래요!")
                             .customButtonFormat()
@@ -114,6 +88,7 @@ struct FoodInfoViewRecoSecond: View {
                     
                     NavigationLink{
                         BucketListView()
+                            .navigationTitle("뭘 먹을까?")
                     } label: {
                         Text("먹킷리스트로 가볼래요!")
                             .customButtonFormat()

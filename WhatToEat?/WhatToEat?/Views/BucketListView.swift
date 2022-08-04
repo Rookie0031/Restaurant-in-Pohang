@@ -10,6 +10,7 @@ import SwiftUI
 struct BucketListView: View {
     
     @EnvironmentObject var modelData: ModelData
+    
     @State private var showFavoritesOnly = true
     
     var filteredRestaurants: [RestaurantData] {
@@ -30,14 +31,5 @@ struct BucketListView: View {
 
             }
         }
-    }
-}
-
-struct BucketListView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        BucketListView()
-            .environmentObject(ModelData())
-        
     }
 }

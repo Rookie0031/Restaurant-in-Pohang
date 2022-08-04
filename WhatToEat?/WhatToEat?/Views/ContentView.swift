@@ -11,14 +11,15 @@ struct ContentView: View {
     
     @State private var selection = 1
     @State private var isShowingDetailView = false
+//    @EnvironmentObject var modelData : ModelData
     
     var body: some View {
         
         NavigationView {
-            
+//
             TabView(selection: $selection) {
                 FoodListView().tabItem { Image(systemName: "square.text.square") }.tag(1)
-                MainPageView().tabItem { Image(systemName: "house") }.tag(2)
+                RecommendView().tabItem { Image(systemName: "house") }.tag(2)
                 BucketListView().tabItem { Image(systemName: "person") }.tag(3)
                 
             }
