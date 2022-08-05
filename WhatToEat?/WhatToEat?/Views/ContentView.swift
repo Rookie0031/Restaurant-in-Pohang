@@ -11,21 +11,17 @@ struct ContentView: View {
     
     @State private var selection = 1
     @State private var isShowingDetailView = false
-//    @EnvironmentObject var modelData : ModelData
     
     var body: some View {
         
         NavigationView {
-//
             TabView(selection: $selection) {
-                FoodListView().tabItem { Image(systemName: "square.text.square") }.tag(1)
-                RecommendView().tabItem { Image(systemName: "house") }.tag(2)
-                BucketListView().tabItem { Image(systemName: "person") }.tag(3)
-                
+                FoodListView().tabItem { Label("맛집", systemImage: "square.text.square")}.tag(1)
+                RecommendView().tabItem { Label("추천", systemImage: "house") }.tag(2)
+                BucketListView().tabItem { Label("마이페이지", systemImage: "person")}.tag(3)
             }
             .navigationTitle(selection == 1 ? "어떤 맛집이 있을까요?" : selection == 2 ? "맛집을 찾아봐요!" : "나의 먹킷리스트")
         }
-        
     }
 }
 

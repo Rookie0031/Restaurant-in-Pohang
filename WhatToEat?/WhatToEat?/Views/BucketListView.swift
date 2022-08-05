@@ -10,25 +10,21 @@ import SwiftUI
 struct BucketListView: View {
     
     @EnvironmentObject var modelData: ModelData
-    
     @State private var showFavoritesOnly = true
     
-    var filteredRestaurants: [RestaurantData] {
+    private var filteredRestaurants: [RestaurantData] {
         modelData.restaurants.filter { value in
             (!showFavoritesOnly || value.isFavorite)
         }
     }
     
     var body: some View {
-        
 
         List(filteredRestaurants, id: \.id) {restaurant in
-            
             NavigationLink{
                 FoodInfoView(foodInfo: restaurant)
             } label: {
                 InformationRowView(restaurant: restaurant)
-
             }
         }
     }

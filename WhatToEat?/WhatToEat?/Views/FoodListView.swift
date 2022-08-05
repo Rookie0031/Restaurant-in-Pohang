@@ -43,44 +43,30 @@ struct FoodListView: View {
                     }
                     .padding(.leading, 20)
                     .padding(.bottom, 10)
-                    
-                    
                     ScrollView {
                         LazyVStack(alignment: .center) {
                             ForEach(foodFilterResult[currentIndex], id: \.self) {
                                 value in
-                                
                                 NavigationLink {
                                     FoodInfoViewSecond(foodInfo: ModelData().restaurants.filter{$0.name == value}.first!)
-                                    
                                 } label: {
-                                    
                                     ZStack{
-                                        
                                         RoundedRectangle(cornerRadius: 15)
                                             .foregroundColor(.orange).opacity(0.06)
                                             .frame(width: 350, height: 280)
-                                        
                                         VStack() {
-                                            
                                             Text("\(value)")
                                                 .foregroundColor(.black)
                                                 .padding(.bottom, -3)
                                                 .font(.system(size: 20).weight(.heavy))
                                                 .frame(width: 300, alignment: .leading)
-                                            
                                             Image(value)
                                                 .resizable()
                                                 .customImageLazyOneCol()
-                                            
-                                            
                                         }
-                                        
                                     }
                                     .padding(.bottom, 15)
-                                    
                                 }
-                                
                             }
                         }
                     }

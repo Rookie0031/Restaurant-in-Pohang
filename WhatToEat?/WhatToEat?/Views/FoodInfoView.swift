@@ -11,24 +11,18 @@
 import SwiftUI
 
 struct FoodInfoView: View {
-
+    @State var isActive : Bool = false
     @EnvironmentObject var modelData : ModelData
-    var foodInfo : RestaurantData
-    
-    var foodInfoIndex: Int {
+    private var foodInfo : RestaurantData
+    private var foodInfoIndex: Int {
         modelData.restaurants.firstIndex(where: { $0.id == foodInfo.id })!
     }
-    
-    @State var isActive : Bool = false
     
     var body: some View {
         
         if foodInfo.id < 100 {
-            
             VStack {
-
                     VStack{
-                        
                         HStack {
                             Text("\(foodInfo.name) 어때요?")
                                 .customTitle()
@@ -52,12 +46,8 @@ struct FoodInfoView: View {
                     .background(.orange.opacity(0.06))
                     .cornerRadius(15)
 
-                
-                
-                
                 VStack {
                     Group {
-
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("가게이름 : \(foodInfo.name)")
                                     .customDescrbText()
@@ -82,10 +72,8 @@ struct FoodInfoView: View {
                     }
                 }
                 .padding()
-                
-                
+
                 Group {
-                    
                     NavigationLink{
                         FoodListView()
                     } label:{
@@ -101,10 +89,8 @@ struct FoodInfoView: View {
                         Text("먹킷리스트로 가볼래요!")
                             .customButtonFormat()
                     }
-                    
                 }
             }
-            
         } else {
             NoRecoView()
         }

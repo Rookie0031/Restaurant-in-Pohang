@@ -9,8 +9,6 @@
 // current index는 state data로 바꿔서 final class안으로 넣기
 //
 
-
-
 import SwiftUI
 
 struct RecommendView: View {
