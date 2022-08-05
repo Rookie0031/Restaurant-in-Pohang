@@ -4,13 +4,7 @@
 //
 //  Created by Jisu Jang on 2022/04/29.
 //
-
-//import Foundation
 import SwiftUI
-
-
-// import jason Data
-
 
 final class ModelData : ObservableObject {
     @Published var restaurants : [RestaurantData] = load("restaurantData.json")

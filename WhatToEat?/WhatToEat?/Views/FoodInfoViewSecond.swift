@@ -4,7 +4,6 @@ import SwiftUI
 struct FoodInfoViewSecond: View {
     
     @EnvironmentObject var modelData : ModelData
-//    @EnvironmentObject var modelData2 = ModelData()
     
     var foodInfo : RestaurantData
     var foodInfoIndex: Int {
@@ -64,20 +63,15 @@ struct FoodInfoViewSecond: View {
                                 
                                 Text("리뷰 : \(foodInfo.description)")
                                     .customDescrbText()
-                                
                             }
                             .frame(width: 300, alignment: .leading)
                             .padding(.leading,30)
-                            //                    .background(.orange).opacity(0.3)
-                            
                         }
-                        
                     }
                 }
                 .padding()
                 
                 Group {
-                    
                     NavigationLink{
                         FoodListView()
                             .navigationTitle("맛집을 찾아봐요!")
@@ -85,7 +79,6 @@ struct FoodInfoViewSecond: View {
                         Text("다른 맛집리스트도 살펴볼래요!")
                             .customButtonFormat()
                     }
-                    
                     NavigationLink{
                         BucketListView()
                             .navigationTitle("뭘 먹을까?")
@@ -93,28 +86,10 @@ struct FoodInfoViewSecond: View {
                         Text("먹킷리스트로 가볼래요!")
                             .customButtonFormat()
                     }
-                    
                 }
             }
-            
         } else {
-            
             NoRecoView()
         }
-        
-        
     }
-    
-    
-    
 }
-//
-//struct RestaurantVie11w2_Previews: PreviewProvider {
-//    static var restaurants = ModelData().restaurants
-//    static var previews: some View {
-//        
-//        FoodInfoViewReco(foodInfo: restaurants[3])
-//            .environmentObject(ModelData())
-//            .previewInterfaceOrientation(.portrait)
-//    }
-//}

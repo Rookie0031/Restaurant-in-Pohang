@@ -13,8 +13,8 @@ import SwiftUI
 struct FoodInfoView: View {
     @State var isActive : Bool = false
     @EnvironmentObject var modelData : ModelData
-    private var foodInfo : RestaurantData
-    private var foodInfoIndex: Int {
+    var foodInfo : RestaurantData
+    var foodInfoIndex: Int {
         modelData.restaurants.firstIndex(where: { $0.id == foodInfo.id })!
     }
     

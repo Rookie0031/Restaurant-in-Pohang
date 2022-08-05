@@ -14,7 +14,6 @@ struct NoRecoView: View {
     var body: some View {
         
         VStack {
-            
             Spacer()
             Text("아쉽게도 원하시는 맛집이 없어요...")
                 .font(.system(size: 20).weight(.heavy))

@@ -42,10 +42,7 @@ struct RecommendView: View {
         GeometryReader { geometry in
             
             ZStack {
-            
                 VStack(alignment: .leading, spacing: 20) {
-                    
-                    
                     Group {
                         Text("어떤 음식이 땡기나요?")
                             .customInfoTitle()
@@ -88,8 +85,7 @@ struct RecommendView: View {
                         Text("몇명이서 먹을건가요?")
                             .customInfoTitle()
                             .frame(width: 300, alignment: .leading)
-                        
-                        
+
                         HStack {
                             ForEach(peopleCategory, id: \.self) { value in
                                 Button(action: {
@@ -113,13 +109,10 @@ struct RecommendView: View {
                             }
                         }
                         .frame(width: 300, height: 30)
-                        
-                        
+
                         Divider()
                             .frame(width: 300)
                     }
-                    
-                    
                     Group {
                         Text("원하는 가격대가 있나요?")
                             .customInfoTitle()
@@ -155,8 +148,6 @@ struct RecommendView: View {
                             .frame(width: 300)
                     }
                     
-                    
-                    
                     Group {
                         Text("선호하는 위치가 있나요?")
                             .customInfoTitle()
@@ -169,8 +160,6 @@ struct RecommendView: View {
                                         currentIndex4 = locationCategory.firstIndex(of: value)!
                                         filteredGroupD = modelData.restaurants.filter { restaurant in
                                             restaurant.location == value }
-                                        
-                                        
                                     }) {
                                         locationCategory.firstIndex(of: value)! == currentIndex4 ?
                                         
@@ -193,19 +182,13 @@ struct RecommendView: View {
                         Divider()
                             .frame(width: 300)
                     }
-                    
-                    
+
                     Spacer()
-                    
-                    
+
                     NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.count == 0 ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
-                        
                         Button(action: {
                             isActive = true
-                            
                             filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-                            
-                            
                         }) {
                             Text("맛집 추천받기!")
                                 .customButtonFormat()

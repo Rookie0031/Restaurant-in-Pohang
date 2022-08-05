@@ -4,8 +4,6 @@
 //
 //  Created by Jisu Jang on 2022/05/01.
 //
-
-//import Foundation
 import SwiftUI
 
 struct RestaurantData: Hashable, Decodable {

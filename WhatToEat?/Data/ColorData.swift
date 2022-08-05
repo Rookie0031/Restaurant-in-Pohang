@@ -4,7 +4,6 @@
 //
 //  Created by Jisu Jang on 2022/05/04.
 //
-
 import SwiftUI
 
 extension Color {
