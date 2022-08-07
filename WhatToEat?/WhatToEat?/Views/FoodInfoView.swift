@@ -12,6 +12,7 @@ import SwiftUI
 
 struct FoodInfoView: View {
     @State var isActive : Bool = false
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
     var foodInfo : RestaurantData
     var foodInfoIndex: Int {
@@ -74,13 +75,13 @@ struct FoodInfoView: View {
                 .padding()
 
                 Group {
-                    NavigationLink{
-                        FoodListView()
-                    } label:{
-                        Text("다른 맛집리스트도 살펴볼래요!")
-                            .navigationTitle("맛집을 찾아봐요!")
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("다른 맛집을 살펴볼래요!")
                             .customButtonFormat()
                     }
+
                     
                     NavigationLink{
                         BucketListView()

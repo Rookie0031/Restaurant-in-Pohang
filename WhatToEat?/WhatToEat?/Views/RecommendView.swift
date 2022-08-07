@@ -40,11 +40,10 @@ struct RecommendView: View {
     var body: some View {
         
         GeometryReader { geometry in
-            
             ZStack {
                 VStack(alignment: .leading, spacing: 20) {
                     Group {
-                        Text("어떤 음식이 땡기나요?")
+                        Text("어떤 종류가 먹고 싶나요?")
                             .customInfoTitle()
                             .padding(.top, 20)
                             .frame(width: 300, alignment: .leading)
@@ -195,11 +194,10 @@ struct RecommendView: View {
                         }
                     }
                     .padding()
-                    
+                    Spacer()
                 }
             }
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-            
         }
     }
 }

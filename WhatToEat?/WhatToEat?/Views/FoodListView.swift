@@ -54,7 +54,7 @@ struct FoodListView: View {
                                         RoundedRectangle(cornerRadius: 15)
                                             .foregroundColor(.orange).opacity(0.06)
                                             .frame(width: 350, height: 280)
-                                        VStack() {
+                                        VStack(alignment: .leading) {
                                             Text("\(value)")
                                                 .foregroundColor(.black)
                                                 .padding(.bottom, -3)

@@ -14,7 +14,7 @@ struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .customButtonText()
-            .frame(width: 300, height: 40, alignment: .center)
+            .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.05, alignment: .center)
             .foregroundColor(.white)
             .background(.orange)
             .cornerRadius(10)

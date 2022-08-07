@@ -10,6 +10,7 @@ import SwiftUI
 struct NoRecoView: View {
     
     @State var testfor = false
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
     var body: some View {
         
@@ -26,17 +27,16 @@ struct NoRecoView: View {
             Spacer()
             
             Group {
-                NavigationLink{
-                    FoodListView()
-                        .navigationTitle("이번에는 꼭!")
-                } label:{
-                    Text("다른 맛집리스트도 살펴볼래요!")
+                Button {
+                    dismiss()
+                } label: {
+                    Text("다른 맛집을 살펴볼래요!")
                         .customButtonFormat()
                 }
                 
                 NavigationLink{
                     BucketListView()
-                        .navigationTitle("여기서 하나 골라!")
+                        .navigationTitle("나의 먹킷리스트")
                 } label: {
                     Text("먹킷리스트로 가볼래요!")
                         .customButtonFormat()

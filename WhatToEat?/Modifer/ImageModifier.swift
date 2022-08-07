@@ -59,7 +59,7 @@ extension View {
 struct ImageModifier4: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .frame(width: 310, height: 225)
+            .frame(width: 225, height: 225)
             .cornerRadius(17)
     }
 }
