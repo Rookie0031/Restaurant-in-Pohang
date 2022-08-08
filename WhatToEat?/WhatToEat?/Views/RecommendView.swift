@@ -38,10 +38,11 @@ struct RecommendView: View {
     @EnvironmentObject var modelData : ModelData
 
     var body: some View {
-        
-        GeometryReader { geometry in
+
             ZStack {
                 VStack(alignment: .leading, spacing: 20) {
+
+                    Spacer()
                     Group {
                         Text("어떤 종류가 먹고 싶나요?")
                             .customInfoTitle()
@@ -182,8 +183,6 @@ struct RecommendView: View {
                             .frame(width: 300)
                     }
 
-                    Spacer()
-
                     NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.count == 0 ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
                         Button(action: {
                             isActive = true
@@ -197,7 +196,5 @@ struct RecommendView: View {
                     Spacer()
                 }
             }
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
         }
     }
-}
