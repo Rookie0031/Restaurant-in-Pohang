@@ -33,9 +33,6 @@ func load<T: Decodable>(_ filename: String) -> T {
     }
 }
 
-
-// Filter food category from jason Data
-
 func foodFilter () -> [[String]] {
     
     var western : [String] = []
@@ -46,35 +43,24 @@ func foodFilter () -> [[String]] {
     var cafe : [String] = []
     
     for num in 0...ModelData().restaurants.count - 1 {
-        
-        
+
         switch ModelData().restaurants[num].category {
         case "양식" :
             western.append(ModelData().restaurants[num].name)
-            
         case "한식" :
             korean.append(ModelData().restaurants[num].name)
-            
         case "중식" :
             chinese.append(ModelData().restaurants[num].name)
-            
         case "일식" :
             japanese.append(ModelData().restaurants[num].name)
-            
         case "기타" :
             asian.append(ModelData().restaurants[num].name)
-            
         case "카페/디저트" :
             cafe.append(ModelData().restaurants[num].name)
-            
         default :
             print("정보에 오류가 있는 거 같아요.")
-            
         }
-        
     }
-    
     return [korean, western, chinese, japanese, asian, cafe]
-    
 }
 

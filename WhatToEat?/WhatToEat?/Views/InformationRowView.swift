@@ -15,10 +15,3 @@ struct InformationRowView: View {
         }
     }
 }
-
-//struct InformationRowView_Previews: PreviewProvider {
-//    static var restaurants = ModelData().restaurants
-//    static var previews: some View {
-//        InformationRowView(restaurant: restaurants[0])
-//    }
-//}

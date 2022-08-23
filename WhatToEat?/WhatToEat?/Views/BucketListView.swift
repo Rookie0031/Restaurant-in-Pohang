@@ -19,13 +19,15 @@ struct BucketListView: View {
     }
     
     var body: some View {
-
-        List(filteredRestaurants, id: \.id) {restaurant in
-            NavigationLink{
-                FoodInfoView(foodInfo: restaurant)
-            } label: {
-                InformationRowView(restaurant: restaurant)
+        NavigationView {
+            List(filteredRestaurants, id: \.id) {restaurant in
+                NavigationLink{
+                    FoodInfoView(foodInfo: restaurant)
+                } label: {
+                    InformationRowView(restaurant: restaurant)
+                }
             }
+            .navigationTitle("먹킷리스트를 관리해봐요!")
         }
     }
 }
