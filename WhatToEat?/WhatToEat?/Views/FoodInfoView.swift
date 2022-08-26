@@ -5,9 +5,6 @@
 //  Created by Jisu Jang on 2022/05/04.
 //
 
-// food 인포 id에 따라 뷰가 바뀌는 구조 다시 짜보기
-
-
 import SwiftUI
 
 struct FoodInfoView: View {
@@ -35,8 +32,7 @@ struct FoodInfoView: View {
                             FavoriteButton(isFavorite: $modelData.restaurants[foodInfoIndex].isFavorite)
                         }
                         .frame(width: 250, alignment: .leading)
-                        
-                        
+
                         foodInfo.image
                             .resizable()
                             .customImageDetail()
@@ -51,19 +47,16 @@ struct FoodInfoView: View {
                     Group {
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("가게이름 : \(foodInfo.name)")
-                                    .customDescrbText()
+                                    .descriptionTextStyle()
                                 
                                 Text("가격 : \(foodInfo.price)")
-                                    .customDescrbText()
-                                
-                                
+                                    .descriptionTextStyle()
+
                                 Text("위치 : \(foodInfo.location)")
-                                    .customDescrbText()
-                                
-                                
+                                    .descriptionTextStyle()
+
                                 Text("리뷰 : \(foodInfo.description)")
-                                    .customDescrbText()
-                                
+                                    .descriptionTextStyle()
                             }
                             .frame(width: 270, alignment: .leading)
                             .padding(.leading,30)
@@ -82,7 +75,6 @@ struct FoodInfoView: View {
                             .customButtonFormat()
                     }
 
-                    
                     NavigationLink{
                         BucketListView()
                             .navigationTitle("뭘 먹을까?")
@@ -93,7 +85,7 @@ struct FoodInfoView: View {
                 }
             }
         } else {
-            NoRecoView()
+            NoRecommendationView()
         }
 
     }

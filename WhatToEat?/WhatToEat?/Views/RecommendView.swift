@@ -184,7 +184,7 @@ struct RecommendView: View {
     }
 
     private func getRecommendation() -> some View {
-        NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.count == 0 ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
+        NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.isEmpty ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
             Button(action: {
                 isActive = true
                 filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}

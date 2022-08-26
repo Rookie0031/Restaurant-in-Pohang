@@ -7,15 +7,16 @@
 //
 import SwiftUI
 
-struct NoRecoView: View {
+struct NoRecommendationView: View {
     
-    @State var testfor = false
+    @State private var testfor = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
     var body: some View {
         
         VStack {
             Spacer()
+
             Text("아쉽게도 원하시는 맛집이 없어요...")
                 .font(.system(size: 20).weight(.heavy))
                 .padding(.bottom,50)
@@ -25,24 +26,14 @@ struct NoRecoView: View {
                 .frame(width: 200, height: 200, alignment: .center)
             
             Spacer()
-            
-            Group {
-                Button {
-                    dismiss()
-                } label: {
-                    Text("다른 맛집을 살펴볼래요!")
-                        .customButtonFormat()
-                }
-                
-                NavigationLink{
-                    BucketListView()
-                        .navigationTitle("나의 먹킷리스트")
-                } label: {
-                    Text("먹킷리스트로 가볼래요!")
-                        .customButtonFormat()
-                }
-                .padding(.bottom, 50)
+
+            Button {
+                dismiss()
+            } label: {
+                Text("한번 더 추천받을래요!")
+                    .customButtonFormat()
             }
+            .padding(.bottom, 40)
         }
     }
     

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var selection = 1
+
     @State private var isShowingDetailView = false
     
     var body: some View {
@@ -18,7 +17,8 @@ struct ContentView: View {
                     .tabItem { Label("추천", systemImage: "house") }
                 FoodListView()
                     .tabItem { Label("맛집", systemImage: "square.text.square")}
-                BucketListView().tabItem { Label("먹킷리스트", systemImage: "person")}
+                BucketListView()
+                    .tabItem { Label("먹킷리스트", systemImage: "person")}
             }
     }
 }

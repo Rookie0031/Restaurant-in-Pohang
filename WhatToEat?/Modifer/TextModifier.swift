@@ -112,7 +112,7 @@ struct TextModifier7: ViewModifier {
 }
 
 extension View {
-    func customDescrbText() -> some View {
+    func descriptionTextStyle() -> some View {
         modifier(TextModifier7())
     }
 }

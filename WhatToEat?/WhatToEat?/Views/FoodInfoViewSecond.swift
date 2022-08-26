@@ -53,17 +53,17 @@ struct FoodInfoViewSecond: View {
                             
                             VStack(alignment: .leading, spacing: 5) {
                                 Text("가게이름 : \(foodInfo.name)")
-                                    .customDescrbText()
+                                    .descriptionTextStyle()
                                 
                                 Text("가격 : \(foodInfo.price)")
-                                    .customDescrbText()
+                                    .descriptionTextStyle()
                                 
                                 
                                 Text("위치 : \(foodInfo.location)")
-                                    .customDescrbText()
+                                    .descriptionTextStyle()
                                 
                                 Text("리뷰 : \(foodInfo.description)")
-                                    .customDescrbText()
+                                    .descriptionTextStyle()
                             }
                             .frame(width: 300, alignment: .leading)
                             .padding(.leading,30)
@@ -90,7 +90,7 @@ struct FoodInfoViewSecond: View {
                 }
             }
         } else {
-            NoRecoView()
+            NoRecommendationView()
         }
     }
 }

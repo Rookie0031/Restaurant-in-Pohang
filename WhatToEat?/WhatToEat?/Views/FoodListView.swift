@@ -63,12 +63,14 @@ struct FoodListView: View {
                             RoundedRectangle(cornerRadius: 15)
                                 .foregroundColor(.orange).opacity(0.06)
                                 .frame(width: 350, height: 280)
+
                             VStack(alignment: .leading) {
                                 Text("\(value)")
                                     .foregroundColor(.black)
                                     .padding(.bottom, -3)
                                     .font(.system(size: 20).weight(.heavy))
                                     .frame(width: 300, alignment: .leading)
+
                                 Image(value)
                                     .resizable()
                                     .customImageLazyOneCol()
