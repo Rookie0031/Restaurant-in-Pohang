@@ -184,22 +184,22 @@ struct RecommendView: View {
         }
     }
 
-    private func getRecommendation() -> AnyView {
-        filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-
-        if filteredGroupFinal.isEmpty {
-            return setDestination(destination: AnyView(NoRecommendationView()))
-        } else {
-            return setDestination(destination: AnyView(FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)))
-        }
-    }
-
-    @ViewBuilder
-    private func setDestination<content: View>(destination: content) -> content {
-        NavigationLink(destination: destination) {
+    private func getRecommendation() -> some View {
+        NavigationLink(destination: getDestination()) {
             Text("맛집. 추천받기!")
                 .customButtonFormat()
                 .padding(.bottom, 20)
-        } as! content
+        }
+    }
+
+    func getDestination() -> AnyView {
+        filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
+
+        if filteredGroupFinal.isEmpty {
+            return AnyView(NoRecommendationView())
+        }
+        else {
+            return AnyView(FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!))
+        }
     }
 }

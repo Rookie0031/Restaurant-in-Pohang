@@ -44,30 +44,33 @@ final class ModelData: ObservableObject {
     }
 }
 
-func foodFilter () -> [[String]] {
-    var western : [String] = []
-    var korean : [String] = []
-    var chinese : [String] = []
-    var japanese : [String] = []
-    var asian : [String] = []
-    var cafe : [String] = []
+func foodFilter () -> [[Properties]] {
+    var western : [Properties] = []
+    var korean : [Properties] = []
+    var chinese : [Properties] = []
+    var japanese : [Properties] = []
+    var asian : [Properties] = []
+    var cafe : [Properties] = []
 
-    for num in 0...ModelData().foodData.count - 1 {
-        switch ModelData().foodData[num].category.select.name {
-        case "양식" :
-            western.append(ModelData().foodData[num].category.select.name)
-        case "한식" :
-            korean.append(ModelData().foodData[num].category.select.name)
-        case "중식" :
-            chinese.append(ModelData().foodData[num].category.select.name)
-        case "일식" :
-            japanese.append(ModelData().foodData[num].category.select.name)
-        case "기타" :
-            asian.append(ModelData().foodData[num].category.select.name)
-        case "카페/디저트" :
-            cafe.append(ModelData().foodData[num].category.select.name)
-        default :
-            print("정보에 오류가 있는 거 같아요.")
+
+    if !ModelData().foodData.isEmpty {
+        for num in 0...ModelData().foodData.count - 1 {
+            switch ModelData().foodData[num].category.select.name {
+            case "양식" :
+                western.append(ModelData().foodData[num])
+            case "한식" :
+                korean.append(ModelData().foodData[num])
+            case "중식" :
+                chinese.append(ModelData().foodData[num])
+            case "일식" :
+                japanese.append(ModelData().foodData[num])
+            case "기타" :
+                asian.append(ModelData().foodData[num])
+            case "카페/디저트" :
+                cafe.append(ModelData().foodData[num])
+            default :
+                print("정보에 오류가 있는 거 같아요.")
+            }
         }
     }
     return [korean, western, chinese, japanese, asian, cafe]

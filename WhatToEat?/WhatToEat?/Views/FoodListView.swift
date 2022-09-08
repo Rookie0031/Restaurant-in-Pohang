@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct FoodListView: View {
-    
-    var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
+
     @ObservedObject var modelData: ModelData = ModelData()
-    @State private var foodFilterResult = foodFilter()
     @State private var currentIndex = 0
     @State private var isListViewActive = false
+    var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
+    var foodFilterResult = foodFilter()
     
     var body: some View {
         NavigationView {
@@ -70,6 +70,12 @@ struct FoodListView: View {
                                     .padding(.bottom, -3)
                                     .font(.system(size: 20).weight(.heavy))
                                     .frame(width: 300, alignment: .leading)
+
+//                                AsyncImage(url: URL(string: foodInfo.imageName.richText.first!.text.content)) { image in image
+//                                        .resizable()
+//                                } placeholder: {
+//                                    ProgressView()
+//                                }
 
                                 Image(value)
                                     .resizable()

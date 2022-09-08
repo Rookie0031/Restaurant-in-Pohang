@@ -1,9 +1,7 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  NotionDataDTO.swift
-//  WhatToEat?
-//
-//  Created by Jisu Jang on 2022/09/05.
-//
+//   let exampleDTO = try? newJSONDecoder().decode(ExampleDTO.self, from: jsonData)
 
 import Foundation
 
@@ -32,7 +30,8 @@ struct Page: Codable, Equatable {
 struct Result: Codable, Equatable {
     let object: ObjectEnum
     let id: String
-    let createdTime, lastEditedTime: TedTime
+    let createdTime: CreatedTime
+    let lastEditedTime: String
     let createdBy, lastEditedBy: TedBy
     let cover, icon: JSONNull?
     let parent: Parent
@@ -60,11 +59,8 @@ enum Object: String, Codable, Equatable {
     case user = "user"
 }
 
-enum TedTime: String, Codable, Equatable {
+enum CreatedTime: String, Codable, Equatable {
     case the20220823T143700000Z = "2022-08-23T14:37:00.000Z"
-    case the20220904T135800000Z = "2022-09-04T13:58:00.000Z"
-    case the20220904T221900000Z = "2022-09-04T22:19:00.000Z"
-    case the20220905T001400000Z = "2022-09-05T00:14:00.000Z"
 }
 
 enum ObjectEnum: String, Codable, Equatable {
@@ -88,6 +84,8 @@ enum ParentType: String, Codable, Equatable {
 
 // MARK: - Properties
 struct Properties: Codable, Equatable {
+
+    let imageFile: ImageFile
     let id: IDClass
     let propertiesDescription: Description
     let transportation: People
@@ -95,10 +93,10 @@ struct Properties: Codable, Equatable {
     let category, price: Category
     let people: People
     let name: Name
-    var isFavorite: Bool = false
+    var isFavorite = false
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case imageFile, id
         case propertiesDescription = "description"
         case transportation, location, imageName, category, price, people, name
     }
@@ -150,6 +148,43 @@ enum IDID: String, Codable, Equatable {
 
 enum IDType: String, Codable, Equatable {
     case number = "number"
+}
+
+// MARK: - ImageFile
+struct ImageFile: Codable, Equatable {
+    let id: ImageFileID
+    let type: ImageFileType
+    let files: [FileElement]
+}
+
+// MARK: - FileElement
+struct FileElement: Codable, Equatable {
+    let name: String
+    let type: FileType
+    let file: FileFile
+}
+
+// MARK: - FileFile
+struct FileFile: Codable, Equatable {
+    let url: String
+    let expiryTime: String
+
+    enum CodingKeys: String, CodingKey {
+        case url
+        case expiryTime = "expiry_time"
+    }
+}
+
+enum FileType: String, Codable, Equatable {
+    case file = "file"
+}
+
+enum ImageFileID: String, Codable, Equatable {
+    case the3EUry = "%3EUry"
+}
+
+enum ImageFileType: String, Codable, Equatable {
+    case files = "files"
 }
 
 // MARK: - Description
@@ -267,3 +302,4 @@ class JSONNull: Codable, Equatable, Hashable {
         try container.encodeNil()
     }
 }
+
