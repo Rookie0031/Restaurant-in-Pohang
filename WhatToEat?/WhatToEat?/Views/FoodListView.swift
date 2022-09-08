@@ -10,7 +10,7 @@ import SwiftUI
 struct FoodListView: View {
     
     var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
-
+    @ObservedObject var modelData: ModelData = ModelData()
     @State private var foodFilterResult = foodFilter()
     @State private var currentIndex = 0
     @State private var isListViewActive = false
@@ -57,7 +57,7 @@ struct FoodListView: View {
                 ForEach(foodFilterResult[currentIndex], id: \.self) {
                     value in
                     NavigationLink {
-                        FoodInfoViewSecond(foodInfo: ModelData().restaurants.filter{$0.name == value}.first!)
+                        FoodInfoView(foodInfo: modelData.foodData.filter{$0.name.title.first!.text.content == value}.first!)
                     } label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)

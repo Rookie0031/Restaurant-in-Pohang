@@ -12,15 +12,15 @@ struct BucketListView: View {
     @EnvironmentObject var modelData: ModelData
     @State private var showFavoritesOnly = true
     
-    private var filteredRestaurants: [RestaurantData] {
-        modelData.restaurants.filter { value in
-            (!showFavoritesOnly || value.isFavorite)
+    private var filteredRestaurants: [Properties] {
+        modelData.foodData.filter { data in
+            (!showFavoritesOnly || data.isFavorite)
         }
     }
     
     var body: some View {
         NavigationView {
-            List(filteredRestaurants, id: \.id) {restaurant in
+            List(filteredRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
                     FoodInfoView(foodInfo: restaurant)
                 } label: {

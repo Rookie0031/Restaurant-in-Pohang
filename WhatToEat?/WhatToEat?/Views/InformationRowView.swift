@@ -2,14 +2,17 @@
 import SwiftUI
 
 struct InformationRowView: View {
-    var restaurant : RestaurantData
+    var restaurant : Properties
 
     var body: some View {
         HStack {
-            restaurant.image
-                .resizable()
+            AsyncImage(url: URL(string: restaurant.imageName.richText.first!.text.content)) { image in image
+                    .resizable()
+            } placeholder: {
+                ProgressView()
+            }
                 .frame(width: 50, height: 50)
-            Text(restaurant.name)
+            Text(restaurant.name.title.first!.text.content)
                 .customInfoContent2()
             Spacer()
         }

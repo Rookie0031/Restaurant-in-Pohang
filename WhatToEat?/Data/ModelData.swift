@@ -6,57 +6,66 @@
 //
 import SwiftUI
 
-final class ModelData : ObservableObject {
-    @Published var restaurants : [RestaurantData] = load("restaurantData.json")
-    @Published var nillData : [RestaurantData] = load("nillData.json")
-}
+final class ModelData: ObservableObject {
+    @Published var foodData: [Properties] = []
 
-func load<T: Decodable>(_ filename: String) -> T {
-    let data: Data
-    
-    guard let file = Bundle.main.url(forResource: filename, withExtension: nil)
-    else {
-        fatalError("Couldn't find \(filename) in main bundle.")
-    }
-    
-    do {
-        data = try Data(contentsOf: file)
-    } catch {
-        fatalError("Couldn't load \(filename) from main bundle:\n\(error)")
-    }
-    
-    do {
-        let decoder = JSONDecoder()
-        return try decoder.decode(T.self, from: data)
-    } catch {
-        fatalError("Couldn't parse \(filename) as \(T.self):\n\(error)")
+    func getFromNotionDB() async {
+        let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
+        let databaseID = "206c4793c7e6428eb8235279a3e445af"
+        let readURL = "https://api.notion.com/v1/databases/\(databaseID)/query"
+        let headers = [
+            "Authorization": "Bearer " + token,
+            "Notion-Version": "2022-06-28"
+        ]
+
+        let request = NSMutableURLRequest(url: NSURL(string: readURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request as URLRequest)
+            print("전송받은 응답입니다.")
+            print(response)
+            print("=================================================")
+            print("받은 데이터는 다음과 같습니다 \(data)")
+
+            guard let decodedData = try? JSONDecoder().decode(ExampleDTO.self, from: data) else {
+                print("디코딩에 실패했습니다")
+                return
+            }
+
+            for data in decodedData.results {
+                self.foodData.append(data.properties)
+            }
+        } catch {
+            print("Invalid Service")
+        }
     }
 }
 
 func foodFilter () -> [[String]] {
-    
     var western : [String] = []
     var korean : [String] = []
     var chinese : [String] = []
     var japanese : [String] = []
     var asian : [String] = []
     var cafe : [String] = []
-    
-    for num in 0...ModelData().restaurants.count - 1 {
 
-        switch ModelData().restaurants[num].category {
+    for num in 0...ModelData().foodData.count - 1 {
+        switch ModelData().foodData[num].category.select.name {
         case "양식" :
-            western.append(ModelData().restaurants[num].name)
+            western.append(ModelData().foodData[num].category.select.name)
         case "한식" :
-            korean.append(ModelData().restaurants[num].name)
+            korean.append(ModelData().foodData[num].category.select.name)
         case "중식" :
-            chinese.append(ModelData().restaurants[num].name)
+            chinese.append(ModelData().foodData[num].category.select.name)
         case "일식" :
-            japanese.append(ModelData().restaurants[num].name)
+            japanese.append(ModelData().foodData[num].category.select.name)
         case "기타" :
-            asian.append(ModelData().restaurants[num].name)
+            asian.append(ModelData().foodData[num].category.select.name)
         case "카페/디저트" :
-            cafe.append(ModelData().restaurants[num].name)
+            cafe.append(ModelData().foodData[num].category.select.name)
         default :
             print("정보에 오류가 있는 거 같아요.")
         }

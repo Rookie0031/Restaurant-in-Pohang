@@ -11,31 +11,36 @@ struct FoodInfoView: View {
     @State var isActive : Bool = false
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
-    var foodInfo : RestaurantData
+    var foodInfo : Properties
     var foodInfoIndex: Int {
-        modelData.restaurants.firstIndex(where: { $0.id == foodInfo.id })!
+        modelData.foodData.firstIndex(where: { $0.id.number == foodInfo.id.number })!
     }
     
     var body: some View {
         
-        if foodInfo.id < 100 {
+        if foodInfo.id.number < 100 {
             VStack {
                     VStack{
                         HStack {
-                            Text("\(foodInfo.name) 어때요?")
+                            Text("\(foodInfo.name.title.first!.text.content)")
                                 .customTitle()
+//                                .minimumScaleFactor(0.8)
                                 .lineLimit(2)
                                 .allowsTightening(false)
                             
                             Spacer()
                             
-                            FavoriteButton(isFavorite: $modelData.restaurants[foodInfoIndex].isFavorite)
+                            FavoriteButton(isFavorite: $modelData.foodData[foodInfoIndex].isFavorite)
                         }
                         .frame(width: 250, alignment: .leading)
 
-                        foodInfo.image
-                            .resizable()
-                            .customImageDetail()
+                        // MARK: 이미지 넣기
+                        AsyncImage(url: URL(string: foodInfo.imageName.richText.first!.text.content)) { image in image
+                                .resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .customImageDetail()
                     }
                     .frame(width: 300)
                     .padding(.bottom, 20)
@@ -46,16 +51,14 @@ struct FoodInfoView: View {
                 VStack {
                     Group {
                             VStack(alignment: .leading, spacing: 5) {
-                                Text("가게이름 : \(foodInfo.name)")
-                                    .descriptionTextStyle()
                                 
-                                Text("가격 : \(foodInfo.price)")
+                                Text("가격 : \(foodInfo.price.select.name)")
                                     .descriptionTextStyle()
 
-                                Text("위치 : \(foodInfo.location)")
+                                Text("위치 : \(foodInfo.price.select.name)")
                                     .descriptionTextStyle()
 
-                                Text("리뷰 : \(foodInfo.description)")
+                                Text("리뷰 : \(foodInfo.propertiesDescription.richText.first!.text.content)")
                                     .descriptionTextStyle()
                             }
                             .frame(width: 270, alignment: .leading)
@@ -90,14 +93,4 @@ struct FoodInfoView: View {
 
     }
 
-}
-
-struct RestaurantVie11w2_Previews: PreviewProvider {
-    static var restaurants = ModelData().restaurants
-    static var previews: some View {
-        
-        FoodInfoView(foodInfo: restaurants[3])
-            .environmentObject(ModelData())
-            .previewInterfaceOrientation(.portrait)
-    }
 }

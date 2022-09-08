@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A9274EBE282216D700E99F2F /* nillData.json in Resources */ = {isa = PBXBuildFile; fileRef = A9274EBD282216D700E99F2F /* nillData.json */; };
 		A9274EC028221AF700E99F2F /* FoodInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* FoodInfoView.swift */; };
@@ -15,8 +16,6 @@
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
 		A93A0118281E58460069B86A /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0117281E58460069B86A /* LoadingView.swift */; };
-		A93A011A281E5B6D0069B86A /* RestaurantData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0119281E5B6D0069B86A /* RestaurantData.swift */; };
-		A9852B1828262A9200B63D16 /* FoodInfoViewSecond.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9852B1728262A9200B63D16 /* FoodInfoViewSecond.swift */; };
 		A9A8B8E0282973910022DD23 /* UITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A8B8DF282973910022DD23 /* UITest.swift */; };
 		A9B96083281C10F2004779A6 /* WhatToEat_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96082281C10F2004779A6 /* WhatToEat_App.swift */; };
 		A9B96085281C10F2004779A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96084281C10F2004779A6 /* ContentView.swift */; };
@@ -33,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A9274EBD282216D700E99F2F /* nillData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = nillData.json; path = "WhatToEat?/Resources/nillData.json"; sourceTree = SOURCE_ROOT; };
 		A9274EBF28221AF700E99F2F /* FoodInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoView.swift; sourceTree = "<group>"; };
@@ -41,8 +41,6 @@
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		A93A0113281E46D00069B86A /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
 		A93A0117281E58460069B86A /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		A93A0119281E5B6D0069B86A /* RestaurantData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantData.swift; sourceTree = "<group>"; };
-		A9852B1728262A9200B63D16 /* FoodInfoViewSecond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodInfoViewSecond.swift; sourceTree = "<group>"; };
 		A9A8B8DF282973910022DD23 /* UITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITest.swift; sourceTree = "<group>"; };
 		A9B9607F281C10F2004779A6 /* WhatToEat?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WhatToEat?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B96082281C10F2004779A6 /* WhatToEat_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEat_App.swift; sourceTree = "<group>"; };
@@ -121,7 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
-				A93A0119281E5B6D0069B86A /* RestaurantData.swift */,
+				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
 				A9274EC12822600100E99F2F /* ColorData.swift */,
 				A9EC6C35281FC99D00CD5B1E /* restaurantData.json */,
 				A9274EBD282216D700E99F2F /* nillData.json */,
@@ -135,7 +133,6 @@
 				A9B96084281C10F2004779A6 /* ContentView.swift */,
 				A9B96090281C1149004779A6 /* RecommendView.swift */,
 				A9BDE9C4281F5D1C0061C6A3 /* FoodListView.swift */,
-				A9852B1728262A9200B63D16 /* FoodInfoViewSecond.swift */,
 				A9BDE9C6281F5D350061C6A3 /* BucketListView.swift */,
 				A9274EBF28221AF700E99F2F /* FoodInfoView.swift */,
 				A9F3D196281F7DE800844B39 /* InformationRowView.swift */,
@@ -222,12 +219,11 @@
 			files = (
 				A9BDE9C7281F5D350061C6A3 /* BucketListView.swift in Sources */,
 				A9C2DB2F2823F71900CE7D00 /* FavoriteButtonSub.swift in Sources */,
+				A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */,
 				A93A0112281E39860069B86A /* ImageModifier.swift in Sources */,
-				A9852B1828262A9200B63D16 /* FoodInfoViewSecond.swift in Sources */,
 				A9B96085281C10F2004779A6 /* ContentView.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* FoodListView.swift in Sources */,
-				A93A011A281E5B6D0069B86A /* RestaurantData.swift in Sources */,
 				A9274EC028221AF700E99F2F /* FoodInfoView.swift in Sources */,
 				A9B96083281C10F2004779A6 /* WhatToEat_App.swift in Sources */,
 				A93A0118281E58460069B86A /* LoadingView.swift in Sources */,

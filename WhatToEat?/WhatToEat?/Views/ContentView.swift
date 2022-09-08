@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-
     @State private var isShowingDetailView = false
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
             TabView {

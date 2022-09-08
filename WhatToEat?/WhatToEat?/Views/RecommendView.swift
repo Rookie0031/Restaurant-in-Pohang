@@ -18,11 +18,11 @@ struct RecommendView: View {
     let priceCategory : [String] = ["6000원 이하", "6000원~8000원", "8000원~10000원", "10000원 이상"]
     let locationCategory : [String] = ["포항공대 내부", "효자시장", "SK아파트 근처", "시청근처", "이동", "유강", "기타"]
     
-    @State private var filteredGroupA : [RestaurantData] = []
-    @State private var filteredGroupB : [RestaurantData] = []
-    @State private var filteredGroupC : [RestaurantData] = []
-    @State private var filteredGroupD : [RestaurantData] = []
-    @State private var filteredGroupFinal : [RestaurantData] = []
+    @State private var filteredGroupA : [Properties] = []
+    @State private var filteredGroupB : [Properties] = []
+    @State private var filteredGroupC : [Properties] = []
+    @State private var filteredGroupD : [Properties] = []
+    @State private var filteredGroupFinal : [Properties] = []
     
     @State private var currentIndex1 : Int = 0
     @State private var currentIndex2 : Int = 0
@@ -31,22 +31,22 @@ struct RecommendView: View {
     
     @State private var isListViewActive = false
     
-    @State private var isActive = false
+
     @State private var isNill : Bool = false
     
     @EnvironmentObject var modelData : ModelData
 
     var body: some View {
         NavigationView {
-                VStack(alignment: .center, spacing: 30) {
-                    foodTypeQuestion()
-                    numberOfPeopleQuestion()
-                    priceRangeQuestion()
-                    locationPreferenceQuestion()
-                    Spacer()
-                    getRecommendation()
-                }
-                .padding(20)
+            VStack(alignment: .center, spacing: 30) {
+                foodTypeQuestion()
+                numberOfPeopleQuestion()
+                priceRangeQuestion()
+                locationPreferenceQuestion()
+                Spacer()
+                getRecommendation()
+            }
+            .padding(20)
             .navigationTitle("맛집을 추천드릴게요!")
         }
     }
@@ -58,24 +58,18 @@ struct RecommendView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
-                    ForEach(foodCategory, id: \.self) { value in
+                    ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
-                            currentIndex1 = foodCategory.firstIndex(of: value)!
+                            currentIndex1 = foodCategory.firstIndex(of: category)!
 
-                            filteredGroupA = modelData.restaurants.filter { restaurant in
-                                restaurant.category == value }
+                            filteredGroupA = modelData.foodData.filter { restaurant in
+                                restaurant.category.select.name == category }
                         }) {
-                            foodCategory.firstIndex(of: value)! == currentIndex1 ?
 
-                            Text(value)
+                            Text(category)
                                 .customCategory()
-                                .foregroundColor(.white )
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightOrange))
-                            :
-                            Text(value)
-                                .customCategory()
-                                .foregroundColor(.black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+                                .foregroundColor( foodCategory.firstIndex(of: category)! == currentIndex1 ? .white : .black )
+                                .background(RoundedRectangle(cornerRadius: 10).fill( foodCategory.firstIndex(of: category)! == currentIndex1 ? Color.lightOrange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 8)))
                     }
@@ -94,8 +88,15 @@ struct RecommendView: View {
                 ForEach(peopleCategory, id: \.self) { value in
                     Button(action: {
                         currentIndex2 = peopleCategory.firstIndex(of: value)!
-                        filteredGroupB = modelData.restaurants.filter { restaurant in
-                            restaurant.people.contains(value) }
+                        for foodData in modelData.foodData {
+                            var joinedString = ""
+                            for detailedData in foodData.people.multiSelect {
+                                joinedString += detailedData.name
+                            }
+                            if joinedString.contains(value) {
+                                filteredGroupB.append(foodData)
+                            }
+                        }
                     }) {
                         peopleCategory.firstIndex(of: value)! == currentIndex2 ?
 
@@ -126,8 +127,8 @@ struct RecommendView: View {
                     ForEach(priceCategory, id: \.self) { value in
                         Button(action: {
                             currentIndex3 = priceCategory.firstIndex(of: value)!
-                            filteredGroupC = modelData.restaurants.filter { restaurant in
-                                restaurant.price == value }
+                            filteredGroupC = modelData.foodData.filter { restaurant in
+                                restaurant.price.select.name == value }
                         }) {
                             priceCategory.firstIndex(of: value)! == currentIndex3 ?
 
@@ -160,8 +161,8 @@ struct RecommendView: View {
                     ForEach(locationCategory, id: \.self) { value in
                         Button(action: {
                             currentIndex4 = locationCategory.firstIndex(of: value)!
-                            filteredGroupD = modelData.restaurants.filter { restaurant in
-                                restaurant.location == value }
+                            filteredGroupD = modelData.foodData.filter { restaurant in
+                                restaurant.location.richText.first!.text.content == value }
                         }) {
                             locationCategory.firstIndex(of: value)! == currentIndex4 ?
 
@@ -183,16 +184,22 @@ struct RecommendView: View {
         }
     }
 
-    private func getRecommendation() -> some View {
-        NavigationLink(destination: FoodInfoView(foodInfo: filteredGroupFinal.isEmpty ? modelData.nillData[0] : filteredGroupFinal.randomElement()!), isActive: $isActive) {
-            Button(action: {
-                isActive = true
-                filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-            }) {
-                Text("맛집 추천받기!")
-                    .customButtonFormat()
-            }
+    private func getRecommendation() -> AnyView {
+        filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
+
+        if filteredGroupFinal.isEmpty {
+            return setDestination(destination: AnyView(NoRecommendationView()))
+        } else {
+            return setDestination(destination: AnyView(FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)))
         }
-        .padding(.bottom, 20)
+    }
+
+    @ViewBuilder
+    private func setDestination<content: View>(destination: content) -> content {
+        NavigationLink(destination: destination) {
+            Text("맛집. 추천받기!")
+                .customButtonFormat()
+                .padding(.bottom, 20)
+        } as! content
     }
 }
