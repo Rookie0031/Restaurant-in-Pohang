@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - ExampleDTO
-struct ExampleDTO: Codable, Equatable {
+struct ExampleDTO: Codable, Equatable, Hashable {
     let object: String
     let results: [Result]
     let nextCursor: JSONNull?
@@ -23,11 +23,11 @@ struct ExampleDTO: Codable, Equatable {
 }
 
 // MARK: - Page
-struct Page: Codable, Equatable {
+struct Page: Codable, Equatable, Hashable {
 }
 
 // MARK: - Result
-struct Result: Codable, Equatable {
+struct Result: Codable, Equatable, Hashable {
     let object: ObjectEnum
     let id: String
     let createdTime: CreatedTime
@@ -50,25 +50,25 @@ struct Result: Codable, Equatable {
 }
 
 // MARK: - TedBy
-struct TedBy: Codable, Equatable {
+struct TedBy: Codable, Equatable, Hashable {
     let object: Object
     let id: String
 }
 
-enum Object: String, Codable, Equatable {
+enum Object: String, Codable, Equatable, Hashable {
     case user = "user"
 }
 
-enum CreatedTime: String, Codable, Equatable {
+enum CreatedTime: String, Codable, Equatable, Hashable {
     case the20220823T143700000Z = "2022-08-23T14:37:00.000Z"
 }
 
-enum ObjectEnum: String, Codable, Equatable {
+enum ObjectEnum: String, Codable, Equatable, Hashable {
     case page = "page"
 }
 
 // MARK: - Parent
-struct Parent: Codable, Equatable {
+struct Parent: Codable, Equatable, Hashable {
     let type: ParentType
     let databaseID: String
 
@@ -78,12 +78,12 @@ struct Parent: Codable, Equatable {
     }
 }
 
-enum ParentType: String, Codable, Equatable {
+enum ParentType: String, Codable, Equatable, Hashable {
     case databaseID = "database_id"
 }
 
 // MARK: - Properties
-struct Properties: Codable, Equatable {
+struct Properties: Codable, Equatable, Hashable {
 
     let imageFile: ImageFile
     let id: IDClass
@@ -92,8 +92,8 @@ struct Properties: Codable, Equatable {
     let location, imageName: Description
     let category, price: Category
     let people: People
-    let name: Name
-    var isFavorite = false
+    var name: Name
+    var isFavorite: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case imageFile, id
@@ -103,24 +103,24 @@ struct Properties: Codable, Equatable {
 }
 
 // MARK: - Category
-struct Category: Codable, Equatable {
+struct Category: Codable, Equatable, Hashable {
     let id: CategoryID
     let type: CategoryType
     let select: Select
 }
 
-enum CategoryID: String, Codable, Equatable {
+enum CategoryID: String, Codable, Equatable, Hashable {
     case the5DEw = "%5D_ew"
     case zefO = "ZefO"
 }
 
 // MARK: - Select
-struct Select: Codable, Equatable {
+struct Select: Codable, Equatable, Hashable {
     let id, name: String
     let color: SelectColor
 }
 
-enum SelectColor: String, Codable, Equatable {
+enum SelectColor: String, Codable, Equatable, Hashable {
     case blue = "blue"
     case gray = "gray"
     case green = "green"
@@ -131,41 +131,41 @@ enum SelectColor: String, Codable, Equatable {
     case yellow = "yellow"
 }
 
-enum CategoryType: String, Codable, Equatable {
+enum CategoryType: String, Codable, Equatable, Hashable {
     case select = "select"
 }
 
 // MARK: - IDClass
-struct IDClass: Codable, Equatable {
+struct IDClass: Codable, Equatable, Hashable {
     let id: IDID
     let type: IDType
     let number: Int
 }
 
-enum IDID: String, Codable, Equatable {
+enum IDID: String, Codable, Equatable, Hashable {
     case dQp5D = "DQp%5D"
 }
 
-enum IDType: String, Codable, Equatable {
+enum IDType: String, Codable, Equatable, Hashable {
     case number = "number"
 }
 
 // MARK: - ImageFile
-struct ImageFile: Codable, Equatable {
+struct ImageFile: Codable, Equatable, Hashable {
     let id: ImageFileID
     let type: ImageFileType
     let files: [FileElement]
 }
 
 // MARK: - FileElement
-struct FileElement: Codable, Equatable {
+struct FileElement: Codable, Equatable, Hashable {
     let name: String
     let type: FileType
     let file: FileFile
 }
 
 // MARK: - FileFile
-struct FileFile: Codable, Equatable {
+struct FileFile: Codable, Equatable, Hashable {
     let url: String
     let expiryTime: String
 
@@ -175,20 +175,20 @@ struct FileFile: Codable, Equatable {
     }
 }
 
-enum FileType: String, Codable, Equatable {
+enum FileType: String, Codable, Equatable, Hashable {
     case file = "file"
 }
 
-enum ImageFileID: String, Codable, Equatable {
+enum ImageFileID: String, Codable, Equatable, Hashable {
     case the3EUry = "%3EUry"
 }
 
-enum ImageFileType: String, Codable, Equatable {
+enum ImageFileType: String, Codable, Equatable, Hashable {
     case files = "files"
 }
 
 // MARK: - Description
-struct Description: Codable, Equatable {
+struct Description: Codable, Equatable, Hashable {
     let id: DescriptionID
     let type: DescriptionType
     let richText: [RichText]
@@ -199,14 +199,14 @@ struct Description: Codable, Equatable {
     }
 }
 
-enum DescriptionID: String, Codable, Equatable {
+enum DescriptionID: String, Codable, Equatable, Hashable {
     case dmVK = "DmVK"
     case n605C40 = "N%60%5C%40"
     case wAH = "W_aH"
 }
 
 // MARK: - RichText
-struct RichText: Codable, Equatable {
+struct RichText: Codable, Equatable, Hashable {
     let type: RichTextType
     let text: TextInformation
     let annotations: Annotations
@@ -221,42 +221,42 @@ struct RichText: Codable, Equatable {
 }
 
 // MARK: - Annotations
-struct Annotations: Codable, Equatable {
+struct Annotations: Codable, Equatable, Hashable {
     let bold, italic, strikethrough, underline: Bool
     let code: Bool
     let color: AnnotationsColor
 }
 
-enum AnnotationsColor: String, Codable, Equatable {
+enum AnnotationsColor: String, Codable, Equatable, Hashable {
     case colorDefault = "default"
 }
 
 // MARK: - Text
-struct TextInformation: Codable, Equatable {
+struct TextInformation: Codable, Equatable, Hashable {
     let content: String
     let link: JSONNull?
 }
 
-enum RichTextType: String, Codable, Equatable {
+enum RichTextType: String, Codable, Equatable, Hashable {
     case text = "text"
 }
 
-enum DescriptionType: String, Codable, Equatable {
+enum DescriptionType: String, Codable, Equatable, Hashable {
     case richText = "rich_text"
 }
 
 // MARK: - Name
-struct Name: Codable, Equatable {
+struct Name: Codable, Equatable, Hashable {
     let id, type: TypeEnum
     let title: [RichText]
 }
 
-enum TypeEnum: String, Codable, Equatable {
+enum TypeEnum: String, Codable, Equatable, Hashable {
     case title = "title"
 }
 
 // MARK: - People
-struct People: Codable, Equatable {
+struct People: Codable, Equatable, Hashable {
     let id: PeopleID
     let type: PeopleType
     let multiSelect: [Select]
@@ -267,12 +267,12 @@ struct People: Codable, Equatable {
     }
 }
 
-enum PeopleID: String, Codable, Equatable {
+enum PeopleID: String, Codable, Equatable, Hashable {
     case k7BYq = "K%7BYq"
     case xdko = "xdko"
 }
 
-enum PeopleType: String, Codable, Equatable {
+enum PeopleType: String, Codable, Equatable, Hashable {
     case multiSelect = "multi_select"
 }
 

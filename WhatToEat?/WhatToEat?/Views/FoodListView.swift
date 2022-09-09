@@ -9,11 +9,11 @@ import SwiftUI
 
 struct FoodListView: View {
 
-    @ObservedObject var modelData: ModelData = ModelData()
+    @EnvironmentObject var modelData: ModelData
     @State private var currentIndex = 0
     @State private var isListViewActive = false
     var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
-    var foodFilterResult = foodFilter()
+    @State private var foodFilterResult = foodFilter()
     
     var body: some View {
         NavigationView {
@@ -51,13 +51,14 @@ struct FoodListView: View {
         .padding(.bottom, 10)
     }
 
+    @MainActor
     private func foodList() -> some View {
         ScrollView {
             LazyVStack(alignment: .center) {
-                ForEach(foodFilterResult[currentIndex], id: \.self) {
+                ForEach($foodFilterResult[currentIndex], id: \.self) {
                     value in
                     NavigationLink {
-                        FoodInfoView(foodInfo: modelData.foodData.filter{$0.name.title.first!.text.content == value}.first!)
+                        FoodInfoView(foodInfo: value.wrappedValue)
                     } label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 15)
@@ -65,21 +66,18 @@ struct FoodListView: View {
                                 .frame(width: 350, height: 280)
 
                             VStack(alignment: .leading) {
-                                Text("\(value)")
+                                Text("\(value.wrappedValue.name.title.first!.text.content)")
                                     .foregroundColor(.black)
                                     .padding(.bottom, -3)
                                     .font(.system(size: 20).weight(.heavy))
                                     .frame(width: 300, alignment: .leading)
 
-//                                AsyncImage(url: URL(string: foodInfo.imageName.richText.first!.text.content)) { image in image
-//                                        .resizable()
-//                                } placeholder: {
-//                                    ProgressView()
-//                                }
-
-                                Image(value)
-                                    .resizable()
-                                    .customImageLazyOneCol()
+                                AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in image
+                                        .resizable()
+                                        .frame(width: 300, height: 300, alignment: .center)
+                                } placeholder: {
+                                    ProgressView()
+                                }
                             }
                         }
                         .padding(.bottom, 15)

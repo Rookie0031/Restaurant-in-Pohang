@@ -30,8 +30,6 @@ struct RecommendView: View {
     @State private var currentIndex4 : Int = 0
     
     @State private var isListViewActive = false
-    
-
     @State private var isNill : Bool = false
     
     @EnvironmentObject var modelData : ModelData
@@ -192,6 +190,7 @@ struct RecommendView: View {
         }
     }
 
+    @MainActor
     func getDestination() -> AnyView {
         filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
 

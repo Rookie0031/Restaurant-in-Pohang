@@ -6,6 +6,7 @@
 //
 import SwiftUI
 
+@MainActor
 final class ModelData: ObservableObject {
     @Published var foodData: [Properties] = []
 
@@ -38,12 +39,14 @@ final class ModelData: ObservableObject {
             for data in decodedData.results {
                 self.foodData.append(data.properties)
             }
+            print("foodData에 Properties를 모두 추가했습니다 \(foodData)")
         } catch {
             print("Invalid Service")
         }
     }
 }
 
+@MainActor
 func foodFilter () -> [[Properties]] {
     var western : [Properties] = []
     var korean : [Properties] = []
