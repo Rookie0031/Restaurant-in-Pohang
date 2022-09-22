@@ -183,22 +183,21 @@ struct RecommendView: View {
     }
 
     private func getRecommendation() -> some View {
-        NavigationLink(destination: getDestination()) {
+        NavigationLink(destination: AnyView(getDestination())) {
             Text("맛집. 추천받기!")
                 .customButtonFormat()
                 .padding(.bottom, 20)
         }
     }
 
-    @MainActor
-    func getDestination() -> AnyView {
+    func getDestination() -> any View {
         filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
 
         if filteredGroupFinal.isEmpty {
-            return AnyView(NoRecommendationView())
+            return NoRecommendationView()
         }
         else {
-            return AnyView(FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!))
+            return FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)
         }
     }
 }

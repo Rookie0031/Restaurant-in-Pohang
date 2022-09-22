@@ -9,6 +9,7 @@ import SwiftUI
 @MainActor
 final class ModelData: ObservableObject {
     @Published var foodData: [Properties] = []
+    @Published var foodCategoryFiltered: [[Properties]] = []
 
     func getFromNotionDB() async {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
@@ -36,46 +37,47 @@ final class ModelData: ObservableObject {
                 return
             }
 
+            var western : [Properties] = []
+            var korean : [Properties] = []
+            var chinese : [Properties] = []
+            var japanese : [Properties] = []
+            var asian : [Properties] = []
+            var cafe : [Properties] = []
+
             for data in decodedData.results {
+                // Properties 전부 기록
                 self.foodData.append(data.properties)
+
+                switch data.properties.category.select.name {
+                case "양식" :
+                    western.append(data.properties)
+                case "한식" :
+                    korean.append(data.properties)
+                case "중식" :
+                    chinese.append(data.properties)
+                case "일식" :
+                    japanese.append(data.properties)
+                case "기타" :
+                    asian.append(data.properties)
+                case "카페/디저트" :
+                    cafe.append(data.properties)
+                default :
+                    print("정보에 오류가 있는 거 같아요.")
+                }
             }
             print("foodData에 Properties를 모두 추가했습니다 \(foodData)")
+
+            self.foodCategoryFiltered.append(western)
+            self.foodCategoryFiltered.append(korean)
+            self.foodCategoryFiltered.append(chinese)
+            self.foodCategoryFiltered.append(japanese)
+            self.foodCategoryFiltered.append(cafe)
+
+            print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered)")
+
         } catch {
             print("Invalid Service")
         }
     }
-}
-
-@MainActor
-func foodFilter () -> [[Properties]] {
-    var western : [Properties] = []
-    var korean : [Properties] = []
-    var chinese : [Properties] = []
-    var japanese : [Properties] = []
-    var asian : [Properties] = []
-    var cafe : [Properties] = []
-
-
-    if !ModelData().foodData.isEmpty {
-        for num in 0...ModelData().foodData.count - 1 {
-            switch ModelData().foodData[num].category.select.name {
-            case "양식" :
-                western.append(ModelData().foodData[num])
-            case "한식" :
-                korean.append(ModelData().foodData[num])
-            case "중식" :
-                chinese.append(ModelData().foodData[num])
-            case "일식" :
-                japanese.append(ModelData().foodData[num])
-            case "기타" :
-                asian.append(ModelData().foodData[num])
-            case "카페/디저트" :
-                cafe.append(ModelData().foodData[num])
-            default :
-                print("정보에 오류가 있는 거 같아요.")
-            }
-        }
-    }
-    return [korean, western, chinese, japanese, asian, cafe]
 }
 

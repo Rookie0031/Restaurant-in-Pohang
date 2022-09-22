@@ -15,9 +15,6 @@ struct WhatToEat_App: App {
         WindowGroup {
             ContentView()
                 .environmentObject(modelData)
-                .task {
-                    await modelData.getFromNotionDB()
-                }
         }
     }
 }
