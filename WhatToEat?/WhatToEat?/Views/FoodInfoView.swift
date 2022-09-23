@@ -8,21 +8,22 @@
 import SwiftUI
 
 struct FoodInfoView: View {
-    @State var isActive : Bool = false
+
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
-    var foodInfo : Properties
-    var foodInfoIndex: Int {
-        modelData.foodData.firstIndex(where: { $0.id.number == foodInfo.id.number })!
+    @State private var isActive : Bool = false
+    var foodInformation : Properties
+    var foodInformationIndex: Int {
+        modelData.foodData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
     }
     
     var body: some View {
         
-        if foodInfo.id.number < 100 {
+        if foodInformation.id.number < 100 {
             VStack {
                     VStack{
                         HStack {
-                            Text("\(foodInfo.name.title.first!.text.content)")
+                            Text("\(foodInformation.name.title.first!.text.content)")
                                 .customTitle()
 //                                .minimumScaleFactor(0.8)
                                 .lineLimit(2)
@@ -30,12 +31,13 @@ struct FoodInfoView: View {
                             
                             Spacer()
                             
-                            FavoriteButton(isFavorite: $modelData.foodData[foodInfoIndex].isFavorite)
+                            FavoriteButton(isFavorite: $modelData.foodData[foodInformationIndex].isFavorite)
                         }
                         .frame(width: 250, alignment: .leading)
 
                         // MARK: 이미지 넣기
-                        AsyncImage(url: URL(string: foodInfo.imageName.richText.first!.text.content)) { image in image
+//                        imageFile.files.first!.file.url
+                        AsyncImage(url: URL(string: foodInformation.imageFile.files.first!.file.url)) { image in image
                                 .resizable()
                         } placeholder: {
                             ProgressView()
@@ -52,13 +54,13 @@ struct FoodInfoView: View {
                     Group {
                             VStack(alignment: .leading, spacing: 5) {
                                 
-                                Text("가격 : \(foodInfo.price.select.name)")
+                                Text("가격 : \(foodInformation.price.select.name)")
                                     .descriptionTextStyle()
 
-                                Text("위치 : \(foodInfo.price.select.name)")
+                                Text("위치 : \(foodInformation.price.select.name)")
                                     .descriptionTextStyle()
 
-                                Text("리뷰 : \(foodInfo.propertiesDescription.richText.first!.text.content)")
+                                Text("리뷰 : \(foodInformation.propertiesDescription.richText.first!.text.content)")
                                     .descriptionTextStyle()
                             }
                             .frame(width: 270, alignment: .leading)

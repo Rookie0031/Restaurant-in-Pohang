@@ -13,11 +13,7 @@ import SwiftUI
 
 struct RecommendView: View {
 
-    let foodCategory : [String] = ["양식","한식","중식","일식","기타", "카페/디저트"]
-    let peopleCategory : [String] = ["혼밥!","둘이서", "3~4명", "단체로!"]
-    let priceCategory : [String] = ["6000원 이하", "6000원~8000원", "8000원~10000원", "10000원 이상"]
-    let locationCategory : [String] = ["포항공대 내부", "효자시장", "SK아파트 근처", "시청근처", "이동", "유강", "기타"]
-    
+    @ObservedObject var modelData : ModelData = ModelData()
     @State private var filteredGroupA : [Properties] = []
     @State private var filteredGroupB : [Properties] = []
     @State private var filteredGroupC : [Properties] = []
@@ -28,11 +24,6 @@ struct RecommendView: View {
     @State private var currentIndex2 : Int = 0
     @State private var currentIndex3 : Int = 0
     @State private var currentIndex4 : Int = 0
-    
-    @State private var isListViewActive = false
-    @State private var isNill : Bool = false
-    
-    @EnvironmentObject var modelData : ModelData
 
     var body: some View {
         NavigationView {
@@ -42,7 +33,10 @@ struct RecommendView: View {
                 priceRangeQuestion()
                 locationPreferenceQuestion()
                 Spacer()
-                getRecommendation()
+                getRecommendationButton()
+            }
+            .task {
+                await modelData.getFromNotionDB()
             }
             .padding(20)
             .navigationTitle("맛집을 추천드릴게요!")
@@ -59,11 +53,8 @@ struct RecommendView: View {
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
                             currentIndex1 = foodCategory.firstIndex(of: category)!
-
-                            filteredGroupA = modelData.foodData.filter { restaurant in
-                                restaurant.category.select.name == category }
+                            filteredGroupA = modelData.foodData.filter { $0.category.select.name == category }
                         }) {
-
                             Text(category)
                                 .customCategory()
                                 .foregroundColor( foodCategory.firstIndex(of: category)! == currentIndex1 ? .white : .black )
@@ -96,17 +87,10 @@ struct RecommendView: View {
                             }
                         }
                     }) {
-                        peopleCategory.firstIndex(of: value)! == currentIndex2 ?
-
                         Text(value)
                             .customCategory()
-                            .foregroundColor(.white )
-                            .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightOrange))
-                        :
-                        Text(value)
-                            .customCategory()
-                            .foregroundColor(.black)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+                            .foregroundColor(peopleCategory.firstIndex(of: value)! == currentIndex2 ? .white : .black)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(peopleCategory.firstIndex(of: value)! == currentIndex2 ? .orange : .white))
                     }
                     .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
                 }
@@ -128,17 +112,10 @@ struct RecommendView: View {
                             filteredGroupC = modelData.foodData.filter { restaurant in
                                 restaurant.price.select.name == value }
                         }) {
-                            priceCategory.firstIndex(of: value)! == currentIndex3 ?
-
                             Text(value)
                                 .customCategory()
-                                .foregroundColor(.white )
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightOrange))
-                            :
-                            Text(value)
-                                .customCategory()
-                                .foregroundColor(.black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+                                .foregroundColor(priceCategory.firstIndex(of: value)! == currentIndex3 ? .white : .black)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(priceCategory.firstIndex(of: value)! == currentIndex3 ? .orange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 0)))
                     }
@@ -162,17 +139,10 @@ struct RecommendView: View {
                             filteredGroupD = modelData.foodData.filter { restaurant in
                                 restaurant.location.richText.first!.text.content == value }
                         }) {
-                            locationCategory.firstIndex(of: value)! == currentIndex4 ?
-
                             Text(value)
                                 .customCategory()
-                                .foregroundColor(.white )
-                                .background(RoundedRectangle(cornerRadius: 10).fill(Color.lightOrange))
-                            :
-                            Text(value)
-                                .customCategory()
-                                .foregroundColor(.black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(.white))
+                                .foregroundColor(locationCategory.firstIndex(of: value)! == currentIndex4 ? .white : .black)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(locationCategory.firstIndex(of: value)! == currentIndex4 ? .orange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 0)))
                     }
@@ -182,22 +152,34 @@ struct RecommendView: View {
         }
     }
 
-    private func getRecommendation() -> some View {
-        NavigationLink(destination: AnyView(getDestination())) {
-            Text("맛집. 추천받기!")
-                .customButtonFormat()
-                .padding(.bottom, 20)
+    private func getRecommendationButton() -> some View {
+        VStack {
+            if !modelData.foodData.isEmpty {
+                NavigationLink(destination: FoodInfoView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.foodData.first!)) {
+                    Button {
+                        filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
+                    } label: {
+                        Text("맛집 추천받기!")
+                            .customButtonFormat()
+                            .padding(.bottom, 20)
+                    }
+                }
+            }
+//            else {
+//                Text("맛집. 추천받기!")
+//                    .customButtonFormat()
+//                    .padding(.bottom, 20)
+//            }
         }
     }
-
-    func getDestination() -> any View {
-        filteredGroupFinal = filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-
-        if filteredGroupFinal.isEmpty {
-            return NoRecommendationView()
-        }
-        else {
-            return FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)
-        }
-    }
+    //    func getDestination() ->  View {
+    //            filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
+    //
+    //            if filteredGroupFinal.isEmpty {
+    //                return NoRecommendationView()
+    //            }
+    //            else {
+    //                return FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)
+    //            }
+    //        }
 }

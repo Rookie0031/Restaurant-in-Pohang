@@ -22,7 +22,7 @@ struct BucketListView: View {
         NavigationView {
             List(filteredRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
-                    FoodInfoView(foodInfo: restaurant)
+                    FoodInfoView(foodInformation: restaurant)
                 } label: {
                     InformationRowView(restaurant: restaurant)
                 }

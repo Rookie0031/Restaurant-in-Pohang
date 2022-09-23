@@ -12,7 +12,6 @@ struct FoodListView: View {
     @ObservedObject var modelData: ModelData
     @State private var currentIndex = 0
     @State private var isListViewActive = false
-    @State private var foodCategory : [String] = ["한식","양식","중식","일식","기타", "카페/디저트"]
     
     var body: some View {
         NavigationView {
@@ -60,7 +59,7 @@ struct FoodListView: View {
                     ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
                         value in
                         NavigationLink {
-                            FoodInfoView(foodInfo: value.wrappedValue)
+                            FoodInfoView(foodInformation: value.wrappedValue)
                         } label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15)
@@ -76,7 +75,8 @@ struct FoodListView: View {
 
                                     AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in image
                                             .resizable()
-                                            .frame(width: 300, height: 300, alignment: .center)
+                                            .frame(width: 220, height: 220, alignment: .center)
+                                            .cornerRadius(10)
                                     } placeholder: {
                                         ProgressView()
                                     }
