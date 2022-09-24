@@ -9,12 +9,12 @@ import SwiftUI
 
 struct BucketListView: View {
 
-    @EnvironmentObject var modelData: ModelData
-    @State private var showFavoritesOnly = true
+    @Environment(\.scenePhase) private var scenePhase
+    @ObservedObject var modelData: ModelData
     
     private var filteredRestaurants: [Properties] {
         modelData.foodData.filter { data in
-            (!showFavoritesOnly || data.isFavorite)
+            data.isFavorite == true
         }
     }
     
@@ -28,6 +28,21 @@ struct BucketListView: View {
                 }
             }
             .navigationTitle("먹킷리스트를 관리해봐요!")
+        }
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive {
+                saveFavoriteRestaurants()
+            }
+        }
+    }
+
+    private func saveFavoriteRestaurants() {
+        do {
+            let encodedData = try JSONEncoder().encode(filteredRestaurants)
+            print("UserDefault에 값을 저장합니다 \(encodedData)")
+            UserDefaults.standard.setValue(encodedData, forKey: "likes")
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

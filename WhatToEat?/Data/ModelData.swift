@@ -10,6 +10,27 @@ import Foundation
 final class ModelData: ObservableObject {
     @Published var foodData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
+    @Published var favoriteRestaurants: [Properties] = ModelData.getFavoritesRestaurants()
+
+    static func getFavoritesRestaurants() -> [Properties] {
+        var returnData: [Properties] = []
+        if UserDefaults.standard.object(forKey: "likes") as? Data == nil {
+            print("UserDefault에 저장된 값이 없어요")
+            return []
+        } else {
+            print("likes로 저장된 값이 있네요 ")
+            do {
+                let storedData = UserDefaults.standard.object(forKey: "likes") as! Data
+                print("저장된 값을 가져왔습니다 \(storedData)")
+                let decodedData = try JSONDecoder().decode([Properties].self, from: storedData)
+                print("디코딩된 값을 가져왔습니다 \(decodedData)")
+                returnData = decodedData
+            } catch {
+                fatalError("No stored Data")
+            }
+        }
+        return returnData
+    }
 
     func getFromNotionDB() async {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
