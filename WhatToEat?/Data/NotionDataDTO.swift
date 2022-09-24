@@ -8,7 +8,7 @@ import Foundation
 // MARK: - ExampleDTO
 struct ExampleDTO: Codable, Equatable, Hashable {
     let object: String
-    let results: [Result]
+    let results: [ResultData]
     let nextCursor: JSONNull?
     let hasMore: Bool
     let type: ObjectEnum
@@ -27,7 +27,7 @@ struct Page: Codable, Equatable, Hashable {
 }
 
 // MARK: - Result
-struct Result: Codable, Equatable, Hashable {
+struct ResultData: Codable, Equatable, Hashable {
     let object: ObjectEnum
     let id: String
     let createdTime: CreatedTime

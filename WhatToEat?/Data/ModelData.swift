@@ -5,8 +5,8 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 import SwiftUI
+import Foundation
 
-@MainActor
 final class ModelData: ObservableObject {
     @Published var foodData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []

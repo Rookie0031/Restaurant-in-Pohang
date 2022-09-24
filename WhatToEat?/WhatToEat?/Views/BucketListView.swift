@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BucketListView: View {
-    
+
     @EnvironmentObject var modelData: ModelData
     @State private var showFavoritesOnly = true
     

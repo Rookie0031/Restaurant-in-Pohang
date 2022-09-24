@@ -9,12 +9,15 @@ import SwiftUI
 
 @main
 struct WhatToEat_App: App {
-    @StateObject private var modelData = ModelData()
+    @StateObject private var rootModelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
+                .environmentObject(rootModelData)
+                .task {
+                    await rootModelData.getFromNotionDB()
+                }
         }
     }
 }

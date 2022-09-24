@@ -19,9 +19,6 @@ struct FoodListView: View {
                 foodCategoryChoice()
                 foodList()
             }
-            .task {
-                await modelData.getFromNotionDB()
-            }
             .navigationTitle("맛집을 둘러보세요!")
         }
     }

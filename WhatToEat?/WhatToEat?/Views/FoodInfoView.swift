@@ -31,7 +31,7 @@ struct FoodInfoView: View {
                             
                             Spacer()
                             
-                            FavoriteButton(isFavorite: $modelData.foodData[foodInformationIndex].isFavorite)
+                            FavoriteButton(modelData: modelData, isFavorite: $modelData.foodData[foodInformationIndex].isFavorite, property: foodInformation)
                         }
                         .frame(width: 250, alignment: .leading)
 
@@ -77,14 +77,6 @@ struct FoodInfoView: View {
                         dismiss()
                     } label: {
                         Text("다른 맛집을 살펴볼래요!")
-                            .customButtonFormat()
-                    }
-
-                    NavigationLink{
-                        BucketListView()
-                            .navigationTitle("뭘 먹을까?")
-                    } label: {
-                        Text("먹킷리스트로 가볼래요!")
                             .customButtonFormat()
                     }
                 }

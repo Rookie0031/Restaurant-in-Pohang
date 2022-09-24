@@ -13,7 +13,7 @@ import SwiftUI
 
 struct RecommendView: View {
 
-    @ObservedObject var modelData : ModelData = ModelData()
+    @ObservedObject var modelData : ModelData
     @State private var filteredGroupA : [Properties] = []
     @State private var filteredGroupB : [Properties] = []
     @State private var filteredGroupC : [Properties] = []
@@ -34,9 +34,6 @@ struct RecommendView: View {
                 locationPreferenceQuestion()
                 Spacer()
                 getRecommendationButton()
-            }
-            .task {
-                await modelData.getFromNotionDB()
             }
             .padding(20)
             .navigationTitle("맛집을 추천드릴게요!")
@@ -165,21 +162,11 @@ struct RecommendView: View {
                     }
                 }
             }
-//            else {
-//                Text("맛집. 추천받기!")
-//                    .customButtonFormat()
-//                    .padding(.bottom, 20)
-//            }
+            else {
+                Text("맛집. 추천받기!")
+                    .customButtonFormat()
+                    .padding(.bottom, 20)
+            }
         }
     }
-    //    func getDestination() ->  View {
-    //            filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-    //
-    //            if filteredGroupFinal.isEmpty {
-    //                return NoRecommendationView()
-    //            }
-    //            else {
-    //                return FoodInfoView(foodInfo: filteredGroupFinal.randomElement()!)
-    //            }
-    //        }
 }

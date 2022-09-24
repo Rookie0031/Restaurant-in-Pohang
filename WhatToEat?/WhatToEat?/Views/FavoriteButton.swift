@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct FavoriteButton: View {
+    @ObservedObject var modelData: ModelData
     @Binding var isFavorite: Bool
+    var property: Properties
+
     var body: some View {
         Button {
             isFavorite.toggle()
