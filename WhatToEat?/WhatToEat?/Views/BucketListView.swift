@@ -11,16 +11,15 @@ struct BucketListView: View {
 
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var modelData: ModelData
-    
-    private var filteredRestaurants: [Properties] {
-        modelData.foodData.filter { data in
-            data.isFavorite == true
-        }
-    }
+//    private var filteredRestaurants: [Properties] {
+//        modelData.foodData.filter { data in
+//            data.isFavorite == true
+//        }
+//    }
     
     var body: some View {
         NavigationView {
-            List(filteredRestaurants, id: \.id.number) {restaurant in
+            List(modelData.favoriteRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
                     FoodInfoView(foodInformation: restaurant)
                 } label: {
@@ -38,7 +37,7 @@ struct BucketListView: View {
 
     private func saveFavoriteRestaurants() {
         do {
-            let encodedData = try JSONEncoder().encode(filteredRestaurants)
+            let encodedData = try JSONEncoder().encode(modelData.favoriteRestaurants)
             print("UserDefault에 값을 저장합니다 \(encodedData)")
             UserDefaults.standard.setValue(encodedData, forKey: "likes")
         } catch {
