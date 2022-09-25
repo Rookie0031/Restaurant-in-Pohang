@@ -152,7 +152,7 @@ struct RecommendView: View {
     private func getRecommendationButton() -> some View {
         VStack {
             if !modelData.foodData.isEmpty {
-                NavigationLink(destination: FoodInfoView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.foodData.first!)) {
+                NavigationLink(destination: RestaurantInforView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.foodData.first!)) {
                     Button {
                         filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
                     } label: {

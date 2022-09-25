@@ -7,23 +7,18 @@
 
 import SwiftUI
 
-struct BucketListView: View {
+struct FavoriteRestaurantView: View {
 
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var modelData: ModelData
-//    private var filteredRestaurants: [Properties] {
-//        modelData.foodData.filter { data in
-//            data.isFavorite == true
-//        }
-//    }
     
     var body: some View {
         NavigationView {
             List(modelData.favoriteRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
-                    FoodInfoView(foodInformation: restaurant)
+                    RestaurantInforView(foodInformation: restaurant)
                 } label: {
-                    InformationRowView(restaurant: restaurant)
+                    RestaurantInfoRow(restaurant: restaurant)
                 }
             }
             .navigationTitle("먹킷리스트를 관리해봐요!")

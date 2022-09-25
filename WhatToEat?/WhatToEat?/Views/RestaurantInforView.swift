@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FoodInfoView: View {
+struct RestaurantInforView: View {
 
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData

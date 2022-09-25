@@ -7,17 +7,17 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var isShowingDetailView = false
+struct MainTabView: View {
+    
     @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         TabView {
             RecommendView(modelData: modelData)
                 .tabItem { Label("추천", systemImage: "house") }
-            FoodListView(modelData: modelData)
+            RestaurantListView(modelData: modelData)
                 .tabItem { Label("맛집", systemImage: "square.text.square")}
-            BucketListView(modelData: modelData)
+            FavoriteRestaurantView(modelData: modelData)
                 .tabItem { Label("먹킷리스트", systemImage: "person")}
         }
     }

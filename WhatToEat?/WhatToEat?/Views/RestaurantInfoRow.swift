@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-struct InformationRowView: View {
+struct RestaurantInfoRow: View {
     var restaurant : Properties
 
     var body: some View {

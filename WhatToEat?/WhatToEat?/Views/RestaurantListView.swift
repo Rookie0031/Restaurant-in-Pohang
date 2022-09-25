@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FoodListView: View {
+struct RestaurantListView: View {
 
     @ObservedObject var modelData: ModelData
     @State private var currentIndex = 0
@@ -56,7 +56,7 @@ struct FoodListView: View {
                     ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
                         value in
                         NavigationLink {
-                            FoodInfoView(foodInformation: value.wrappedValue)
+                            RestaurantInforView(foodInformation: value.wrappedValue)
                         } label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15)
