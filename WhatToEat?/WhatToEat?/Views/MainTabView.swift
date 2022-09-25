@@ -17,7 +17,13 @@ struct MainTabView: View {
                 .tabItem { Label("추천", systemImage: "house") }
             RestaurantListView(modelData: modelData)
                 .tabItem { Label("맛집", systemImage: "square.text.square")}
-            FavoriteRestaurantView(modelData: modelData)
+            FavoriteRestaurantView(modelData: modelData) {
+                ModelData.saveFavoritesRestaurants(data: modelData.favoriteRestaurants) { result in
+                    if case .failure(let failure) = result {
+                        fatalError(failure.localizedDescription)
+                    }
+                }
+            }
                 .tabItem { Label("먹킷리스트", systemImage: "person")}
         }
     }

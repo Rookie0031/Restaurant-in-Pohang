@@ -56,7 +56,7 @@ struct RestaurantListView: View {
                     ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
                         value in
                         NavigationLink {
-                            RestaurantInforView(foodInformation: value.wrappedValue)
+                            RestaurantInfoView(foodInformation: value.wrappedValue)
                         } label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 15)

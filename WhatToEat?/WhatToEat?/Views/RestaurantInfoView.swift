@@ -7,16 +7,19 @@
 
 import SwiftUI
 
-struct RestaurantInforView: View {
+struct RestaurantInfoView: View {
 
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
-    @State private var isActive : Bool = false
-    var foodInformation : Properties
+    @State var foodInformation : Properties
     var foodInformationIndex: Int {
-        modelData.foodData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
+        modelData.restaurantData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
     }
-    
+
+    var propertyIndex: Int {
+        modelData.favoriteRestaurants.firstIndex(where: {$0.id.number == foodInformation.id.number})!
+    }
+
     var body: some View {
         
         if foodInformation.id.number < 100 {
@@ -30,8 +33,15 @@ struct RestaurantInforView: View {
                                 .allowsTightening(false)
                             
                             Spacer()
-                            
-                            FavoriteButton(modelData: modelData, isFavorite: $modelData.foodData[foodInformationIndex].isFavorite, property: foodInformation)
+
+                            if modelData.favoriteRestaurants.contains(where: {$0.id.number == foodInformation.id.number}) {
+
+                                FavoriteButton(modelData: modelData, isFavorite: $modelData.favoriteRestaurants[propertyIndex].isFavorite, property: foodInformation)
+                                
+
+                            } else {
+                                FavoriteButton(modelData: modelData, isFavorite: $modelData.restaurantData[foodInformationIndex].isFavorite, property: foodInformation)
+                            }
                         }
                         .frame(width: 250, alignment: .leading)
 

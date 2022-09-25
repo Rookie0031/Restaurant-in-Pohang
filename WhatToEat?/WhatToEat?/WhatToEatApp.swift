@@ -18,6 +18,16 @@ struct WhatToEatApp: App {
                 .task {
                     await rootModelData.getFromNotionDB()
                 }
+                .onAppear {
+                    ModelData.loadFavoritesRestaurants { result in
+                        switch result {
+                        case .failure(let error):
+                            fatalError(error.localizedDescription)
+                        case .success(let data):
+                            rootModelData.favoriteRestaurants = data
+                        }
+                    }
+                }
         }
     }
 }

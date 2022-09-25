@@ -11,12 +11,17 @@ struct FavoriteRestaurantView: View {
 
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var modelData: ModelData
+//    private var filteredRestaurants: [Properties] {
+//        modelData.restaurantData.filter { $0.isFavorite == true
+//        }
+//    }
+    let saveAction: ()->Void
     
     var body: some View {
         NavigationView {
             List(modelData.favoriteRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
-                    RestaurantInforView(foodInformation: restaurant)
+                    RestaurantInfoView(foodInformation: restaurant)
                 } label: {
                     RestaurantInfoRow(restaurant: restaurant)
                 }
@@ -25,18 +30,8 @@ struct FavoriteRestaurantView: View {
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {
-                saveFavoriteRestaurants()
+                saveAction()
             }
-        }
-    }
-
-    private func saveFavoriteRestaurants() {
-        do {
-            let encodedData = try JSONEncoder().encode(modelData.favoriteRestaurants)
-            print("UserDefault에 값을 저장합니다 \(encodedData)")
-            UserDefaults.standard.setValue(encodedData, forKey: "likes")
-        } catch {
-            print(error.localizedDescription)
         }
     }
 }

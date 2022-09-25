@@ -7,31 +7,59 @@
 import SwiftUI
 import Foundation
 
-final class ModelData: ObservableObject {
-    @Published var foodData: [Properties] = []
+class ModelData: ObservableObject {
+    @Published var restaurantData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
-    @Published var favoriteRestaurants: [Properties] = ModelData.getFavoritesRestaurants()
+    @Published var favoriteRestaurants: [Properties] = []
 
-    static func getFavoritesRestaurants() -> [Properties] {
-        var returnData: [Properties] = []
-        if UserDefaults.standard.object(forKey: "likes") as? Data == nil {
-            print("UserDefault에 저장된 값이 없어요")
-            return []
-        } else {
-            print("likes로 저장된 값이 있네요 ")
-            do {
-                let storedData = UserDefaults.standard.object(forKey: "likes") as! Data
-                print("저장된 값을 가져왔습니다 \(storedData)")
-                let decodedData = try JSONDecoder().decode([Properties].self, from: storedData)
-                print("디코딩된 값을 가져왔습니다 \(decodedData)")
-                returnData = decodedData
-            } catch {
-                fatalError("No stored Data")
-            }
-        }
-        return returnData
+    private static func fileURL() throws -> URL {
+        try FileManager.default.url(for: .documentDirectory,
+                                    in: .userDomainMask,
+                                    appropriateFor: nil,
+                                    create: false)
+        .appendingPathComponent("restaurants.data")
     }
 
+    static func loadFavoritesRestaurants(completion: @escaping (Result<[Properties], Error>)->Void) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let fileURL = try fileURL()
+                guard let file = try? FileHandle(forReadingFrom: fileURL) else {
+                    DispatchQueue.main.async {
+                        completion(.success([]))
+                    }
+                    return
+                }
+                let restaurantsData = try JSONDecoder().decode([Properties].self, from: file.availableData)
+                DispatchQueue.main.async {
+                    completion(.success(restaurantsData))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    static func saveFavoritesRestaurants(data: [Properties], completion: @escaping (Result<Int, Error>)->Void) {
+        DispatchQueue.global(qos: .background).async {
+            do {
+                let restaurants = try JSONEncoder().encode(data)
+                let outfile = try fileURL()
+                try restaurants.write(to: outfile)
+                DispatchQueue.main.async {
+                    completion(.success(restaurants.count))
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
+            }
+        }
+    }
+
+    @MainActor
     func getFromNotionDB() async {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
         let databaseID = "206c4793c7e6428eb8235279a3e445af"
@@ -67,7 +95,7 @@ final class ModelData: ObservableObject {
 
             for data in decodedData.results {
                 // Properties 전부 기록
-                self.foodData.append(data.properties)
+                self.restaurantData.append(data.properties)
 
                 switch data.properties.category.select.name {
                 case "양식" :
@@ -86,7 +114,7 @@ final class ModelData: ObservableObject {
                     print("정보에 오류가 있는 거 같아요.")
                 }
             }
-            print("foodData에 Properties를 모두 추가했습니다 \(foodData)")
+            print("foodData에 Properties를 모두 추가했습니다 \(restaurantData)")
 
             self.foodCategoryFiltered.append(western)
             self.foodCategoryFiltered.append(korean)
@@ -102,3 +130,23 @@ final class ModelData: ObservableObject {
     }
 }
 
+
+//static func loadFavoritesRestaurants() -> [Properties] {
+//    var returnData: [Properties] = []
+//    if UserDefaults.standard.object(forKey: "likes") as? Data == nil {
+//        print("UserDefault에 저장된 값이 없어요")
+//        return []
+//    } else {
+//        print("likes로 저장된 값이 있네요 ")
+//        do {
+//            let storedData = UserDefaults.standard.object(forKey: "likes") as! Data
+//            print("저장된 값을 가져왔습니다 \(storedData)")
+//            let decodedData = try JSONDecoder().decode([Properties].self, from: storedData)
+//            print("디코딩된 값을 가져왔습니다 \(decodedData)")
+//            returnData = decodedData
+//        } catch {
+//            fatalError("No stored Data")
+//        }
+//    }
+//    return returnData
+//}
