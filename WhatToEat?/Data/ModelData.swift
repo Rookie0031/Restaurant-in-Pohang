@@ -8,19 +8,19 @@ import SwiftUI
 import Foundation
 
 class ModelData: ObservableObject {
-    @Published var restaurantData: [Properties] = []
+    @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
-    @Published var favoriteRestaurants: [Properties] = []
+    @Published var localData: [Properties] = []
 
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("restaurants.data")
+        .appendingPathComponent("LocalStore.data")
     }
 
-    static func loadFavoritesRestaurants(completion: @escaping (Result<[Properties], Error>)->Void) {
+    static func loadLocalData(completion: @escaping (Result<[Properties], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let fileURL = try fileURL()
@@ -42,7 +42,7 @@ class ModelData: ObservableObject {
         }
     }
 
-    static func saveFavoritesRestaurants(data: [Properties], completion: @escaping (Result<Int, Error>)->Void) {
+    static func saveLocalData(data: [Properties], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 let restaurants = try JSONEncoder().encode(data)
@@ -95,7 +95,7 @@ class ModelData: ObservableObject {
 
             for data in decodedData.results {
                 // Properties 전부 기록
-                self.restaurantData.append(data.properties)
+                self.serverData.append(data.properties)
 
                 switch data.properties.category.select.name {
                 case "양식" :
@@ -114,7 +114,7 @@ class ModelData: ObservableObject {
                     print("정보에 오류가 있는 거 같아요.")
                 }
             }
-            print("foodData에 Properties를 모두 추가했습니다 \(restaurantData)")
+            print("foodData에 Properties를 모두 추가했습니다 \(serverData)")
 
             self.foodCategoryFiltered.append(western)
             self.foodCategoryFiltered.append(korean)
@@ -129,24 +129,3 @@ class ModelData: ObservableObject {
         }
     }
 }
-
-
-//static func loadFavoritesRestaurants() -> [Properties] {
-//    var returnData: [Properties] = []
-//    if UserDefaults.standard.object(forKey: "likes") as? Data == nil {
-//        print("UserDefault에 저장된 값이 없어요")
-//        return []
-//    } else {
-//        print("likes로 저장된 값이 있네요 ")
-//        do {
-//            let storedData = UserDefaults.standard.object(forKey: "likes") as! Data
-//            print("저장된 값을 가져왔습니다 \(storedData)")
-//            let decodedData = try JSONDecoder().decode([Properties].self, from: storedData)
-//            print("디코딩된 값을 가져왔습니다 \(decodedData)")
-//            returnData = decodedData
-//        } catch {
-//            fatalError("No stored Data")
-//        }
-//    }
-//    return returnData
-//}

@@ -11,7 +11,6 @@ struct RestaurantListView: View {
 
     @ObservedObject var modelData: ModelData
     @State private var currentIndex = 0
-    @State private var isListViewActive = false
     
     var body: some View {
         NavigationView {

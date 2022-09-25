@@ -15,16 +15,16 @@ struct WhatToEatApp: App {
         WindowGroup {
             MainTabView()
                 .environmentObject(rootModelData)
-                .task {
-                    await rootModelData.getFromNotionDB()
-                }
                 .onAppear {
-                    ModelData.loadFavoritesRestaurants { result in
+                    ModelData.loadLocalData { result in
                         switch result {
                         case .failure(let error):
                             fatalError(error.localizedDescription)
                         case .success(let data):
-                            rootModelData.favoriteRestaurants = data
+                            rootModelData.localData = data
+                            print("==========저장된 로컬 데이터를 불러왔어요!==========")
+                            print(rootModelData.localData.count)
+                            print("============================")
                         }
                     }
                 }

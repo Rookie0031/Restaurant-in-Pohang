@@ -11,15 +11,13 @@ struct FavoriteRestaurantView: View {
 
     @Environment(\.scenePhase) private var scenePhase
     @ObservedObject var modelData: ModelData
-//    private var filteredRestaurants: [Properties] {
-//        modelData.restaurantData.filter { $0.isFavorite == true
-//        }
-//    }
-    let saveAction: ()->Void
+    private var favoriteRestaurants: [Properties] {
+        modelData.localData.filter({$0.isFavorite == true})
+        }
     
     var body: some View {
         NavigationView {
-            List(modelData.favoriteRestaurants, id: \.id.number) {restaurant in
+            List(favoriteRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
                     RestaurantInfoView(foodInformation: restaurant)
                 } label: {
@@ -30,7 +28,12 @@ struct FavoriteRestaurantView: View {
         }
         .onChange(of: scenePhase) { phase in
             if phase == .inactive {
-                saveAction()
+                ModelData.saveLocalData(data: modelData.localData) { result in
+                    if case .failure(let failure) = result {
+                        fatalError(failure.localizedDescription)
+                    }
+                }
+                print("바뀐 정보가 저장되었습니다")
             }
         }
     }

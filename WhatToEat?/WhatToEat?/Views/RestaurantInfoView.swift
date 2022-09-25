@@ -13,11 +13,11 @@ struct RestaurantInfoView: View {
     @EnvironmentObject var modelData : ModelData
     @State var foodInformation : Properties
     var foodInformationIndex: Int {
-        modelData.restaurantData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
+        modelData.localData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
     }
 
     var propertyIndex: Int {
-        modelData.favoriteRestaurants.firstIndex(where: {$0.id.number == foodInformation.id.number})!
+        modelData.localData.firstIndex(where: {$0.id.number == foodInformation.id.number})!
     }
 
     var body: some View {
@@ -34,14 +34,7 @@ struct RestaurantInfoView: View {
                             
                             Spacer()
 
-                            if modelData.favoriteRestaurants.contains(where: {$0.id.number == foodInformation.id.number}) {
-
-                                FavoriteButton(modelData: modelData, isFavorite: $modelData.favoriteRestaurants[propertyIndex].isFavorite, property: foodInformation)
-                                
-
-                            } else {
-                                FavoriteButton(modelData: modelData, isFavorite: $modelData.restaurantData[foodInformationIndex].isFavorite, property: foodInformation)
-                            }
+                            FavoriteButton(modelData: modelData, property: $modelData.localData[foodInformationIndex])
                         }
                         .frame(width: 250, alignment: .leading)
 
