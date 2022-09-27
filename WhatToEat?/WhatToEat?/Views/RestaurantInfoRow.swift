@@ -14,6 +14,7 @@ struct RestaurantInfoRow: View {
                 .frame(width: 50, height: 50)
             Text(restaurant.name.title.first!.text.content)
                 .customInfoContent2()
+            
             Spacer()
         }
     }

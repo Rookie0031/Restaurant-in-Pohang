@@ -153,7 +153,7 @@ struct RecommendView: View {
     private func getRecommendationButton() -> some View {
         VStack {
             if !modelData.localData.isEmpty {
-                NavigationLink(destination: RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement() ?? modelData.localData.first!)) {
+                NavigationLink(destination: AnyView(getDestination())) {
                     Text("맛집. 추천받기!")
                         .customButtonFormat()
                         .padding(.bottom, 20)
@@ -164,6 +164,14 @@ struct RecommendView: View {
                     .customButtonFormat()
                     .padding(.bottom, 20)
             }
+        }
+    }
+
+    private func getDestination() -> any View {
+        if finalFilteredGroup.isEmpty {
+            return NoRecommendationView()
+        } else {
+            return RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement()!)
         }
     }
 

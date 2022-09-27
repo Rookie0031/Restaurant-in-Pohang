@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct NoRecommendationView: View {
-    
-    @State private var testfor = false
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var modelData : ModelData
+    @State private var testfor = false
+    
     var body: some View {
         
         VStack {

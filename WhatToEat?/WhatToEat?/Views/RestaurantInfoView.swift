@@ -12,6 +12,7 @@ struct RestaurantInfoView: View {
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var modelData : ModelData
     @State var foodInformation : Properties
+
     var foodInformationIndex: Int {
         modelData.localData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
     }
@@ -21,14 +22,11 @@ struct RestaurantInfoView: View {
     }
 
     var body: some View {
-        
-        if foodInformation.id.number < 100 {
             VStack {
                     VStack{
                         HStack {
                             Text("\(foodInformation.name.title.first!.text.content)")
                                 .customTitle()
-//                                .minimumScaleFactor(0.8)
                                 .lineLimit(2)
                                 .allowsTightening(false)
                             
@@ -38,8 +36,6 @@ struct RestaurantInfoView: View {
                         }
                         .frame(width: 250, alignment: .leading)
 
-                        // MARK: 이미지 넣기
-//                        imageFile.files.first!.file.url
                         AsyncImage(url: URL(string: foodInformation.imageFile.files.first!.file.url)) { image in image
                                 .resizable()
                         } placeholder: {
@@ -84,10 +80,5 @@ struct RestaurantInfoView: View {
                     }
                 }
             }
-        } else {
-            NoRecommendationView()
         }
-
     }
-
-}
