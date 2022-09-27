@@ -14,16 +14,16 @@ import SwiftUI
 struct RecommendView: View {
 
     @ObservedObject var modelData : ModelData
-    @State private var filteredGroupA : [Properties] = []
-    @State private var filteredGroupB : [Properties] = []
-    @State private var filteredGroupC : [Properties] = []
-    @State private var filteredGroupD : [Properties] = []
-    @State private var filteredGroupFinal : [Properties] = []
+    @State private var foodCategoryFiltered : [Properties] = []
+    @State private var numberOfPeopleFiltered : [Properties] = []
+    @State private var priceRangeFiltered : [Properties] = []
+    @State private var locationCategoryFiltered : [Properties] = []
+    @State private var finalFilteredGroup : [Properties] = []
     
-    @State private var currentIndex1 : Int = 0
-    @State private var currentIndex2 : Int = 0
-    @State private var currentIndex3 : Int = 0
-    @State private var currentIndex4 : Int = 0
+    @State private var foodCategoryIndex : Int = 0
+    @State private var numberOfPeopleIndex : Int = 0
+    @State private var priceRangeIndex : Int = 0
+    @State private var locationCategoryIndex : Int = 0
 
     var body: some View {
         NavigationView {
@@ -49,13 +49,13 @@ struct RecommendView: View {
                 HStack {
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
-                            currentIndex1 = foodCategory.firstIndex(of: category)!
-                            filteredGroupA = modelData.localData.filter { $0.category.select.name == category }
+                            foodCategoryIndex = foodCategory.firstIndex(of: category)!
+                            foodCategoryFiltered = modelData.localData.filter { $0.category.select.name == category }
                         }) {
                             Text(category)
                                 .customCategory()
-                                .foregroundColor( foodCategory.firstIndex(of: category)! == currentIndex1 ? .white : .black )
-                                .background(RoundedRectangle(cornerRadius: 10).fill( foodCategory.firstIndex(of: category)! == currentIndex1 ? Color.lightOrange : .white))
+                                .foregroundColor( foodCategory.firstIndex(of: category)! == foodCategoryIndex ? .white : .black )
+                                .background(RoundedRectangle(cornerRadius: 10).fill( foodCategory.firstIndex(of: category)! == foodCategoryIndex ? Color.lightOrange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 8)))
                     }
@@ -73,21 +73,21 @@ struct RecommendView: View {
             HStack {
                 ForEach(peopleCategory, id: \.self) { value in
                     Button(action: {
-                        currentIndex2 = peopleCategory.firstIndex(of: value)!
+                        numberOfPeopleIndex = peopleCategory.firstIndex(of: value)!
                         for foodData in modelData.localData {
                             var joinedString = ""
                             for detailedData in foodData.people.multiSelect {
                                 joinedString += detailedData.name
                             }
                             if joinedString.contains(value) {
-                                filteredGroupB.append(foodData)
+                                numberOfPeopleFiltered.append(foodData)
                             }
                         }
                     }) {
                         Text(value)
                             .customCategory()
-                            .foregroundColor(peopleCategory.firstIndex(of: value)! == currentIndex2 ? .white : .black)
-                            .background(RoundedRectangle(cornerRadius: 10).fill(peopleCategory.firstIndex(of: value)! == currentIndex2 ? .orange : .white))
+                            .foregroundColor(peopleCategory.firstIndex(of: value)! == numberOfPeopleIndex ? .white : .black)
+                            .background(RoundedRectangle(cornerRadius: 10).fill(peopleCategory.firstIndex(of: value)! == numberOfPeopleIndex ? .orange : .white))
                     }
                     .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 5)))
                 }
@@ -105,14 +105,14 @@ struct RecommendView: View {
                 HStack {
                     ForEach(priceCategory, id: \.self) { value in
                         Button(action: {
-                            currentIndex3 = priceCategory.firstIndex(of: value)!
-                            filteredGroupC = modelData.localData.filter { restaurant in
+                            priceRangeIndex = priceCategory.firstIndex(of: value)!
+                            priceRangeFiltered = modelData.localData.filter { restaurant in
                                 restaurant.price.select.name == value }
                         }) {
                             Text(value)
                                 .customCategory()
-                                .foregroundColor(priceCategory.firstIndex(of: value)! == currentIndex3 ? .white : .black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(priceCategory.firstIndex(of: value)! == currentIndex3 ? .orange : .white))
+                                .foregroundColor(priceCategory.firstIndex(of: value)! == priceRangeIndex ? .white : .black)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(priceCategory.firstIndex(of: value)! == priceRangeIndex ? .orange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 0)))
                     }
@@ -132,17 +132,15 @@ struct RecommendView: View {
                 HStack {
                     ForEach(locationCategory, id: \.self) { value in
                         Button(action: {
-                            currentIndex4 = locationCategory.firstIndex(of: value)!
-                            filteredGroupD = modelData.localData.filter { restaurant in
+                            locationCategoryIndex = locationCategory.firstIndex(of: value)!
+                            locationCategoryFiltered = modelData.localData.filter { restaurant in
                                 restaurant.location.richText.first!.text.content == value }
-
                             getRecommendation()
-
                         }) {
                             Text(value)
                                 .customCategory()
-                                .foregroundColor(locationCategory.firstIndex(of: value)! == currentIndex4 ? .white : .black)
-                                .background(RoundedRectangle(cornerRadius: 10).fill(locationCategory.firstIndex(of: value)! == currentIndex4 ? .orange : .white))
+                                .foregroundColor(locationCategory.firstIndex(of: value)! == locationCategoryIndex ? .white : .black)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(locationCategory.firstIndex(of: value)! == locationCategoryIndex ? .orange : .white))
                         }
                         .padding(EdgeInsets(.init(top:5, leading: 2, bottom: 5, trailing: 0)))
                     }
@@ -155,7 +153,7 @@ struct RecommendView: View {
     private func getRecommendationButton() -> some View {
         VStack {
             if !modelData.localData.isEmpty {
-                NavigationLink(destination: RestaurantInfoView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.localData.first!)) {
+                NavigationLink(destination: RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement() ?? modelData.localData.first!)) {
                     Text("맛집. 추천받기!")
                         .customButtonFormat()
                         .padding(.bottom, 20)
@@ -170,6 +168,6 @@ struct RecommendView: View {
     }
 
     private func getRecommendation() {
-        filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
+        finalFilteredGroup = self.foodCategoryFiltered.filter{numberOfPeopleFiltered.contains($0)}.filter{priceRangeFiltered.contains($0)}.filter{locationCategoryFiltered.contains($0)}
     }
 }
