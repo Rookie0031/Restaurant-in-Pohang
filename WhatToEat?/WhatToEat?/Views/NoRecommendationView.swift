@@ -38,9 +38,3 @@ struct NoRecommendationView: View {
     }
     
 }
-//
-//struct NoRecoView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NoRecoView()
-//    }
-//}

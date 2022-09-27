@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainTabView: View {
-    
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
     @EnvironmentObject var modelData: ModelData
-    
+
     var body: some View {
         TabView {
             RecommendView(modelData: modelData)
@@ -21,10 +21,10 @@ struct MainTabView: View {
                 .tabItem { Label("먹킷리스트", systemImage: "person")}
         }
         .task {
-            if modelData.localData.isEmpty {
+            if !isFirstLaunch {
                 await modelData.getFromNotionDB()
                 modelData.localData = modelData.serverData
-                print("서버에 저장된 값으로 대체했습니다!")
+                isFirstLaunch = true
             }
         }
     }

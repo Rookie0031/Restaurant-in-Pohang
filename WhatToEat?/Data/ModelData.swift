@@ -17,7 +17,7 @@ class ModelData: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("LocalStore.data")
+        .appendingPathComponent("TestData.data")
     }
 
     static func loadLocalData(completion: @escaping (Result<[Properties], Error>)->Void) {
@@ -45,13 +45,17 @@ class ModelData: ObservableObject {
     static func saveLocalData(data: [Properties], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
+                print("최종 저장전 확인")
+                print(data.filter({$0.favorite.checkbox == true}).count)
                 let restaurants = try JSONEncoder().encode(data)
                 let outfile = try fileURL()
                 try restaurants.write(to: outfile)
+                print("저장이 성공햇어요!")
                 DispatchQueue.main.async {
                     completion(.success(restaurants.count))
                 }
             } catch {
+                print("저장 실패")
                 DispatchQueue.main.async {
                     completion(.failure(error))
                 }
@@ -114,15 +118,14 @@ class ModelData: ObservableObject {
                     print("정보에 오류가 있는 거 같아요.")
                 }
             }
-            print("foodData에 Properties를 모두 추가했습니다 \(serverData)")
+            print("foodData에 Properties를 모두 추가했습니다 \(serverData.count)")
 
-            self.foodCategoryFiltered.append(western)
-            self.foodCategoryFiltered.append(korean)
-            self.foodCategoryFiltered.append(chinese)
-            self.foodCategoryFiltered.append(japanese)
-            self.foodCategoryFiltered.append(cafe)
-
-            print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered)")
+                self.foodCategoryFiltered.append(western)
+                self.foodCategoryFiltered.append(korean)
+                self.foodCategoryFiltered.append(chinese)
+                self.foodCategoryFiltered.append(japanese)
+                self.foodCategoryFiltered.append(cafe)
+            print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
 
         } catch {
             print("Invalid Service")

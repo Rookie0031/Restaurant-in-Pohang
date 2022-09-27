@@ -50,7 +50,7 @@ struct RecommendView: View {
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
                             currentIndex1 = foodCategory.firstIndex(of: category)!
-                            filteredGroupA = modelData.serverData.filter { $0.category.select.name == category }
+                            filteredGroupA = modelData.localData.filter { $0.category.select.name == category }
                         }) {
                             Text(category)
                                 .customCategory()
@@ -74,7 +74,7 @@ struct RecommendView: View {
                 ForEach(peopleCategory, id: \.self) { value in
                     Button(action: {
                         currentIndex2 = peopleCategory.firstIndex(of: value)!
-                        for foodData in modelData.serverData {
+                        for foodData in modelData.localData {
                             var joinedString = ""
                             for detailedData in foodData.people.multiSelect {
                                 joinedString += detailedData.name
@@ -106,7 +106,7 @@ struct RecommendView: View {
                     ForEach(priceCategory, id: \.self) { value in
                         Button(action: {
                             currentIndex3 = priceCategory.firstIndex(of: value)!
-                            filteredGroupC = modelData.serverData.filter { restaurant in
+                            filteredGroupC = modelData.localData.filter { restaurant in
                                 restaurant.price.select.name == value }
                         }) {
                             Text(value)
@@ -133,8 +133,11 @@ struct RecommendView: View {
                     ForEach(locationCategory, id: \.self) { value in
                         Button(action: {
                             currentIndex4 = locationCategory.firstIndex(of: value)!
-                            filteredGroupD = modelData.serverData.filter { restaurant in
+                            filteredGroupD = modelData.localData.filter { restaurant in
                                 restaurant.location.richText.first!.text.content == value }
+
+                            getRecommendation()
+
                         }) {
                             Text(value)
                                 .customCategory()
@@ -151,15 +154,11 @@ struct RecommendView: View {
 
     private func getRecommendationButton() -> some View {
         VStack {
-            if !modelData.serverData.isEmpty {
-                NavigationLink(destination: RestaurantInfoView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.serverData.first!)) {
-                    Button {
-                        filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
-                    } label: {
-                        Text("맛집 추천받기!")
-                            .customButtonFormat()
-                            .padding(.bottom, 20)
-                    }
+            if !modelData.localData.isEmpty {
+                NavigationLink(destination: RestaurantInfoView(foodInformation: filteredGroupFinal.randomElement() ?? modelData.localData.first!)) {
+                    Text("맛집. 추천받기!")
+                        .customButtonFormat()
+                        .padding(.bottom, 20)
                 }
             }
             else {
@@ -168,5 +167,9 @@ struct RecommendView: View {
                     .padding(.bottom, 20)
             }
         }
+    }
+
+    private func getRecommendation() {
+        filteredGroupFinal = self.filteredGroupA.filter{filteredGroupB.contains($0)}.filter{filteredGroupC.contains($0)}.filter{filteredGroupD.contains($0)}
     }
 }

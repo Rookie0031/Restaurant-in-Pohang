@@ -93,15 +93,27 @@ struct Properties: Codable, Equatable, Hashable {
     let category, price: Category
     let people: People
     var name: Name
-    var isFavorite: Bool = false
+    var favorite: Favorite
 
     enum CodingKeys: String, CodingKey {
-        case imageFile, id
+        case favorite, imageFile, id
         case propertiesDescription = "description"
         case transportation, location, imageName, category, price, people, name
     }
 }
+struct Favorite: Codable, Equatable, Hashable {
+    let id: FavoriteID
+    let type: FavoriteType
+    var checkbox: Bool
+}
 
+enum FavoriteID: String, Codable, Equatable, Hashable {
+    case the3DPaN = "%3DPaN"
+}
+
+enum FavoriteType: String, Codable, Equatable, Hashable {
+    case checkbox = "checkbox"
+}
 // MARK: - Category
 struct Category: Codable, Equatable, Hashable {
     let id: CategoryID
