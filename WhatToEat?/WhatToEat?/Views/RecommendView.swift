@@ -8,7 +8,6 @@
 // State var filtered data 이름 바꾸고, final class안으로 갖다넣기
 // current index는 state data로 바꿔서 final class안으로 넣기
 //
-
 import SwiftUI
 
 struct RecommendView: View {

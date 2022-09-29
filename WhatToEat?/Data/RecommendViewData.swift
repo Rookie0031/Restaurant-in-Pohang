@@ -9,7 +9,7 @@ import Foundation
 
 extension RecommendView {
     var foodCategory : [String] {
-        return ["양식","한식","중식","일식","기타", "카페/디저트"]
+        return ["양식","한식","중식","일식","카페/디저트", "기타"]
     }
     var peopleCategory : [String] {
         return ["혼밥!","둘이서", "3~4명", "단체로!"]

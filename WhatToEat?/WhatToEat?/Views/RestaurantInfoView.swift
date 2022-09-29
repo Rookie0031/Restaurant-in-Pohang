@@ -4,7 +4,7 @@
 //
 //  Created by Jisu Jang on 2022/05/04.
 //
-
+import NukeUI
 import SwiftUI
 
 struct RestaurantInfoView: View {
@@ -22,51 +22,55 @@ struct RestaurantInfoView: View {
     }
 
     var body: some View {
-            VStack {
-                    VStack{
-                        HStack {
-                            Text("\(foodInformation.name.title.first!.text.content)")
-                                .customTitle()
-                                .lineLimit(2)
-                                .allowsTightening(false)
-                            
-                            Spacer()
+        VStack {
+            VStack{
+                HStack {
+                    Text("\(foodInformation.name.title.first!.text.content)")
+                        .customTitle()
+                        .lineLimit(2)
+                        .allowsTightening(false)
 
-                            FavoriteButton(modelData: modelData, property: $modelData.localData[foodInformationIndex])
-                        }
-                        .frame(width: 250, alignment: .leading)
+                    Spacer()
 
-                        AsyncImage(url: URL(string: foodInformation.imageFile.files.first!.file.url)) { image in image
-                                .resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .customImageDetail()
+                    FavoriteButton(modelData: modelData, property: $modelData.localData[foodInformationIndex])
+                }
+                .frame(width: 250, alignment: .leading)
+
+                LazyImage(source: foodInformation.imageFile.files.first!.file.url) { state in
+                    if let image = state.image {
+                        image
+                    } else if state.error != nil {
+                        Color.red
+                    } else {
+                        Text("이미지를 받아오고 있어요!")
+                            .foregroundColor(.detailBlack)
                     }
-                    .frame(width: 300)
-                    .padding(.bottom, 20)
-                    .padding(.vertical , 10)
-                    .background(.orange.opacity(0.06))
-                    .cornerRadius(15)
+                }
+                .customImageDetail()
+                .frame(width: 300)
+                .padding(.bottom, 20)
+                .padding(.vertical , 10)
+                .background(.orange.opacity(0.06))
+                .cornerRadius(15)
 
                 VStack {
                     Group {
-                            VStack(alignment: .leading, spacing: 5) {
-                                
-                                Text("가격 : \(foodInformation.price.select.name)")
-                                    .descriptionTextStyle()
+                        VStack(alignment: .leading, spacing: 5) {
 
-                                Text("위치 : \(foodInformation.price.select.name)")
-                                    .descriptionTextStyle()
+                            Text("가격 : \(foodInformation.price.select.name)")
+                                .descriptionTextStyle()
 
-                                Text("리뷰 : \(foodInformation.propertiesDescription.richText.first!.text.content)")
-                                    .descriptionTextStyle()
-                            }
-                            .frame(width: 270, alignment: .leading)
-                            .padding(.leading,30)
-                            .padding(.vertical , 10)
-                            .background(.orange.opacity(0.06))
-                            .cornerRadius(15)
+                            Text("위치 : \(foodInformation.location.richText.first!.text.content)")
+                                .descriptionTextStyle()
+
+                            Text("리뷰 : \(foodInformation.propertiesDescription.richText.first!.text.content)")
+                                .descriptionTextStyle()
+                        }
+                        .frame(width: 270, alignment: .leading)
+                        .padding(.leading,30)
+                        .padding(.vertical , 10)
+                        .background(.orange.opacity(0.06))
+                        .cornerRadius(15)
                     }
                 }
                 .padding()
@@ -82,3 +86,4 @@ struct RestaurantInfoView: View {
             }
         }
     }
+}

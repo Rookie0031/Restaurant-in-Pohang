@@ -4,7 +4,7 @@
 //
 //  Created by Jisu Jang on 2022/05/02.
 //
-
+import NukeUI
 import SwiftUI
 
 struct RestaurantListView: View {
@@ -28,6 +28,7 @@ struct RestaurantListView: View {
                 ForEach(foodCategory, id: \.self) { value in
                     Button(action: {
                         currentIndex = foodCategory.firstIndex(of: value)!
+                        print(currentIndex)
                     }) {
                         foodCategory.firstIndex(of: value)! == currentIndex ?
 
@@ -69,13 +70,17 @@ struct RestaurantListView: View {
                                         .font(.system(size: 20).weight(.heavy))
                                         .frame(width: 300, alignment: .leading)
 
-                                    AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in image
-                                            .resizable()
-                                            .frame(width: 220, height: 220, alignment: .center)
-                                            .cornerRadius(10)
-                                    } placeholder: {
-                                        ProgressView()
+                                    LazyImage(source: value.wrappedValue.imageFile.files.first!.file.url) { state in
+                                        if let image = state.image {
+                                            image
+                                        } else if state.error != nil {
+                                            Color.red
+                                        } else {
+                                            Text("이미지를 받아오고 있어요!")
+                                        }
                                     }
+                                    .frame(width: 220, height: 220)
+                                    .cornerRadius(12)
                                 }
                             }
                         }

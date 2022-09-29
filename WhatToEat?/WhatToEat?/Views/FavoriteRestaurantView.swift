@@ -26,17 +26,15 @@ struct FavoriteRestaurantView: View {
             }
             .navigationTitle("먹킷리스트를 관리해봐요!")
         }
-        .onChange(of: modelData.localData, perform: { newValue in
-            let savedData = newValue
-            print("저장전 데이터 점검")
-            print(savedData.filter({$0.favorite.checkbox == true}).count)
-            ModelData.saveLocalData(data: savedData) { result in
-                if case .failure(let failure) = result {
-                    fatalError(failure.localizedDescription)
+        .onChange(of: scenePhase, perform: { phase in
+            if phase == .inactive {
+                print("The scene becomes inactive")
+                ModelData.saveLocalData(data: modelData.localData) { result in
+                    if case .failure(let failure) = result {
+                        fatalError(failure.localizedDescription)
+                    }
                 }
             }
-            print("바뀐 정보가 저장되었습니다")
-            print(modelData.localData.filter({$0.favorite.checkbox == true}).count)
         })
     }
 }

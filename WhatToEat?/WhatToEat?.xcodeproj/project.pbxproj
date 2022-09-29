@@ -14,6 +14,8 @@
 		A93A010E281E324A0069B86A /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A010D281E324A0069B86A /* TextModifier.swift */; };
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
+		A9659F9028E5BE9F000196F1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9659F8F28E5BE9F000196F1 /* ImageCache.swift */; };
+		A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9659F9828E5DF07000196F1 /* NukeUI */; };
 		A998B4C028DDD30000C593B3 /* FoodListViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */; };
 		A9B96083281C10F2004779A6 /* WhatToEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96082281C10F2004779A6 /* WhatToEatApp.swift */; };
 		A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96084281C10F2004779A6 /* MainTabView.swift */; };
@@ -36,6 +38,7 @@
 		A93A010D281E324A0069B86A /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		A93A0113281E46D00069B86A /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		A9659F8F28E5BE9F000196F1 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewData.swift; sourceTree = "<group>"; };
 		A9B9607F281C10F2004779A6 /* WhatToEat?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WhatToEat?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B96082281C10F2004779A6 /* WhatToEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatApp.swift; sourceTree = "<group>"; };
@@ -56,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
+				A9659F8F28E5BE9F000196F1 /* ImageCache.swift */,
 				A9E2B25A28DC38AB0057E064 /* RecommendViewData.swift */,
 				A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */,
 				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
@@ -152,6 +157,9 @@
 			dependencies = (
 			);
 			name = "WhatToEat?";
+			packageProductDependencies = (
+				A9659F9828E5DF07000196F1 /* NukeUI */,
+			);
 			productName = "WhatToEat?";
 			productReference = A9B9607F281C10F2004779A6 /* WhatToEat?.app */;
 			productType = "com.apple.product-type.application";
@@ -180,6 +188,9 @@
 				Base,
 			);
 			mainGroup = A9B96076281C10F2004779A6;
+			packageReferences = (
+				A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */,
+			);
 			productRefGroup = A9B96080281C10F2004779A6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -218,6 +229,7 @@
 				A9E2B25B28DC38AB0057E064 /* RecommendViewData.swift in Sources */,
 				A9B96095281C17AB004779A6 /* ModelData.swift in Sources */,
 				A93A010E281E324A0069B86A /* TextModifier.swift in Sources */,
+				A9659F9028E5BE9F000196F1 /* ImageCache.swift in Sources */,
 				A9B96091281C1149004779A6 /* RecommendView.swift in Sources */,
 				A9F3D197281F7DE800844B39 /* RestaurantInfoRow.swift in Sources */,
 				A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */,
@@ -431,6 +443,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/NukeUI.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9659F9828E5DF07000196F1 /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */;
+			productName = NukeUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A9B96077281C10F2004779A6 /* Project object */;
 }
