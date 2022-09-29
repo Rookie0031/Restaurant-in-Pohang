@@ -2,11 +2,10 @@ import NukeUI
 import SwiftUI
 
 struct RestaurantInfoRow: View {
-    var restaurant : Properties
+    let restaurant : Properties
 
     var body: some View {
         HStack {
-
             LazyImage(source: restaurant.imageFile.files.first!.file.url) { state in
                 if let image = state.image {
                     image
