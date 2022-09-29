@@ -15,6 +15,7 @@
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
 		A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9659F9828E5DF07000196F1 /* NukeUI */; };
+		A9659F9C28E5EAA5000196F1 /* WhatToEatAppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */; };
 		A998B4C028DDD30000C593B3 /* FoodListViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */; };
 		A9B96083281C10F2004779A6 /* WhatToEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96082281C10F2004779A6 /* WhatToEatApp.swift */; };
 		A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96084281C10F2004779A6 /* MainTabView.swift */; };
@@ -37,6 +38,7 @@
 		A93A010D281E324A0069B86A /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		A93A0113281E46D00069B86A /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
+		A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatAppExtension.swift; sourceTree = "<group>"; };
 		A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewData.swift; sourceTree = "<group>"; };
 		A9B9607F281C10F2004779A6 /* WhatToEat?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WhatToEat?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B96082281C10F2004779A6 /* WhatToEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatApp.swift; sourceTree = "<group>"; };
@@ -75,9 +77,6 @@
 		A9B96076281C10F2004779A6 = {
 			isa = PBXGroup;
 			children = (
-				A9659F9A28E5E890000196F1 /* Model */,
-				A9EC6C37281FCB4700CD5B1E /* ViewModel */,
-				A9BDE9C9281F5D5F0061C6A3 /* Modifer+Color */,
 				A9B96081281C10F2004779A6 /* WhatToEat? */,
 				A9B96080281C10F2004779A6 /* Products */,
 			);
@@ -96,6 +95,9 @@
 			children = (
 				A9B96082281C10F2004779A6 /* WhatToEatApp.swift */,
 				A9F3D198281F89F400844B39 /* Views */,
+				A9659F9A28E5E890000196F1 /* Model */,
+				A9EC6C37281FCB4700CD5B1E /* ViewModel */,
+				A9BDE9C9281F5D5F0061C6A3 /* Modifer+Color */,
 				A9B96086281C10F3004779A6 /* Assets.xcassets */,
 				A9B96088281C10F3004779A6 /* Preview Content */,
 			);
@@ -127,6 +129,7 @@
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
 				A9E2B25A28DC38AB0057E064 /* RecommendViewData.swift */,
 				A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */,
+				A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -229,6 +232,7 @@
 				A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,
+				A9659F9C28E5EAA5000196F1 /* WhatToEatAppExtension.swift in Sources */,
 				A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */,
 				A9B96083281C10F2004779A6 /* WhatToEatApp.swift in Sources */,
 				A9E2B25B28DC38AB0057E064 /* RecommendViewData.swift in Sources */,

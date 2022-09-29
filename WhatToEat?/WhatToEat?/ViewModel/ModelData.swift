@@ -20,6 +20,7 @@ class ModelData: ObservableObject {
         .appendingPathComponent("TestData.data")
     }
 
+    // persistence
     static func loadLocalData(completion: @escaping (Result<[Properties], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
