@@ -14,7 +14,6 @@
 		A93A010E281E324A0069B86A /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A010D281E324A0069B86A /* TextModifier.swift */; };
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
-		A9659F9028E5BE9F000196F1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9659F8F28E5BE9F000196F1 /* ImageCache.swift */; };
 		A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9659F9828E5DF07000196F1 /* NukeUI */; };
 		A998B4C028DDD30000C593B3 /* FoodListViewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */; };
 		A9B96083281C10F2004779A6 /* WhatToEatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B96082281C10F2004779A6 /* WhatToEatApp.swift */; };
@@ -38,7 +37,6 @@
 		A93A010D281E324A0069B86A /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		A93A0113281E46D00069B86A /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
-		A9659F8F28E5BE9F000196F1 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodListViewData.swift; sourceTree = "<group>"; };
 		A9B9607F281C10F2004779A6 /* WhatToEat?.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WhatToEat?.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9B96082281C10F2004779A6 /* WhatToEatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToEatApp.swift; sourceTree = "<group>"; };
@@ -66,11 +64,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A9659F9A28E5E890000196F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A9B96076281C10F2004779A6 = {
 			isa = PBXGroup;
 			children = (
-				A9EC6C37281FCB4700CD5B1E /* Data */,
-				A9BDE9C9281F5D5F0061C6A3 /* Modifer */,
+				A9659F9A28E5E890000196F1 /* Model */,
+				A9EC6C37281FCB4700CD5B1E /* ViewModel */,
+				A9BDE9C9281F5D5F0061C6A3 /* Modifer+Color */,
 				A9B96081281C10F2004779A6 /* WhatToEat? */,
 				A9B96080281C10F2004779A6 /* Products */,
 			);
@@ -103,27 +110,25 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		A9BDE9C9281F5D5F0061C6A3 /* Modifer */ = {
+		A9BDE9C9281F5D5F0061C6A3 /* Modifer+Color */ = {
 			isa = PBXGroup;
 			children = (
+				A9274EC12822600100E99F2F /* ColorData.swift */,
 				A93A0111281E39860069B86A /* ImageModifier.swift */,
 				A93A0113281E46D00069B86A /* ButtonModifier.swift */,
 				A93A010D281E324A0069B86A /* TextModifier.swift */,
 			);
-			path = Modifer;
+			path = "Modifer+Color";
 			sourceTree = "<group>";
 		};
-		A9EC6C37281FCB4700CD5B1E /* Data */ = {
+		A9EC6C37281FCB4700CD5B1E /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
-				A9659F8F28E5BE9F000196F1 /* ImageCache.swift */,
 				A9E2B25A28DC38AB0057E064 /* RecommendViewData.swift */,
 				A998B4BF28DDD30000C593B3 /* FoodListViewData.swift */,
-				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
-				A9274EC12822600100E99F2F /* ColorData.swift */,
 			);
-			path = Data;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		A9F3D198281F89F400844B39 /* Views */ = {
@@ -229,7 +234,6 @@
 				A9E2B25B28DC38AB0057E064 /* RecommendViewData.swift in Sources */,
 				A9B96095281C17AB004779A6 /* ModelData.swift in Sources */,
 				A93A010E281E324A0069B86A /* TextModifier.swift in Sources */,
-				A9659F9028E5BE9F000196F1 /* ImageCache.swift in Sources */,
 				A9B96091281C1149004779A6 /* RecommendView.swift in Sources */,
 				A9F3D197281F7DE800844B39 /* RestaurantInfoRow.swift in Sources */,
 				A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */,
