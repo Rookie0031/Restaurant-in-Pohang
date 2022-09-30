@@ -3,11 +3,11 @@
 ////  WhatToEat?
 ////
 ////  Created by Jisu Jang on 2022/09/22.
-////
-//
 import Foundation
 import SwiftUI
 
+// MARK: Case 분류해놓았으나, raw value를 써야하는 경우가 너무 많아 일단 array로 처리해놓음
+// 굳이 이런 경우 case로 바꿔야하는가?
 extension RecommendView {
     var foodCategory : [String] {
         return ["양식","한식","중식","일식","카페/디저트", "기타"]

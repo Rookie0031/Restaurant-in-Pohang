@@ -40,6 +40,7 @@ extension WhatToEatApp {
             rootModelData.foodCategoryFiltered.append(chinese)
             rootModelData.foodCategoryFiltered.append(japanese)
             rootModelData.foodCategoryFiltered.append(cafe)
+            rootModelData.foodCategoryFiltered.append(asian)
         }
     }
 }

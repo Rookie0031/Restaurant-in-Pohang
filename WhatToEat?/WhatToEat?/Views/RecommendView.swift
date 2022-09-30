@@ -3,15 +3,12 @@
 //  WhatToEat?
 //
 //  Created by Jisu Jang on 2022/04/29.
-//
-// category 전부 enum으로 빼기
-// State var filtered data 이름 바꾸고, final class안으로 갖다넣기
-// current index는 state data로 바꿔서 final class안으로 넣기
-//
 import SwiftUI
 
 struct RecommendView: View {
 
+    // MARK: 맛집 추천 로직 구조와, 카테고리 선택 구조상 State Wrapper property가 이렇게 많이 필요하게 되었다.
+    // 이런 경우 가독성은 확실히 떨어지는데 어떻게 하면 좀 더 관리하기 쉽고 보기 좋게 할 수 있을까? 여기서 개선을 논하는게 맞을까?
     @ObservedObject var modelData : ModelData
     @State var foodCategoryFiltered : [Properties] = []
     @State var numberOfPeopleFiltered : [Properties] = []

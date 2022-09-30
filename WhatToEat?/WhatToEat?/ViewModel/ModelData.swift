@@ -95,8 +95,8 @@ class ModelData: ObservableObject {
             var korean : [Properties] = []
             var chinese : [Properties] = []
             var japanese : [Properties] = []
-            var asian : [Properties] = []
             var cafe : [Properties] = []
+            var asian : [Properties] = []
 
             for data in decodedData.results {
                 // Properties 전부 기록
@@ -111,21 +111,22 @@ class ModelData: ObservableObject {
                     chinese.append(data.properties)
                 case "일식" :
                     japanese.append(data.properties)
-                case "기타" :
-                    asian.append(data.properties)
                 case "카페/디저트" :
                     cafe.append(data.properties)
+                case "기타" :
+                    asian.append(data.properties)
                 default :
                     print("정보에 오류가 있는 거 같아요.")
                 }
             }
             print("foodData에 Properties를 모두 추가했습니다 \(serverData.count)")
 
-                self.foodCategoryFiltered.append(western)
-                self.foodCategoryFiltered.append(korean)
-                self.foodCategoryFiltered.append(chinese)
-                self.foodCategoryFiltered.append(japanese)
-                self.foodCategoryFiltered.append(cafe)
+            self.foodCategoryFiltered.append(western)
+            self.foodCategoryFiltered.append(korean)
+            self.foodCategoryFiltered.append(chinese)
+            self.foodCategoryFiltered.append(japanese)
+            self.foodCategoryFiltered.append(cafe)
+            self.foodCategoryFiltered.append(asian)
             print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
 
         } catch {

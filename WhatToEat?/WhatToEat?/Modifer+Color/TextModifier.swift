@@ -13,7 +13,7 @@ import SwiftUI
 struct TextModifier1: ViewModifier {
     func body(content: Content) -> some View {
         content
-            .font(.system(size: 28).weight(.medium))
+            .font(.system(size: 25).weight(.medium))
             .foregroundColor(.primaryBlack)
     }
 }
