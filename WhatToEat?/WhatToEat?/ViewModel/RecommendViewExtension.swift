@@ -121,7 +121,6 @@ extension RecommendView {
                             locationCategoryIndex = locationCategory.firstIndex(of: value)!
                             locationCategoryFiltered = modelData.localData.filter { restaurant in
                                 restaurant.location.richText.first!.text.content == value }
-                            getRecommendation()
                         }) {
                             Text(value)
                                 .customCategory()
@@ -139,14 +138,19 @@ extension RecommendView {
     func getRecommendationButton() -> some View {
         VStack {
             if !modelData.localData.isEmpty {
-                NavigationLink(destination: AnyView(getDestination())) {
-                    Text("맛집. 추천받기!")
-                        .customButtonFormat()
-                        .padding(.bottom, 20)
+                NavigationLink(destination: AnyView(getDestination()), isActive: $isActive) {
+                    Button {
+                        getRecommendation()
+                        isActive.toggle()
+                    } label: {
+                        Text("맛집 추천받기!")
+                            .customButtonFormat()
+                            .padding(.bottom, 20)
+                    }
                 }
             }
             else {
-                Text("맛집. 추천받기!")
+                Text("맛집 추천받기!")
                     .customButtonFormat()
                     .padding(.bottom, 20)
             }

@@ -24,6 +24,8 @@ struct RecommendView: View {
     @State var priceRangeIndex : Int = 0
     @State var locationCategoryIndex : Int = 0
 
+    @State var isActive = false
+
     var body: some View {
         NavigationView {
             VStack(alignment: .center, spacing: 30) {

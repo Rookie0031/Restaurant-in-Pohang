@@ -130,9 +130,9 @@
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
 				A9E2B25A28DC38AB0057E064 /* RecommendViewExtension.swift */,
+				A9659F9D28E5EC57000196F1 /* RestaurantListViewExtension.swift */,
 				A998B4BF28DDD30000C593B3 /* FoodListViewExtension.swift */,
 				A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */,
-				A9659F9D28E5EC57000196F1 /* RestaurantListViewExtension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
