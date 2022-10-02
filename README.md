@@ -31,7 +31,7 @@ App running시 다음과 같은 data flow를 가집니다.
 ## :pushpin: Features & Design
 
 [UI Design]
-#### 프로토타입 디자인 과정에서 아래으 design skill들이 고려되었습니다.
+#### 프로토타입 디자인 과정에서 다음 design skill들이 고려되었습니다.
 - Gestalt Theory (Similarity & Closure)
 - Color Psychology (Primary Color : Orange)
 
