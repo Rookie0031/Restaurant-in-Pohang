@@ -63,6 +63,10 @@ App running시 다음과 같은 data flow를 가집니다.
 ## :lock_with_ink_pen: License
 - All the license of food picture is on Naver or individual blogger.
 
+## 향후 계획
+1. 유저가 음식점을 제보할 수 있는 기능 개발(POST to Notion DB)
+2. 음식점 검색 기능 추가
+
 ## About Proejct managing
 - Total Project term : 30days
 - Ideation/Design : 5days
