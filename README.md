@@ -62,6 +62,14 @@ App running시 다음과 같은 data flow를 가집니다.
 
 ![FoodListApp](https://user-images.githubusercontent.com/103009135/167294897-a332ac1e-31d5-4c36-8140-38bf3f7a2727.png )
 
+## 느낀점
+#### 처음부터 잘하자!(힘들겠지만)
+과거의 내가 개판쳤던 코드를 수정하는 작업이 더걸린다… 처음부터 똑바로 잘해야겠다고 생각했다.
+특히 enum이나 이런 부분들은 추후에 수정할 수가 없었다
+
+#### PR과 커밋으 잘 쪼개자! 
+viewModel 등도 마찬가지였다 
+
 
 ## :books: Documentation
 
