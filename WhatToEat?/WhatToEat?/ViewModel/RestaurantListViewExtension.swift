@@ -61,7 +61,12 @@ extension RestaurantListView {
                                         if let image = state.image {
                                             image
                                         } else if state.error != nil {
-                                            Color.red
+                                            AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in
+                                                image
+                                            } placeholder: {
+                                                ProgressView()
+                                            }
+
                                         } else {
                                             Text("이미지를 받아오고 있어요!")
                                         }
