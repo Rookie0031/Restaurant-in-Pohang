@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* ErrorCase.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9A77DB64290EA3980033F946 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A77DB62290E9F640033F946 /* ViewExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9E2B25A28DC38AB0057E064 /* RecommendViewExtension.swift */,
+				A9659F9D28E5EC57000196F1 /* RestaurantListViewExtension.swift */,
+				A998B4BF28DDD30000C593B3 /* FoodListViewExtension.swift */,
+				A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */,
+			);
+			path = ViewExtensions;
+			sourceTree = "<group>";
+		};
+		9A77DB63290EA38D0033F946 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				9A77DB64290EA3980033F946 /* ErrorCase.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		A9659F9A28E5E890000196F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +120,7 @@
 		A9B96081281C10F2004779A6 /* WhatToEat? */ = {
 			isa = PBXGroup;
 			children = (
+				9A77DB63290EA38D0033F946 /* Network */,
 				A95C5B8528E9BFD300EACCBC /* WhatToEat--Info.plist */,
 				A9B96082281C10F2004779A6 /* WhatToEatApp.swift */,
 				A9F3D198281F89F400844B39 /* Views */,
@@ -134,10 +156,6 @@
 			isa = PBXGroup;
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
-				A9E2B25A28DC38AB0057E064 /* RecommendViewExtension.swift */,
-				A9659F9D28E5EC57000196F1 /* RestaurantListViewExtension.swift */,
-				A998B4BF28DDD30000C593B3 /* FoodListViewExtension.swift */,
-				A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -145,6 +163,7 @@
 		A9F3D198281F89F400844B39 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9A77DB62290E9F640033F946 /* ViewExtensions */,
 				A9B96084281C10F2004779A6 /* MainTabView.swift */,
 				A9B96090281C1149004779A6 /* RecommendView.swift */,
 				A9BDE9C4281F5D1C0061C6A3 /* RestaurantListView.swift */,
@@ -238,6 +257,7 @@
 				A998B4C028DDD30000C593B3 /* FoodListViewExtension.swift in Sources */,
 				A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */,
 				A93A0112281E39860069B86A /* ImageModifier.swift in Sources */,
+				9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */,
 				A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,

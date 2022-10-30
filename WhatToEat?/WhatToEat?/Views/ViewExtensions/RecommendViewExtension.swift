@@ -25,7 +25,6 @@ extension RecommendView {
 
 // functions related to view
 extension RecommendView {
-
     func foodTypeQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("어떤 종류가 먹고 싶나요?")

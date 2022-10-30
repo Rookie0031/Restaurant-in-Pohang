@@ -5,13 +5,22 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 import SwiftUI
+import UIKit
 import Foundation
 
 class ModelData: ObservableObject {
     @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
     @Published var localData: [Properties] = []
-
+    var cachedImages = NSCache<NSString, NSData>()
+    
+    var westernFoodImages: [UIImage] = []
+    var koreanFoodImages: [UIImage] = []
+    var chineseFoodImages: [UIImage] = []
+    var japaneseFoodImages: [UIImage] = []
+    var cafeFoodImages: [UIImage] = []
+    var asianFoodImages: [UIImage] = []
+    
     private static func fileURL() throws -> URL {
         try FileManager.default.url(for: .documentDirectory,
                                     in: .userDomainMask,
@@ -19,7 +28,7 @@ class ModelData: ObservableObject {
                                     create: false)
         .appendingPathComponent("TestData.data")
     }
-
+    
     // persistence
     static func loadLocalData(completion: @escaping (Result<[Properties], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
@@ -42,12 +51,11 @@ class ModelData: ObservableObject {
             }
         }
     }
-
+    
     static func saveLocalData(data: [Properties], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
                 print("최종 저장전 확인")
-                print(data.filter({$0.favorite.checkbox == true}).count)
                 let restaurants = try JSONEncoder().encode(data)
                 let outfile = try fileURL()
                 try restaurants.write(to: outfile)
@@ -63,7 +71,35 @@ class ModelData: ObservableObject {
             }
         }
     }
-
+    
+//    func getImageData(url: URL, completion: @escaping ((Error)->Void)) {
+//        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
+//        let task = session.downloadTask(with: url) { imageDataURL, response, error in
+//            if let error = error {
+//                completion(error)
+//                return
+//            }
+//
+//            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+//                completion(NetworkError.responseError)
+//                return
+//            }
+//
+//            guard let iamgeDataURL = imageDataURL else {
+//                completion(NetworkError.wrongURL)
+//                return
+//            }
+//
+//            do {
+//                let data = try Data(contentsOf: iamgeDataURL)
+//                self.cachedImages.setObject(data as NSData, forKey: imageDataURL?.absoluteString as NSString)
+//            } catch let error {
+//                completion(error)
+//            }
+//        }
+//        task.resume()
+//    }
+    
     @MainActor
     func getFromNotionDB() async {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
@@ -73,35 +109,35 @@ class ModelData: ObservableObject {
             "Authorization": "Bearer " + token,
             "Notion-Version": "2022-06-28"
         ]
-
+        
         let request = NSMutableURLRequest(url: NSURL(string: readURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-
+        
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = headers
-
+        
         do {
             let (data, response) = try await URLSession.shared.data(for: request as URLRequest)
             print("전송받은 응답입니다.")
             print(response)
             print("=================================================")
             print("받은 데이터는 다음과 같습니다 \(data)")
-
+            
             guard let decodedData = try? JSONDecoder().decode(ExampleDTO.self, from: data) else {
                 print("디코딩에 실패했습니다")
                 return
             }
-
+            
             var western : [Properties] = []
             var korean : [Properties] = []
             var chinese : [Properties] = []
             var japanese : [Properties] = []
             var cafe : [Properties] = []
             var asian : [Properties] = []
-
+            
             for data in decodedData.results {
                 // Properties 전부 기록
                 self.serverData.append(data.properties)
-
+                
                 switch data.properties.category.select.name {
                 case "양식" :
                     western.append(data.properties)
@@ -120,15 +156,16 @@ class ModelData: ObservableObject {
                 }
             }
             print("foodData에 Properties를 모두 추가했습니다 \(serverData.count)")
-
+            
             self.foodCategoryFiltered.append(western)
             self.foodCategoryFiltered.append(korean)
             self.foodCategoryFiltered.append(chinese)
             self.foodCategoryFiltered.append(japanese)
             self.foodCategoryFiltered.append(cafe)
             self.foodCategoryFiltered.append(asian)
+            
             print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
-
+            
         } catch {
             print("Invalid Service")
         }
