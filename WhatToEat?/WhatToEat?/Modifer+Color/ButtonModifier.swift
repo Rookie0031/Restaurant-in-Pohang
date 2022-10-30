@@ -43,21 +43,5 @@ extension View {
     }
 }
 
-//struct CategoryModifier2: ViewModifier {
-//    func body(content: Content) -> some View {
-//        content
-//            .customInfoSubTitle()
-//            .padding(EdgeInsets(.init(top:10, leading: 10, bottom: 10, trailing: 10)))
-//            .overlay(RoundedRectangle(cornerRadius: 10)
-//                .stroke(.black, lineWidth: 3))
-//    }
-//}
-//
-//extension View {
-//    func customCategoryPicked() -> some View {
-//        modifier(CategoryModifier2())
-//    }
-//}
-
 
 

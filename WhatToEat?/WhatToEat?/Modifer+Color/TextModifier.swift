@@ -10,7 +10,7 @@ import SwiftUI
 
 
 // 1. customTitle
-struct TextModifier1: ViewModifier {
+struct TitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 25).weight(.medium))
@@ -20,13 +20,13 @@ struct TextModifier1: ViewModifier {
 
 extension View {
     func customTitle() -> some View {
-        modifier(TextModifier1())
+        modifier(TitleTextModifier())
     }
 }
 
 
 // 2. customInfoTitle
-struct TextModifier2: ViewModifier {
+struct SubTitleTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 20).weight(.heavy))
@@ -36,13 +36,13 @@ struct TextModifier2: ViewModifier {
 
 extension View {
     func customInfoTitle() -> some View {
-        modifier(TextModifier2())
+        modifier(SubTitleTextModifier())
     }
 }
 
 
 // 3. customInfoSubTitle
-struct TextModifier3: ViewModifier {
+struct CalloutTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16).weight(.bold))
@@ -52,13 +52,13 @@ struct TextModifier3: ViewModifier {
 
 extension View {
     func customInfoSubTitle() -> some View {
-        modifier(TextModifier3())
+        modifier(CalloutTextModifier())
     }
 }
 
 
 // 4. customInfoContent
-struct TextModifier4: ViewModifier {
+struct FootnoteTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 14).weight(.medium))
@@ -68,12 +68,12 @@ struct TextModifier4: ViewModifier {
 
 extension View {
     func customInfoContent1() -> some View {
-        modifier(TextModifier4())
+        modifier(FootnoteTextModifier())
     }
 }
 
 // 5. customInfoContent2
-struct TextModifier5: ViewModifier {
+struct HeadLineTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 20).weight(.regular))
@@ -83,27 +83,26 @@ struct TextModifier5: ViewModifier {
 
 extension View {
     func customInfoContent2() -> some View {
-        modifier(TextModifier5())
+        modifier(HeadLineTextModifier())
     }
 }
 
-// 5. customInfoContent2 + button text
-struct TextModifier6: ViewModifier {
+// bbutton text
+struct SecondCalloutTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 16).weight(.heavy))
-//            .foregroundColor(.subBlack)
     }
 }
 
 extension View {
     func customButtonText() -> some View {
-        modifier(TextModifier6())
+        modifier(SecondCalloutTextModifier())
     }
 }
 
 // 6. FoodDescription
-struct TextModifier7: ViewModifier {
+struct FoodDescriptionTextModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .font(.system(size: 20).weight(.bold))
@@ -113,7 +112,7 @@ struct TextModifier7: ViewModifier {
 
 extension View {
     func descriptionTextStyle() -> some View {
-        modifier(TextModifier7())
+        modifier(FoodDescriptionTextModifier())
     }
 }
 
