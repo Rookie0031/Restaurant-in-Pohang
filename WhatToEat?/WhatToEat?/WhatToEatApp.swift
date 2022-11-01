@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct WhatToEatApp: App {
-    @StateObject var rootModelData = ModelData()
+    @StateObject var rootModelData = RestaurantListViewModel()
     
     var body: some Scene {
         WindowGroup {
             MainTabView()
                 .environmentObject(rootModelData)
                 .onAppear {
-                    ModelData.loadLocalData { result in
+                    RestaurantListViewModel.loadLocalData { result in
                         switch result {
                         case .failure(let error):
                             fatalError(error.localizedDescription)

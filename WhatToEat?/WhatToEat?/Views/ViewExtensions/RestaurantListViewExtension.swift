@@ -4,7 +4,7 @@
 //
 //  Created by Jisu Jang on 2022/09/30.
 //
-import NukeUI
+//import NukeUI
 import SwiftUI
 import Foundation
 
@@ -57,31 +57,33 @@ extension RestaurantListView {
                                         .font(.system(size: 20).weight(.heavy))
                                         .frame(width: 300, alignment: .leading)
 
-                                    LazyImage(source: value.wrappedValue.imageFile.files.first!.file.url) { state in
-                                        if let image = state.image {
-                                            image
-                                        } else if state.error != nil {
-                                            AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in
-                                                image
-                                            } placeholder: {
-                                                ProgressView()
-                                            }
+                                    Image(uiImage: modelData.loadCachedImage(imageURL: URL(string: value.wrappedValue.imageFile.files.first!.file.url)!))
 
-                                        } else {
-                                            Text("이미지를 받아오고 있어요!")
-                                        }
-                                    }
-                                    .frame(width: 220, height: 220)
-                                    .cornerRadius(12)
+                                    //                                    LazyImage(source: value.wrappedValue.imageFile.files.first!.file.url) { state in
+                                    //                                        if let image = state.image {
+                                    //                                            image
+                                    //                                        } else if state.error != nil {
+                                    //                                            AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in
+                                    //                                                image
+                                    //                                            } placeholder: {
+                                    //                                                ProgressView()
+                                    //                                            }
+                                    //
+                                    //                                        } else {
+                                    //                                            Text("이미지를 받아오고 있어요!")
+                                    //                                        }
                                 }
+                                .frame(width: 220, height: 220)
+                                .cornerRadius(12)
                             }
                         }
-                        .padding(.bottom, 15)
                     }
-                } else {
-                    ProgressView()
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6, alignment: .center)
+                    .padding(.bottom, 15)
                 }
+                //                } else {
+                //                    ProgressView()
+                //                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6, alignment: .center)
+                //                }
             }
         }
     }

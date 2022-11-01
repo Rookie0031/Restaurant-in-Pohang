@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var modelData: RestaurantListViewModel
 
     var body: some View {
         TabView {
@@ -25,6 +25,10 @@ struct MainTabView: View {
                 await modelData.getFromNotionDB()
                 modelData.localData = modelData.serverData
                 isFirstLaunch = true
+
+                for data in modelData.localData {
+                    try await modelData.precacheImages(imageURL: URL(string: data.imageFile.files.first!.file.url)!)
+                }
             }
         }
     }

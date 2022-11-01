@@ -23,3 +23,18 @@ enum NetworkError: LocalizedError {
         }
     }
 }
+
+enum DataError: LocalizedError {
+    case unsupportedImageData
+    case unsupportedURL
+
+    var errorDescription: String? {
+        switch self {
+        case .unsupportedImageData:
+            return NSLocalizedString("This is wrong image", comment: "This is wrong image Data")
+        case .unsupportedURL:
+            return NSLocalizedString("This is unsupported URL", comment: "This is unsupported URL")
+        }
+
+    }
+}

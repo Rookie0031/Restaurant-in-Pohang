@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteRestaurantView: View {
 
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: RestaurantListViewModel
     private var favoriteRestaurants: [Properties] {
         modelData.localData.filter({$0.favorite.checkbox == true})
         }
@@ -29,7 +29,7 @@ struct FavoriteRestaurantView: View {
         .onChange(of: scenePhase, perform: { phase in
             if phase == .inactive {
                 print("The scene becomes inactive")
-                ModelData.saveLocalData(data: modelData.localData) { result in
+                RestaurantListViewModel.saveLocalData(data: modelData.localData) { result in
                     if case .failure(let failure) = result {
                         fatalError(failure.localizedDescription)
                     }

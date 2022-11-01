@@ -8,7 +8,7 @@ import SwiftUI
 struct RecommendView: View {
 
     // MARK: 맛집 추천 로직 구조와, 카테고리 선택 구조상 State Wrapper property가 이렇게 많이 필요하게 되었다.
-    @ObservedObject var modelData : ModelData
+    @ObservedObject var modelData : RestaurantListViewModel
     @State var foodCategoryFiltered : [Properties] = []
     @State var numberOfPeopleFiltered : [Properties] = []
     @State var priceRangeFiltered : [Properties] = []

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RestaurantListView: View {
 
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: RestaurantListViewModel
     @State var currentIndex = 0
     
     var body: some View {

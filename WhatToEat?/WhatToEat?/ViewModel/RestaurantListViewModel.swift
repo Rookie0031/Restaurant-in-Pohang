@@ -8,7 +8,7 @@ import SwiftUI
 import UIKit
 import Foundation
 
-class ModelData: ObservableObject {
+class RestaurantListViewModel: ObservableObject {
     @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
     @Published var localData: [Properties] = []
@@ -71,37 +71,97 @@ class ModelData: ObservableObject {
             }
         }
     }
-    
-//    func getImageData(url: URL, completion: @escaping ((Error)->Void)) {
-//        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-//        let task = session.downloadTask(with: url) { imageDataURL, response, error in
-//            if let error = error {
-//                completion(error)
-//                return
-//            }
-//
+
+    func loadCachedImage(imageURL: URL) -> UIImage {
+        var image = UIImage()
+        if let imageData = cachedImages.object(forKey: imageURL.absoluteString as NSString) {
+            image = UIImage(data: imageData as Data) ?? UIImage()
+        } else {
+            print(DataError.unsupportedURL.errorDescription)
+        }
+        return image
+    }
+
+//    func loadImage(imageURL: URL) async throws -> UIImage {
+//        var image = UIImage()
+//        if let imageData = cachedImages.object(forKey: imageURL.absoluteString as NSString) {
+//            image = UIImage(data: imageData as Data) ?? UIImage()
+//        } else {
+//            let (data, response) = try await URLSession.shared.data(from: imageURL)
 //            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-//                completion(NetworkError.responseError)
-//                return
+//                throw NetworkError.responseError
 //            }
 //
-//            guard let iamgeDataURL = imageDataURL else {
-//                completion(NetworkError.wrongURL)
-//                return
+//            guard let validURL = httpResponse.url else {
+//                throw DataError.unsupportedImageData
 //            }
 //
-//            do {
-//                let data = try Data(contentsOf: iamgeDataURL)
-//                self.cachedImages.setObject(data as NSData, forKey: imageDataURL?.absoluteString as NSString)
-//            } catch let error {
-//                completion(error)
+//            self.cachedImages.setObject(data as NSData, forKey: validURL.absoluteString as NSString)
+//
+//            guard let receivedImage = UIImage(data: data) else {
+//                throw DataError.unsupportedImageData
 //            }
+//            image = receivedImage
 //        }
-//        task.resume()
+//        return image
 //    }
+
+    func precacheImages(imageURL: URL) async throws {
+        do {
+            let (data, response) = try await URLSession.shared.data(from: imageURL)
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                throw NetworkError.responseError
+            }
+
+            guard let validURL = httpResponse.url else {
+                throw DataError.unsupportedImageData
+            }
+            self.cachedImages.setObject(data as NSData, forKey: validURL.absoluteString as NSString)
+            print("이미지 캐싱에 성공했습니다.")
+        } catch {
+            print("캐싱 실패")
+        }
+    }
+
+    //        private func loadImage(imageURL: URL, completion: @escaping (Data?, Error?) -> (Void)) {
+    //            let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
+    //            if let imageData = cachedImages.object(forKey: imageURL.absoluteString as NSString) {
+    //                print("using cached images")
+    //                completion(imageData as Data, nil)
+    //                return
+    //            }
+    //
+    //
+    //            let task = session.downloadTask(with: imageURL) { localUrl, response, error in
+    //                if let error = error {
+    //                    completion(nil, error)
+    //                    return
+    //                }
+    //
+    //                guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+    //                    completion(nil, NetworkManagerError.badResponse(response))
+    //                    return
+    //                }
+    //
+    //                guard let localUrl = localUrl else {
+    //                    completion(nil, NetworkManagerError.badLocalUrl)
+    //                    return
+    //                }
+    //
+    //                do {
+    //                    let data = try Data(contentsOf: localUrl)
+    //                    self.cachedImages.setObject(data as NSData, forKey: imageURL.absoluteString as NSString)
+    //                    completion(data, nil)
+    //                } catch let error {
+    //                    completion(nil, error)
+    //                }
+    //            }
+    //
+    //            task.resume()
+    //        }
     
     @MainActor
-    func getFromNotionDB() async {
+    func getFromNotionDB() async throws {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
         let databaseID = "206c4793c7e6428eb8235279a3e445af"
         let readURL = "https://api.notion.com/v1/databases/\(databaseID)/query"
@@ -123,7 +183,7 @@ class ModelData: ObservableObject {
             print("받은 데이터는 다음과 같습니다 \(data)")
             
             guard let decodedData = try? JSONDecoder().decode(ExampleDTO.self, from: data) else {
-                print("디코딩에 실패했습니다")
+                throw NetworkError.decoidngError
                 return
             }
             
@@ -136,6 +196,7 @@ class ModelData: ObservableObject {
             
             for data in decodedData.results {
                 // Properties 전부 기록
+
                 self.serverData.append(data.properties)
                 
                 switch data.properties.category.select.name {
