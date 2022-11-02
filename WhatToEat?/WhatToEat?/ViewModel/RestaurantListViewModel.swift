@@ -8,7 +8,7 @@ import SwiftUI
 import UIKit
 import Foundation
 
-class ModelData: ObservableObject {
+class RestaurantListViewModel: ObservableObject {
     @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
     @Published var localData: [Properties] = []
@@ -71,34 +71,6 @@ class ModelData: ObservableObject {
             }
         }
     }
-    
-//    func getImageData(url: URL, completion: @escaping ((Error)->Void)) {
-//        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-//        let task = session.downloadTask(with: url) { imageDataURL, response, error in
-//            if let error = error {
-//                completion(error)
-//                return
-//            }
-//
-//            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-//                completion(NetworkError.responseError)
-//                return
-//            }
-//
-//            guard let iamgeDataURL = imageDataURL else {
-//                completion(NetworkError.wrongURL)
-//                return
-//            }
-//
-//            do {
-//                let data = try Data(contentsOf: iamgeDataURL)
-//                self.cachedImages.setObject(data as NSData, forKey: imageDataURL?.absoluteString as NSString)
-//            } catch let error {
-//                completion(error)
-//            }
-//        }
-//        task.resume()
-//    }
     
     @MainActor
     func getFromNotionDB() async {

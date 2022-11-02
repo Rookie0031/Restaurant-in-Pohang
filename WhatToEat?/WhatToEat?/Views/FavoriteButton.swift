@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FavoriteButton: View {
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: RestaurantListViewModel
     @Binding var property: Properties
 
     var body: some View {

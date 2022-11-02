@@ -10,7 +10,7 @@ import SwiftUI
 struct RestaurantInfoView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var modelData : ModelData
+    @EnvironmentObject var modelData : RestaurantListViewModel
     @State var foodInformation : Properties
 
     var foodInformationIndex: Int {
