@@ -4,7 +4,7 @@
 //
 //  Created by 장지수 on 2022/11/02.
 //
-
+import NukeUI
 import SwiftUI
 
 struct RestaurantCardView: View {
@@ -22,14 +22,22 @@ struct RestaurantCardView: View {
                     .padding(.bottom, -3)
                     .font(.system(size: 20).weight(.heavy))
                     .frame(width: 300, alignment: .leading)
-                AsyncImage(url: URL(string: restaurant.imageFile.files.first!.file.url)) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                } placeholder: {
-                    ProgressView()
+                
+                LazyImage(source: restaurant.imageFile.files.first!.file.url) { state in
+                    if let image = state.image {
+                        image
+                    } else if state.error != nil {
+                        AsyncImage(url: URL(string: restaurant.imageFile.files.first!.file.url)) { image in
+                            image
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 220, height: 220)
+                    }
+                    else {
+                        Text("이미지를 받아오고 있어요!")
+                    }
                 }
-                .frame(width: 220, height: 220)
                 .cornerRadius(12)
             }
         }

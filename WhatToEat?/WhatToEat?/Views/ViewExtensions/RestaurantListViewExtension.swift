@@ -55,5 +55,6 @@ extension RestaurantListView {
             }
         }
         .listStyle(.plain)
+        .listRowSeparator(.hidden)
     }
 }
