@@ -10,6 +10,7 @@
 		9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* ErrorCase.swift */; };
 		9AA969B12912AB67005ACE0A /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AA969B02912AB67005ACE0A /* RestaurantCardView.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
+		A90CC2FF2913DF9C0030DEFF /* CacheImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90CC2FE2913DF9C0030DEFF /* CacheImage.swift */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */; };
 		A9274EC22822600100E99F2F /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EC12822600100E99F2F /* ColorData.swift */; };
@@ -38,6 +39,7 @@
 		9A77DB64290EA3980033F946 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
 		9AA969B02912AB67005ACE0A /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
+		A90CC2FE2913DF9C0030DEFF /* CacheImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheImage.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoView.swift; sourceTree = "<group>"; };
 		A9274EC12822600100E99F2F /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
 				A93D641828E71C1800D65901 /* CategoryData.swift */,
 				9AA969B02912AB67005ACE0A /* RestaurantCardView.swift */,
+				A90CC2FE2913DF9C0030DEFF /* CacheImage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				A93A0112281E39860069B86A /* ImageModifier.swift in Sources */,
 				9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */,
 				A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */,
+				A90CC2FF2913DF9C0030DEFF /* CacheImage.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,
 				A9659F9C28E5EAA5000196F1 /* WhatToEatAppExtension.swift in Sources */,

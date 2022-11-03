@@ -37,24 +37,23 @@ extension RestaurantListView {
     }
     
     func foodList() -> some View {
-        List {
-            if !modelData.foodCategoryFiltered.isEmpty {
-                ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
-                    value in
-                    NavigationLink {
-                        RestaurantInfoView(foodInformation: value.wrappedValue)
-                    } label: {
-                        RestaurantCardView(restaurant: value.wrappedValue)
+        ScrollView {
+            LazyVStack(alignment: .center) {
+                if !modelData.foodCategoryFiltered.isEmpty {
+                    ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
+                        value in
+                        NavigationLink {
+                            RestaurantInfoView(foodInformation: value.wrappedValue)
+                        } label: {
+                            RestaurantCardView(restaurant: value.wrappedValue)
+                        }
+                        .padding(.bottom, 15)
                     }
-                    .padding(.bottom, 15)
-                    .listRowSeparator(.hidden)
+                } else {
+                    ProgressView()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6, alignment: .center)
                 }
-            } else {
-                ProgressView()
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6, alignment: .center)
             }
         }
-        .listStyle(.plain)
-        .listRowSeparator(.hidden)
     }
 }

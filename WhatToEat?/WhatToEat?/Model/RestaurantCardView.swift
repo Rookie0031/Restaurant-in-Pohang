@@ -4,7 +4,6 @@
 //
 //  Created by 장지수 on 2022/11/02.
 //
-import NukeUI
 import SwiftUI
 
 struct RestaurantCardView: View {
@@ -22,23 +21,36 @@ struct RestaurantCardView: View {
                     .padding(.bottom, -3)
                     .font(.system(size: 20).weight(.heavy))
                     .frame(width: 300, alignment: .leading)
-                
-                LazyImage(source: restaurant.imageFile.files.first!.file.url) { state in
-                    if let image = state.image {
+
+                CacheAsyncImage(
+                    url: URL(string: restaurant.imageFile.files.first!.file.url)!
+                ) { phase in
+                    switch phase {
+                    case .success(let image):
+                        // MARK: 각각의 사진 클릭시, 나오는 detial View 사진
                         image
-                    } else if state.error != nil {
-                        AsyncImage(url: URL(string: restaurant.imageFile.files.first!.file.url)) { image in
-                            image
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 220, height: 220)
-                    }
-                    else {
-                        Text("이미지를 받아오고 있어요!")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width * 0.6, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
+                            .clipped()
+                            .border(Color.gray, width: 0.45)
+
+                    case .failure(let error):
+                        Text(error.localizedDescription)
+                            .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
+
+                    case .empty:
+                        ProgressView()
+                            .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
+                    @unknown default:
+                        Image(systemName: "questionmark")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.4, alignment: .center)
+                            .clipped()
+                            .border(Color.gray, width: 0.45)
                     }
                 }
-                .cornerRadius(12)
             }
         }
     }
