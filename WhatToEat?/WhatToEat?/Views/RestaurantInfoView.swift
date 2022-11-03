@@ -26,6 +26,7 @@ struct RestaurantInfoView: View {
                 foodTitleAndImage()
                 foodDescription()
                 dismissButton()
+                Spacer()
             }
     }
 
@@ -80,7 +81,7 @@ struct RestaurantInfoView: View {
                     Text("리뷰 : \(foodInformation.propertiesDescription.richText.first!.text.content)")
                         .descriptionTextStyle()
                 }
-                .frame(width: 270, alignment: .leading)
+                .frame(width: 300, alignment: .leading)
                 .padding(.leading,30)
                 .padding(.vertical , 10)
                 .background(.orange.opacity(0.06))

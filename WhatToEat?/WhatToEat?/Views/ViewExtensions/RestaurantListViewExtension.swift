@@ -45,37 +45,7 @@ extension RestaurantListView {
                         NavigationLink {
                             RestaurantInfoView(foodInformation: value.wrappedValue)
                         } label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 15)
-                                    .foregroundColor(.orange).opacity(0.06)
-                                    .frame(width: 350, height: 280)
-
-                                VStack(alignment: .leading) {
-                                    Text("\(value.wrappedValue.name.title.first!.text.content)")
-                                        .foregroundColor(.black)
-                                        .padding(.bottom, -3)
-                                        .font(.system(size: 20).weight(.heavy))
-                                        .frame(width: 300, alignment: .leading)
-
-                                    KFImage(URL(string: value.wrappedValue.imageFile.files.first!.file.url))
-                                            .placeholder { //플레이스 홀더 설정
-                                                VStack {
-                                                    Text("이미지를 받아오고 있어요!")
-                                                    ProgressView()
-                                                }
-                                            }.retry(maxCount: 3, interval: .seconds(5)) //재시도
-                                            .onSuccess {r in //성공
-                                                print("succes: \(r)")
-                                            }
-                                            .onFailure { e in //실패
-                                                print("failure: \(e)")
-                                            }
-                                            .cancelOnDisappear(false)
-                                            .resizable()
-                                            .frame(width: 220, height: 220)
-                                            .cornerRadius(12)
-                                }
-                            }
+                            RestaurantCardView(restaurant: value.wrappedValue)
                         }
                         .padding(.bottom, 15)
                     }

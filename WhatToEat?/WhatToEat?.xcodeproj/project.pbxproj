@@ -10,6 +10,7 @@
 		9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* ErrorCase.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
 		A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A90CC3012913FD5C0030DEFF /* Kingfisher */; };
+		A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90CC303291402240030DEFF /* RestaurantCardView.swift */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */; };
 		A9274EC22822600100E99F2F /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EC12822600100E99F2F /* ColorData.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		9A77DB64290EA3980033F946 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
+		A90CC303291402240030DEFF /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoView.swift; sourceTree = "<group>"; };
 		A9274EC12822600100E99F2F /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 			children = (
 				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
 				A93D641828E71C1800D65901 /* CategoryData.swift */,
+				A90CC303291402240030DEFF /* RestaurantCardView.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BDE9C7281F5D350061C6A3 /* FavoriteRestaurantView.swift in Sources */,
+				A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */,
 				A93D641928E71C1800D65901 /* CategoryData.swift in Sources */,
 				A998B4C028DDD30000C593B3 /* FoodListViewExtension.swift in Sources */,
 				A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */,
