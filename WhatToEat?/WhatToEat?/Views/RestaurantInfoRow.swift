@@ -1,4 +1,4 @@
-import NukeUI
+import Kingfisher
 import SwiftUI
 
 struct RestaurantInfoRow: View {
@@ -6,17 +6,24 @@ struct RestaurantInfoRow: View {
 
     var body: some View {
         HStack {
-            LazyImage(source: restaurant.imageFile.files.first!.file.url) { state in
-                if let image = state.image {
-                    image
-                } else if state.error != nil {
-                    Text("Error")
-                } else {
-                    Text("이미지를 받아오고 있어요!")
-                        .foregroundColor(.detailBlack)
+
+            KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
+                .placeholder { //플레이스 홀더 설정
+                    VStack {
+                        Text("이미지를 받아오고 있어요!")
+                        ProgressView()
+                    }
+                }.retry(maxCount: 3, interval: .seconds(5)) //재시도
+                .onSuccess {r in //성공
+                    print("succes: \(r)")
                 }
-            }
-            .frame(width: 50, height: 50)
+                .onFailure { e in //실패
+                    print("failure: \(e)")
+                }
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+                .cornerRadius(5)
 
             Text(restaurant.name.title.first!.text.content)
                 .customInfoContent2()

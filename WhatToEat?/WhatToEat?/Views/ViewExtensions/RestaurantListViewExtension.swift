@@ -4,7 +4,7 @@
 //
 //  Created by Jisu Jang on 2022/09/30.
 //
-import NukeUI
+import Kingfisher
 import SwiftUI
 import Foundation
 
@@ -36,7 +36,7 @@ extension RestaurantListView {
         .padding(.bottom, 10)
     }
 
-    func foodList() -> some View {
+    func restaurantList() -> some View {
         ScrollView {
             LazyVStack(alignment: .center) {
                 if !modelData.foodCategoryFiltered.isEmpty {
@@ -57,22 +57,23 @@ extension RestaurantListView {
                                         .font(.system(size: 20).weight(.heavy))
                                         .frame(width: 300, alignment: .leading)
 
-                                    LazyImage(source: value.wrappedValue.imageFile.files.first!.file.url) { state in
-                                        if let image = state.image {
-                                            image
-                                        } else if state.error != nil {
-                                            AsyncImage(url: URL(string: value.wrappedValue.imageFile.files.first!.file.url)) { image in
-                                                image
-                                            } placeholder: {
-                                                ProgressView()
+                                    KFImage(URL(string: value.wrappedValue.imageFile.files.first!.file.url))
+                                            .placeholder { //플레이스 홀더 설정
+                                                VStack {
+                                                    Text("이미지를 받아오고 있어요!")
+                                                    ProgressView()
+                                                }
+                                            }.retry(maxCount: 3, interval: .seconds(5)) //재시도
+                                            .onSuccess {r in //성공
+                                                print("succes: \(r)")
                                             }
-
-                                        } else {
-                                            Text("이미지를 받아오고 있어요!")
-                                        }
-                                    }
-                                    .frame(width: 220, height: 220)
-                                    .cornerRadius(12)
+                                            .onFailure { e in //실패
+                                                print("failure: \(e)")
+                                            }
+                                            .cancelOnDisappear(false)
+                                            .resizable()
+                                            .frame(width: 220, height: 220)
+                                            .cornerRadius(12)
                                 }
                             }
                         }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* ErrorCase.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
+		A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A90CC3012913FD5C0030DEFF /* Kingfisher */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
 		A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */; };
 		A9274EC22822600100E99F2F /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EC12822600100E99F2F /* ColorData.swift */; };
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */,
 				A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +196,7 @@
 			name = "WhatToEat?";
 			packageProductDependencies = (
 				A9659F9828E5DF07000196F1 /* NukeUI */,
+				A90CC3012913FD5C0030DEFF /* Kingfisher */,
 			);
 			productName = "WhatToEat?";
 			productReference = A9B9607F281C10F2004779A6 /* WhatToEat?.app */;
@@ -225,6 +228,7 @@
 			mainGroup = A9B96076281C10F2004779A6;
 			packageReferences = (
 				A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */,
+				A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A9B96080281C10F2004779A6 /* Products */;
 			projectDirPath = "";
@@ -488,6 +492,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/NukeUI.git";
@@ -499,6 +511,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A90CC3012913FD5C0030DEFF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		A9659F9828E5DF07000196F1 /* NukeUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */;

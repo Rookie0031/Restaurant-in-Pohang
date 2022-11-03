@@ -33,7 +33,7 @@ struct RecommendView: View {
                 getRecommendationButton()
             }
             .padding(20)
-            .navigationTitle("맛집을 추천드릴게요!")
+            .navigationTitle("맛집 추천")
         }
     }
 }

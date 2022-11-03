@@ -16,7 +16,7 @@ struct NoRecommendationView: View {
         VStack {
             Spacer()
 
-            Text("아쉽게도 원하시는 맛집이 없어요...")
+            Text("아쉽게도 원하시는 맛집이 없군요!")
                 .font(.system(size: 20).weight(.heavy))
                 .padding(.bottom,50)
             
