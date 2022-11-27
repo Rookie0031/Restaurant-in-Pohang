@@ -15,6 +15,10 @@
 	</array>
 	<key>CFBundleGetInfoString</key>
 	<string></string>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>CFBundleIdentifier</key>
+	<string></string>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>

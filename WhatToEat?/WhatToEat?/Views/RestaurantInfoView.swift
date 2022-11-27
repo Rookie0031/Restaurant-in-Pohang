@@ -22,7 +22,7 @@ struct RestaurantInfoView: View {
     }
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             Rectangle()
                 .foregroundColor(.orange.opacity(0.03))
                 .cornerRadius(20)
@@ -32,6 +32,7 @@ struct RestaurantInfoView: View {
                 foodDescription()
                 Spacer()
             }
+            .padding(.top, 40)
         }
     }
 
@@ -50,18 +51,15 @@ struct RestaurantInfoView: View {
             .frame(width: 270, alignment: .leading)
 
             KFImage(URL(string: foodInformation.imageFile.files.first!.file.url))
-                .placeholder { //플레이스 홀더 설정
+                .retry(RetryWhenFailed())
+                .retry(maxCount: 3, interval: .seconds(10))
+                .placeholder {
                     VStack {
                         Text("이미지를 받아오고 있어요!")
                         ProgressView()
                     }
-                }.retry(maxCount: 3, interval: .seconds(5)) //재시도
-                .onSuccess {r in //성공
-                    print("succes: \(r)")
                 }
-                .onFailure { e in //실패
-                    print("failure: \(e)")
-                }
+                .onFailure { print("failure: \($0)")}
                 .resizable()
                 .frame(width: 300, height: 300)
                 .scaledToFill()

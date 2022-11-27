@@ -13,27 +13,21 @@ struct RestaurantCardView: View {
     var body: some View {
 
         ZStack {
-
             ZStack {
                 KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
-                    .placeholder { //플레이스 홀더 설정
+                    .placeholder {
                         VStack {
                             Text("이미지를 받아오고 있어요!")
                             ProgressView()
                         }
-                    }.retry(maxCount: 3, interval: .seconds(5)) //재시도
-                    .onSuccess {r in //성공
-                        print("succes: \(r)")
                     }
-                    .onFailure { e in //실패
-                        print("failure: \(e)")
-                    }
-                    .cancelOnDisappear(false)
+                    .retry(RetryWhenFailed())
+                    .retry(maxCount: 3, interval: .seconds(10))
+                    .onFailure { print("failure: \($0)") }
                     .resizable()
                     .frame(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.width * 0.75)
                     .cornerRadius(12)
             }
-                        
 
             Text("\(restaurant.name.title.first!.text.content)")
                 .foregroundColor(.white)

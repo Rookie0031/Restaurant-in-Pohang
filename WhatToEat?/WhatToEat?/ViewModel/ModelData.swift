@@ -8,18 +8,10 @@ import SwiftUI
 import Foundation
 
 class ModelData: ObservableObject {
+
     @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
     @Published var localData: [Properties] = []
-
-    var cachedImages = NSCache<NSString, NSData>()
-    
-    var westernFoodImages: [UIImage] = []
-    var koreanFoodImages: [UIImage] = []
-    var chineseFoodImages: [UIImage] = []
-    var japaneseFoodImages: [UIImage] = []
-    var cafeFoodImages: [UIImage] = []
-    var asianFoodImages: [UIImage] = []
 
     @MainActor
     func getFromNotionDB() async {
@@ -38,7 +30,6 @@ class ModelData: ObservableObject {
             if !(200...299).contains(httpResponse.statusCode) {
                 throw NetworkError.responseError
             }
-
             
             var western : [Properties] = []
             var korean : [Properties] = []
@@ -79,6 +70,10 @@ class ModelData: ObservableObject {
             
             print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
             
+        } catch NetworkError.decoidngError {
+            print(NetworkError.decoidngError.localizedDescription)
+        } catch NetworkError.responseError {
+            print(NetworkError.responseError.localizedDescription)
         } catch {
             print(error)
         }
