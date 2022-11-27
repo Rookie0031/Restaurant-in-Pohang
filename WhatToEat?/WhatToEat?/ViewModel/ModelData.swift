@@ -31,15 +31,14 @@ class ModelData: ObservableObject {
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request as URLRequest)
-            print("전송받은 응답입니다.")
-            print(response)
-            print("=================================================")
-            print("받은 데이터는 다음과 같습니다 \(data)")
-            
-            guard let decodedData = try? JSONDecoder().decode(ExampleDTO.self, from: data) else {
-                print("디코딩에 실패했습니다")
-                return
+
+            guard let decodedData = try? JSONDecoder().decode(ExampleDTO.self, from: data) else { throw NetworkError.decoidngError }
+
+            let httpResponse = response as! HTTPURLResponse
+            if !(200...299).contains(httpResponse.statusCode) {
+                throw NetworkError.responseError
             }
+
             
             var western : [Properties] = []
             var korean : [Properties] = []

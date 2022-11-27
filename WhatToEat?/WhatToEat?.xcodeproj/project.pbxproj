@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* ErrorCase.swift */; };
+		9A77DB65290EA3980033F946 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* NetworkError.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
 		A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A90CC3012913FD5C0030DEFF /* Kingfisher */; };
 		A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90CC303291402240030DEFF /* RestaurantCardView.swift */; };
@@ -37,7 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9A77DB64290EA3980033F946 /* ErrorCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCase.swift; sourceTree = "<group>"; };
+		9A77DB64290EA3980033F946 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
 		A90CC303291402240030DEFF /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		9A77DB63290EA38D0033F946 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				9A77DB64290EA3980033F946 /* ErrorCase.swift */,
+				9A77DB64290EA3980033F946 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 				A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */,
 				A93A0112281E39860069B86A /* ImageModifier.swift in Sources */,
 				A98B1B2A293330250082B779 /* DataBaseInfo.swift in Sources */,
-				9A77DB65290EA3980033F946 /* ErrorCase.swift in Sources */,
+				9A77DB65290EA3980033F946 /* NetworkError.swift in Sources */,
 				A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,
