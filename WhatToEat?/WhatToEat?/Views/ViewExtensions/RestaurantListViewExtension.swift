@@ -32,6 +32,7 @@ extension RestaurantListView {
                 }
             }
         }
+        .padding(.top, 10)
         .padding(.leading, 20)
         .padding(.bottom, 10)
     }

@@ -16,7 +16,7 @@ struct WhatToEatApp: App {
             MainTabView()
                 .environmentObject(rootModelData)
                 .onAppear {
-                    ModelData.loadLocalData { result in
+                    Persistence.loadLocalData { result in
                         switch result {
                         case .failure(let error):
                             fatalError(error.localizedDescription)

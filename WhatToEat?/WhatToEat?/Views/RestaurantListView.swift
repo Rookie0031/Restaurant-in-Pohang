@@ -11,7 +11,6 @@ struct RestaurantListView: View {
 
     @ObservedObject var modelData: ModelData
     @State var currentIndex = 0
-    var cache = NSCache<AnyObject, AnyObject>()
     
     var body: some View {
         NavigationView {

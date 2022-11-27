@@ -29,7 +29,7 @@ struct FavoriteRestaurantView: View {
         .onChange(of: scenePhase, perform: { phase in
             if phase == .inactive {
                 print("The scene becomes inactive")
-                ModelData.saveLocalData(data: modelData.localData) { result in
+                Persistence.saveLocalData(data: modelData.localData) { result in
                     if case .failure(let failure) = result {
                         fatalError(failure.localizedDescription)
                     }

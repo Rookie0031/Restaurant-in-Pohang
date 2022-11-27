@@ -7,7 +7,7 @@ import SwiftUI
 
 struct RecommendView: View {
 
-    // MARK: 맛집 추천 로직 구조와, 카테고리 선택 구조상 State Wrapper property가 이렇게 많이 필요하게 되었다.
+    // MARK: 현재 로컬 내에서 필터링 하도록 처리되어있는데, notion DB에 쿼리하도록 개선할 수 있음
     @ObservedObject var modelData : ModelData
     @State var foodCategoryFiltered : [Properties] = []
     @State var numberOfPeopleFiltered : [Properties] = []
