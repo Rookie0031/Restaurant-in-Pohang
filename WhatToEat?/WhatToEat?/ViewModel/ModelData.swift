@@ -5,13 +5,13 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 import SwiftUI
-import UIKit
 import Foundation
 
 class ModelData: ObservableObject {
     @Published var serverData: [Properties] = []
     @Published var foodCategoryFiltered: [[Properties]] = []
     @Published var localData: [Properties] = []
+
     var cachedImages = NSCache<NSString, NSData>()
     
     var westernFoodImages: [UIImage] = []
@@ -26,13 +26,15 @@ class ModelData: ObservableObject {
                                     in: .userDomainMask,
                                     appropriateFor: nil,
                                     create: false)
-        .appendingPathComponent("TestData.data")
+        .appendingPathComponent("restaurants.data")
     }
     
     // persistence
     static func loadLocalData(completion: @escaping (Result<[Properties], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
+                // Because restaurants.data doesn’t exist when a user launches the app for the first time, you call the completion handler with an empty array if there’s an error opening the file handle.
+                // Reference: https://developer.apple.com/tutorials/app-dev-training/persisting-data
                 let fileURL = try fileURL()
                 guard let file = try? FileHandle(forReadingFrom: fileURL) else {
                     DispatchQueue.main.async {
@@ -71,35 +73,7 @@ class ModelData: ObservableObject {
             }
         }
     }
-    
-//    func getImageData(url: URL, completion: @escaping ((Error)->Void)) {
-//        let session: URLSession = URLSession(configuration: URLSessionConfiguration.default)
-//        let task = session.downloadTask(with: url) { imageDataURL, response, error in
-//            if let error = error {
-//                completion(error)
-//                return
-//            }
-//
-//            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-//                completion(NetworkError.responseError)
-//                return
-//            }
-//
-//            guard let iamgeDataURL = imageDataURL else {
-//                completion(NetworkError.wrongURL)
-//                return
-//            }
-//
-//            do {
-//                let data = try Data(contentsOf: iamgeDataURL)
-//                self.cachedImages.setObject(data as NSData, forKey: imageDataURL?.absoluteString as NSString)
-//            } catch let error {
-//                completion(error)
-//            }
-//        }
-//        task.resume()
-//    }
-    
+
     @MainActor
     func getFromNotionDB() async {
         let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
@@ -167,7 +141,7 @@ class ModelData: ObservableObject {
             print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
             
         } catch {
-            print("Invalid Service")
+            print(error)
         }
     }
 }

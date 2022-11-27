@@ -16,9 +16,10 @@ struct FavoriteButton: View {
             property.favorite.checkbox.toggle()
 
         } label: {
-            Label("Toggle Favorite", systemImage: property.favorite.checkbox ? "star.fill" : "star")
-                .labelStyle(.iconOnly)
-                .foregroundColor(property.favorite.checkbox ? .yellow : .gray)
+            Image(systemName: property.favorite.checkbox ? "heart.fill" : "heart")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .foregroundColor(property.favorite.checkbox ? .pink : .gray)
         }
     }
 }

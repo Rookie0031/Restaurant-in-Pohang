@@ -9,7 +9,7 @@ import SwiftUI
 import Foundation
 
 extension RestaurantListView {
-    func foodCategoryChoice() -> some View {
+    func FoodCategories() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
                 ForEach(foodCategory, id: \.self) { value in
@@ -36,7 +36,7 @@ extension RestaurantListView {
         .padding(.bottom, 10)
     }
 
-    func restaurantList() -> some View {
+    func RestaurantList() -> some View {
         ScrollView {
             LazyVStack(alignment: .center) {
                 if !modelData.foodCategoryFiltered.isEmpty {
@@ -44,6 +44,7 @@ extension RestaurantListView {
                         value in
                         NavigationLink {
                             RestaurantInfoView(foodInformation: value.wrappedValue)
+                                .navigationBarTitleDisplayMode(.inline)
                         } label: {
                             RestaurantCardView(restaurant: value.wrappedValue)
                         }
