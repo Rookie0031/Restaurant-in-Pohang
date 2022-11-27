@@ -23,18 +23,11 @@ class ModelData: ObservableObject {
 
     @MainActor
     func getFromNotionDB() async {
-        let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
-        let databaseID = "206c4793c7e6428eb8235279a3e445af"
-        let readURL = "https://api.notion.com/v1/databases/\(databaseID)/query"
-        let headers = [
-            "Authorization": "Bearer " + token,
-            "Notion-Version": "2022-06-28"
-        ]
-        
-        let request = NSMutableURLRequest(url: NSURL(string: readURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+
+        let request = NSMutableURLRequest(url: NSURL(string: DataBaseInfo.readURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         
         request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
+        request.allHTTPHeaderFields = DataBaseInfo.headers
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request as URLRequest)
