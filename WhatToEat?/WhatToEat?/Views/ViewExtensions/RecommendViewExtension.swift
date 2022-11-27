@@ -13,7 +13,7 @@ extension RecommendView {
         return ["양식","한식","중식","일식","카페/디저트", "기타"]
     }
     var peopleCategory : [String] {
-        return ["혼밥!","둘이서", "3~4명", "단체로!"]
+        return ["혼밥","둘이서", "3~4명", "단체로"]
     }
     var priceCategory : [String] {
         return ["6000원 이하", "6000원~8000원", "8000원~10000원", "10000원 이상"]
@@ -142,14 +142,16 @@ extension RecommendView {
                         getRecommendation()
                         isActive.toggle()
                     } label: {
-                        Text("맛집 추천받기!")
+                        Text("추천받기")
+                            .font(.system(size: 20, weight: .bold))
                             .customButtonFormat()
                             .padding(.bottom, 20)
                     }
                 }
             }
             else {
-                Text("맛집 추천받기!")
+                Text("맛집 추천받기")
+                    .font(.system(size: 20, weight: .bold))
                     .customButtonFormat()
                     .padding(.bottom, 20)
             }

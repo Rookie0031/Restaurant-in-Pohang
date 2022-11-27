@@ -17,10 +17,10 @@ enum FoodCategory: String, CaseIterable {
 }
 
 enum PeopleCategory: String, CaseIterable {
-    case single = "혼밥!"
+    case single = "혼밥"
     case double = "둘이서"
     case threeOrFour = "3~4명"
-    case many = "단체로!"
+    case many = "단체로"
 }
 
 enum PriceCategory: String, CaseIterable {
