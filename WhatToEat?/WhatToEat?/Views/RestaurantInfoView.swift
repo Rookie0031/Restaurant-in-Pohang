@@ -24,19 +24,20 @@ struct RestaurantInfoView: View {
     var body: some View {
         ZStack(alignment: .center) {
             Rectangle()
-                .foregroundColor(.orange.opacity(0.03))
+                .foregroundColor(.orange.opacity(0.07))
                 .cornerRadius(20)
 
             VStack {
-                foodTitleAndImage()
-                foodDescription()
+                FoodTitleAndImage()
+                FoodDescription()
                 Spacer()
             }
             .padding(.top, 40)
         }
+        .padding()
     }
 
-    private func foodTitleAndImage() -> some View {
+    private func FoodTitleAndImage() -> some View {
         VStack {
             HStack {
                 Text("\(foodInformation.name.title.first!.text.content)")
@@ -69,7 +70,7 @@ struct RestaurantInfoView: View {
         .cornerRadius(15)
     }
 
-    private func foodDescription() -> some View {
+    private func FoodDescription() -> some View {
         VStack(alignment: .leading, spacing: 10) {
 
             HStack {

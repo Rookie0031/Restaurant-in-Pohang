@@ -14,7 +14,7 @@ struct RestaurantListView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment:.leading, spacing: 10) {
+            VStack(alignment:.leading) {
                 FoodCategories()
                 RestaurantList()
             }
