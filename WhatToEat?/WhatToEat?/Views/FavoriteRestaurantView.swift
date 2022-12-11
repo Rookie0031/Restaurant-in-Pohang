@@ -20,6 +20,7 @@ struct FavoriteRestaurantView: View {
             List(favoriteRestaurants, id: \.id.number) {restaurant in
                 NavigationLink{
                     RestaurantInfoView(foodInformation: restaurant)
+                        .navigationBarTitleDisplayMode(.inline)
                 } label: {
                     RestaurantInfoRow(restaurant: restaurant)
                 }

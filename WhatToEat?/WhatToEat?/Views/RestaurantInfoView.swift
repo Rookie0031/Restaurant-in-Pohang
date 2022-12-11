@@ -63,7 +63,7 @@ struct RestaurantInfoView: View {
                 .onFailure { print("failure: \($0)")}
                 .resizable()
                 .frame(width: 300, height: 300)
-                .scaledToFill()
+                .aspectRatio(contentMode: .fit)
                 .cornerRadius(20)
         }
         .padding(.top, 10)

@@ -137,7 +137,7 @@ extension RecommendView {
     func getRecommendationButton() -> some View {
         VStack {
             if !modelData.localData.isEmpty {
-                NavigationLink(destination: AnyView(getDestination()), isActive: $isActive) {
+                NavigationLink(destination: AnyView(getDestination().navigationBarTitleDisplayMode(.inline)), isActive: $isActive) {
                     Button {
                         getRecommendation()
                         isActive.toggle()
