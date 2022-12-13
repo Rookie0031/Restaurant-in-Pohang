@@ -6,7 +6,6 @@ struct RestaurantInfoRow: View {
 
     var body: some View {
         HStack {
-
             KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
                 .placeholder { //플레이스 홀더 설정
                     VStack {

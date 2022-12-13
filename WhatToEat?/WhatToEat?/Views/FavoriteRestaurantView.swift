@@ -24,6 +24,7 @@ struct FavoriteRestaurantView: View {
                     RestaurantInfoRow(restaurant: restaurant)
                 }
             }
+            .listRowSeparator(.hidden)
             .navigationTitle("먹킷리스트")
         }
         .onChange(of: scenePhase, perform: { phase in
