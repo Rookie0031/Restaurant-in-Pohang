@@ -36,8 +36,7 @@ MVVM의 장점으 ~~ 입니다. 여기 앱의 특성상 ~~ 맞습니다.
 # :star: Data Flow Chart
 App running시 다음과 같은 data flow를 가집니다.
 
-<img width="1000" alt="뭐먹지 데이터플로우(2)" src="https://user-images.githubusercontent.com/103009135/193453266-b85cd315-948e-4581-8304-b5b575cd0894.png">
-
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/103009135/207224394-d23b4422-a701-417f-95c4-775e9c2a3bf4.png">
 
 ## :pushpin: Features & Design
 
@@ -62,13 +61,13 @@ App running시 다음과 같은 data flow를 가집니다.
 
 ![FoodListApp](https://user-images.githubusercontent.com/103009135/167294897-a332ac1e-31d5-4c36-8140-38bf3f7a2727.png )
 
-## 느낀점
+## Growth Points
 #### 처음부터 잘하자!(힘들겠지만)
-과거의 내가 개판쳤던 코드를 수정하는 작업이 더걸린다… 처음부터 똑바로 잘해야겠다고 생각했다.
-특히 enum이나 이런 부분들은 추후에 수정할 수가 없었다
+과거에 신중하게 작성하지 못했더 코드를 리팩토링해보면서 처음부터 신중학 구조를 짜고 계획적으로 개발해야겠다고 생각했다.
+특히 enum이나 이런 부분들은 추후에 수정할 수가 없었다.
 
-#### PR과 커밋으 잘 쪼개자! 
-viewModel 등도 마찬가지였다 
+#### PR과 커밋을 잘 쪼개자! 
+혼자서 개발할 때도 여러 업데이트 사항이 있기 때문에 커밋 메시지와 PR을 잘 작성해야겠닥 느꼈다.
 
 
 ## :books: Documentation
