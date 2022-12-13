@@ -18,7 +18,6 @@
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
 		A93D641928E71C1800D65901 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D641828E71C1800D65901 /* CategoryData.swift */; };
-		A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9659F9828E5DF07000196F1 /* NukeUI */; };
 		A9659F9C28E5EAA5000196F1 /* WhatToEatAppExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9659F9B28E5EAA5000196F1 /* WhatToEatAppExtension.swift */; };
 		A9659F9E28E5EC57000196F1 /* RestaurantListViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9659F9D28E5EC57000196F1 /* RestaurantListViewExtension.swift */; };
 		A98B1B2529332E0D0082B779 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B1B2429332E0D0082B779 /* Persistence.swift */; };
@@ -74,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */,
-				A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,7 +210,6 @@
 			);
 			name = "WhatToEat?";
 			packageProductDependencies = (
-				A9659F9828E5DF07000196F1 /* NukeUI */,
 				A90CC3012913FD5C0030DEFF /* Kingfisher */,
 			);
 			productName = "WhatToEat?";
@@ -447,7 +444,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JisuJang.WhatToEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -481,7 +478,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JisuJang.WhatToEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -537,11 +534,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		A9659F9828E5DF07000196F1 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */;
-			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -4,7 +4,6 @@
 //
 //  Created by Jisu Jang on 2022/05/02.
 //
-import NukeUI
 import SwiftUI
 
 struct RestaurantListView: View {
