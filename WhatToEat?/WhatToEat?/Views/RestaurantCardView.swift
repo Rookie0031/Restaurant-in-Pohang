@@ -14,19 +14,37 @@ struct RestaurantCardView: View {
 
         ZStack {
             ZStack {
-                KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
-                    .placeholder {
+                AsyncImage(url: URL(string: restaurant.imageFile.files.first!.file.url)) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFit()// Displays the loaded image.
+                    } else if phase.error != nil {
+                        Text("이미지 다운에 실패했어요")
+                    } else {
                         VStack {
                             Text("이미지를 받아오고 있어요!")
                             ProgressView()
                         }
                     }
-                    .retry(RetryWhenFailed())
-                    .retry(maxCount: 3, interval: .seconds(10))
-                    .onFailure { print("failure: \($0)") }
-                    .resizable()
-                    .frame(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.width * 0.75)
-                    .cornerRadius(12)
+                }
+                .frame(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.width * 0.75)
+                .cornerRadius(12)
+
+
+//                KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
+//                    .placeholder {
+//                        VStack {
+//                            Text("이미지를 받아오고 있어요!")
+//                            ProgressView()
+//                        }
+//                    }
+//                    .retry(RetryWhenFailed())
+//                    .retry(maxCount: 3, interval: .seconds(10))
+//                    .onFailure { print("failure: \($0)") }
+//                    .resizable()
+//                    .frame(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.width * 0.75)
+//                    .cornerRadius(12)
             }
 
             Text("\(restaurant.name.title.first!.text.content)")
