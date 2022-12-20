@@ -26,7 +26,6 @@ URLSession으로 통시 구조를 이용하는것은 completion Hanlder가 있�
 
 ## ⚜️Design Pattern
 - MVVM 구조를 사용했습니다. (단일 ObservableObject로 데이터 플로우 관리)
-MVVM의 장점으 ~~ 입니다. 여기 앱의 특성상 ~~ 맞습니다. 
 
 # :star: Data Flow Chart
 App running시 다음과 같은 data flow를 가집니다.
