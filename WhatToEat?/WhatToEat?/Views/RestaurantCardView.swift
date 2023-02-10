@@ -8,7 +8,7 @@ import SwiftUI
 import Kingfisher
 
 struct RestaurantCardView: View {
-    var restaurant: Properties
+    let restaurant: Properties
 
     var body: some View {
 

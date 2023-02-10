@@ -6,7 +6,6 @@
 //
 import Kingfisher
 import SwiftUI
-import Foundation
 
 extension RestaurantListView {
     func FoodCategories() -> some View {

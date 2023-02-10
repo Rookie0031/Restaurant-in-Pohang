@@ -1,3 +1,9 @@
+//
+//  FoodInfoViewReco.swift
+//  WhatToEat?
+//
+//  Created by Jisu Jang on 2022/05/04.
+//
 import Kingfisher
 import SwiftUI
 
@@ -6,7 +12,6 @@ struct RestaurantInfoRow: View {
 
     var body: some View {
         HStack {
-
             KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
                 .placeholder { //플레이스 홀더 설정
                     VStack {

@@ -3,11 +3,8 @@
 ////  WhatToEat?
 ////
 ////  Created by Jisu Jang on 2022/09/22.
-import Foundation
 import SwiftUI
 
-// MARK: Case 분류해놓았으나, raw value를 써야하는 경우가 너무 많아 일단 array로 처리해놓음
-// 굳이 이런 경우 case로 바꿔야하는가?
 extension RecommendView {
     var foodCategory : [String] {
         return ["양식","한식","중식","일식","카페/디저트", "기타"]
@@ -23,15 +20,18 @@ extension RecommendView {
     }
 }
 
-// functions related to view
+//MARK: View inside the stack
 extension RecommendView {
     func foodTypeQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("어떤 종류가 먹고 싶나요?")
                 .customInfoTitle()
+            
+            //MARK: ScrollView 데이터를 외부에서 주입하는 방식으로 하면 보일러 플레이트 코드를 줄일 수 있을듯?
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
+                    //TODO: 강제언래핑 삭제
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
                             foodCategoryIndex = foodCategory.firstIndex(of: category)!
@@ -46,6 +46,7 @@ extension RecommendView {
                     }
                 }
             }
+            
             Divider()
         }
     }
@@ -137,7 +138,9 @@ extension RecommendView {
     func getRecommendationButton() -> some View {
         VStack {
             if !modelData.localData.isEmpty {
-                NavigationLink(destination: AnyView(getDestination().navigationBarTitleDisplayMode(.inline)), isActive: $isActive) {
+                NavigationLink(
+                    destination: AnyView(getDestination().navigationBarTitleDisplayMode(.inline)),
+                    isActive: $isActive) {
                     Button {
                         getRecommendation()
                         isActive.toggle()
@@ -162,6 +165,7 @@ extension RecommendView {
         if finalFilteredGroup.isEmpty {
             return NoRecommendationView()
         } else {
+            //MARK: 강제언래핑 삭제
             return RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement()!)
         }
     }

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct NoRecommendationView: View {
     @Environment(\.dismiss) private var dismiss
-    @State private var testfor = false
     
     var body: some View {
         
