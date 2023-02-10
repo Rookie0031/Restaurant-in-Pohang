@@ -21,7 +21,7 @@ struct MainTabView: View {
         }
         .task {
             if !isFirstLaunch {
-                await modelData.getFromNotionDB()
+                await modelData.queryEntireNotionDB()
                 modelData.localData = modelData.serverData
                 isFirstLaunch = true
             }

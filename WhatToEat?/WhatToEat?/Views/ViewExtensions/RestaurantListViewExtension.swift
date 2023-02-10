@@ -8,6 +8,11 @@ import Kingfisher
 import SwiftUI
 
 extension RestaurantListView {
+    
+    var foodCategory : [String] {
+        return ["양식","한식","중식","일식","카페/디저트", "기타"]
+    }
+    
     func FoodCategories() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
@@ -39,8 +44,8 @@ extension RestaurantListView {
     func RestaurantList() -> some View {
         ScrollView {
             LazyVStack(alignment: .center) {
-                if !modelData.foodCategoryFiltered.isEmpty {
-                    ForEach($modelData.foodCategoryFiltered[currentIndex], id: \.self) {
+                if !modelData.categoryFood.isEmpty {
+                    ForEach($modelData.categoryFood[currentIndex], id: \.self) {
                         value in
                         NavigationLink {
                             RestaurantInfoView(foodInformation: value.wrappedValue)

@@ -7,17 +7,16 @@
 import SwiftUI
 import Foundation
 
-class ModelData: ObservableObject {
+final class ModelData: ObservableObject {
 
     @Published var serverData: [Properties] = []
-    @Published var foodCategoryFiltered: [[Properties]] = []
+    @Published var categoryFood: [[Properties]] = []
     @Published var localData: [Properties] = []
 
     @MainActor
-    func getFromNotionDB() async {
+    func queryEntireNotionDB() async {
 
         let request = NSMutableURLRequest(url: NSURL(string: DataBaseInfo.readURL)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-        
         request.httpMethod = "POST"
         request.allHTTPHeaderFields = DataBaseInfo.headers
         
@@ -61,14 +60,14 @@ class ModelData: ObservableObject {
             }
             print("foodData에 Properties를 모두 추가했습니다 \(serverData.count)")
             
-            self.foodCategoryFiltered.append(western)
-            self.foodCategoryFiltered.append(korean)
-            self.foodCategoryFiltered.append(chinese)
-            self.foodCategoryFiltered.append(japanese)
-            self.foodCategoryFiltered.append(cafe)
-            self.foodCategoryFiltered.append(asian)
+            self.categoryFood.append(western)
+            self.categoryFood.append(korean)
+            self.categoryFood.append(chinese)
+            self.categoryFood.append(japanese)
+            self.categoryFood.append(cafe)
+            self.categoryFood.append(asian)
             
-            print("foodCategory에 Properties를 모두 추가했습니다 \(foodCategoryFiltered.count)")
+            print("foodCategory에 Properties를 모두 추가했습니다 \(categoryFood.count)")
             
         } catch NetworkError.decoidngError {
             print(NetworkError.decoidngError.localizedDescription)
