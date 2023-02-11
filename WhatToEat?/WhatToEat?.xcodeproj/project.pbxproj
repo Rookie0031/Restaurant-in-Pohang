@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		9A77DB65290EA3980033F946 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* NetworkError.swift */; };
 		9A847C0B2996366A00AC3BD5 /* RestaurantInforViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A847C0A2996366A00AC3BD5 /* RestaurantInforViewExtension.swift */; };
+		9AC7ECCF299711C2003E9409 /* PostMatZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECCE299711C2003E9409 /* PostMatZip.swift */; };
+		9AC7ECD329971440003E9409 /* PicturePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECD229971440003E9409 /* PicturePicker.swift */; };
+		9AC7ECD529975150003E9409 /* PictureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECD429975150003E9409 /* PictureViewModel.swift */; };
+		9AC7ECD729975173003E9409 /* PictureErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECD629975173003E9409 /* PictureErrorHandling.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
 		A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A90CC3012913FD5C0030DEFF /* Kingfisher */; };
 		A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90CC303291402240030DEFF /* RestaurantCardView.swift */; };
@@ -40,6 +44,10 @@
 /* Begin PBXFileReference section */
 		9A77DB64290EA3980033F946 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9A847C0A2996366A00AC3BD5 /* RestaurantInforViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInforViewExtension.swift; sourceTree = "<group>"; };
+		9AC7ECCE299711C2003E9409 /* PostMatZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMatZip.swift; sourceTree = "<group>"; };
+		9AC7ECD229971440003E9409 /* PicturePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicturePicker.swift; sourceTree = "<group>"; };
+		9AC7ECD429975150003E9409 /* PictureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureViewModel.swift; sourceTree = "<group>"; };
+		9AC7ECD629975173003E9409 /* PictureErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PictureErrorHandling.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
 		A90CC303291402240030DEFF /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
@@ -107,6 +115,8 @@
 				A908825428C57BA6006FA849 /* NotionDataDTO.swift */,
 				A93D641828E71C1800D65901 /* CategoryData.swift */,
 				A98B1B29293330250082B779 /* DataBaseInfo.swift */,
+				9AC7ECD229971440003E9409 /* PicturePicker.swift */,
+				9AC7ECD629975173003E9409 /* PictureErrorHandling.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B96094281C17AB004779A6 /* ModelData.swift */,
+				9AC7ECD429975150003E9409 /* PictureViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -183,6 +194,7 @@
 			children = (
 				9A77DB62290E9F640033F946 /* ViewExtensions */,
 				A9B96084281C10F2004779A6 /* MainTabView.swift */,
+				9AC7ECCE299711C2003E9409 /* PostMatZip.swift */,
 				A9BDE9C4281F5D1C0061C6A3 /* RestaurantListView.swift */,
 				A9B96090281C1149004779A6 /* RecommendView.swift */,
 				A9BDE9C6281F5D350061C6A3 /* FavoriteRestaurantView.swift */,
@@ -275,14 +287,18 @@
 				A98B1B2E29338EFE0082B779 /* RetryStrategy.swift in Sources */,
 				A9BDE9C7281F5D350061C6A3 /* FavoriteRestaurantView.swift in Sources */,
 				A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */,
+				9AC7ECD729975173003E9409 /* PictureErrorHandling.swift in Sources */,
 				A93D641928E71C1800D65901 /* CategoryData.swift in Sources */,
 				A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */,
 				A93A0112281E39860069B86A /* ImageModifier.swift in Sources */,
 				A98B1B2A293330250082B779 /* DataBaseInfo.swift in Sources */,
 				9A77DB65290EA3980033F946 /* NetworkError.swift in Sources */,
+				9AC7ECD329971440003E9409 /* PicturePicker.swift in Sources */,
+				9AC7ECCF299711C2003E9409 /* PostMatZip.swift in Sources */,
 				A9B96085281C10F2004779A6 /* MainTabView.swift in Sources */,
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,
+				9AC7ECD529975150003E9409 /* PictureViewModel.swift in Sources */,
 				A9659F9C28E5EAA5000196F1 /* WhatToEatAppExtension.swift in Sources */,
 				A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */,
 				A9659F9E28E5EC57000196F1 /* RestaurantListViewExtension.swift in Sources */,
