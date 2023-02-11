@@ -7,12 +7,7 @@
 import SwiftUI
 
 struct PostMatZip: View {
-    @State var currentIndex: Int = 0
-    @State var foodCategoryData: String = ""
-    @State var peopleCategoryData: String = ""
-    @State var priceCategoryData: String = ""
-    @State var locationCategoryData: String = ""
-    @State private var review: String = ""
+    @StateObject private var viewModel = PostMatZipViewModel()
     @StateObject var pictureModel = PictureViewModel()
     
     var body: some View {
@@ -29,9 +24,14 @@ struct PostMatZip: View {
                                 .frame(width: 300, height: 250, alignment: .center)
                                 .scaledToFit()
                                 .cornerRadius(10)
+                                .onAppear {
+                                    guard let jpegData = selectedImage.jpegData(compressionQuality: 0.1) else { return }
+                                    viewModel.imageData = String(data: jpegData, encoding: .utf8) ?? "nil"
+                                }
                         } else {
-                            Image(systemName: "plus")
+                                Image(systemName: "plus")
                                 .frame(width: 300, height: 250, alignment: .center)
+                                .background(Color.backgroundGray)
                                 .cornerRadius(10)
                         }
                     }
@@ -43,7 +43,7 @@ struct PostMatZip: View {
                     HStack {
                         Label("음식종류", systemImage: "fork.knife.circle")
                         Spacer()
-                        Picker("", selection: $foodCategoryData) {
+                        Picker("", selection: $viewModel.category) {
                             ForEach(foodCategory, id:\.self) { category in
                                 Text(category)
                             }
@@ -53,7 +53,7 @@ struct PostMatZip: View {
                     HStack {
                         Label("추천인원", systemImage: "person.2")
                         Spacer()
-                        Picker("", selection: $peopleCategoryData) {
+                        Picker("", selection: $viewModel.people) {
                             ForEach(peopleCategory, id:\.self) { category in
                                 Text(category)
                             }
@@ -63,7 +63,7 @@ struct PostMatZip: View {
                     HStack {
                         Label("가격대", systemImage: "tag.circle")
                         Spacer()
-                        Picker("", selection: $priceCategoryData) {
+                        Picker("", selection: $viewModel.price) {
                             ForEach(priceCategory, id:\.self) { category in
                                 Text(category)
                             }
@@ -73,7 +73,7 @@ struct PostMatZip: View {
                     HStack {
                         Label("위치", systemImage: "location.circle")
                         Spacer()
-                        Picker("", selection: $locationCategoryData) {
+                        Picker("", selection: $viewModel.location) {
                             ForEach(locationCategory, id:\.self) { category in
                                 Text(category)
                             }
@@ -86,12 +86,14 @@ struct PostMatZip: View {
                 
                 Section {
                     ZStack(alignment: .leading) {
-                        if review.isEmpty {
+                        if viewModel.description.isEmpty {
                             Text("후기를 입력해주세요")
                                 .foregroundColor(.black.opacity(0.6))
+                                .offset(y: -15)
                         }
-                        TextEditor(text: $review)
+                        TextEditor(text: $viewModel.description)
                             .font(.subheadline)
+                            .frame(minHeight: 50)
                     }
                 } header: {
                     Text("후기")
@@ -99,7 +101,7 @@ struct PostMatZip: View {
 
                 Section {
                     Button {
-                        print("데이터 전송하기")
+                        viewModel.createNotionPage()
                     } label: {
                         Text("제보하기")
                             .font(.system(size: 20, weight: .bold))

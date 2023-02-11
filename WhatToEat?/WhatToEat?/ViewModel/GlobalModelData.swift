@@ -7,7 +7,7 @@
 import SwiftUI
 import Foundation
 
-final class ModelData: ObservableObject {
+final class GlobalModelData: ObservableObject {
 
     @Published var serverData: [Properties] = []
     @Published var categoryFood: [[Properties]] = []

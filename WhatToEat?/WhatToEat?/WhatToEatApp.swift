@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct WhatToEatApp: App {
-    @StateObject var rootModelData = ModelData()
+    @StateObject var rootModelData = GlobalModelData()
     
     var body: some Scene {
         WindowGroup {

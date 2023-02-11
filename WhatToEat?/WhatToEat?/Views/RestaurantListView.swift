@@ -8,7 +8,7 @@ import SwiftUI
 
 struct RestaurantListView: View {
 
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: GlobalModelData
     @State private var showModal = false
     @State var currentIndex = 0
     

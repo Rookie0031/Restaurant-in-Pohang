@@ -10,7 +10,7 @@ import SwiftUI
 struct FavoriteRestaurantView: View {
 
     @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var modelData: ModelData
+    @ObservedObject var modelData: GlobalModelData
     private var favoriteRestaurants: [Properties] {
         modelData.localData.filter({$0.favorite.checkbox == true})
         }

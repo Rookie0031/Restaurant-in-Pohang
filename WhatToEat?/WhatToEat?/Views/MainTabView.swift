@@ -8,7 +8,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
-    @EnvironmentObject var modelData: ModelData
+    @EnvironmentObject var modelData: GlobalModelData
 
     var body: some View {
         TabView {

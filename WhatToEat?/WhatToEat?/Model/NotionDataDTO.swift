@@ -309,4 +309,3 @@ class JSONNull: Codable, Equatable, Hashable {
         try container.encodeNil()
     }
 }
-
