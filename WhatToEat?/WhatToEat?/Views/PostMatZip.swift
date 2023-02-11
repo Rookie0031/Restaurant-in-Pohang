@@ -16,7 +16,6 @@ struct PostMatZip: View {
     
     var body: some View {
         NavigationView {
-            VStack {
             List {
                 Section {
                     Button {
@@ -83,14 +82,22 @@ struct PostMatZip: View {
                 } header: {
                     Text("음식 정보")
                 }
-            }
-                Button {
-                    print("")
-                } label: {
-                    Text("올리기")
-                        .frame(width: 300, height: 50, alignment: .center)
-                        .background(.blue)
+                
+                Section {
+                    Button {
+                        print("데이터 전송하기")
+                    } label: {
+                        Text("전송")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 65, alignment: .center)
+                            .background(.orange)
+                            .cornerRadius(10)
+                            .padding()
+                    }
                 }
+                .listRowBackground(Color.clear)
             }
             .navigationTitle("맛집 제보")
             .sheet(isPresented: $pictureModel.showPicker) {
