@@ -12,6 +12,7 @@ struct PostMatZip: View {
     @State var peopleCategoryData: String = ""
     @State var priceCategoryData: String = ""
     @State var locationCategoryData: String = ""
+    @State private var review: String = ""
     @StateObject var pictureModel = PictureViewModel()
     
     var body: some View {
@@ -84,13 +85,26 @@ struct PostMatZip: View {
                 }
                 
                 Section {
+                    ZStack(alignment: .leading) {
+                        if review.isEmpty {
+                            Text("후기를 입력해주세요")
+                                .foregroundColor(.black.opacity(0.6))
+                        }
+                        TextEditor(text: $review)
+                            .font(.subheadline)
+                    }
+                } header: {
+                    Text("후기")
+                }
+
+                Section {
                     Button {
                         print("데이터 전송하기")
                     } label: {
                         Text("제보하기")
                             .font(.system(size: 20, weight: .bold))
                             .customButtonFormat()
-                            .padding()
+                            .padding(.top, -15)
                     }
                 }
                 .listRowBackground(Color.clear)
