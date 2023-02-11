@@ -13,7 +13,7 @@ struct ButtonModifier: ViewModifier {
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.065, alignment: .center)
             .foregroundColor(.white)
             .background(.orange)
-            .cornerRadius(UIScreen.main.bounds.width * 0.05)
+            .cornerRadius(UIScreen.main.bounds.width * 0.03)
     }
 }
 

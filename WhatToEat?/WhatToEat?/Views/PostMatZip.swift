@@ -87,13 +87,9 @@ struct PostMatZip: View {
                     Button {
                         print("데이터 전송하기")
                     } label: {
-                        Text("전송")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .frame(width: 300, height: 65, alignment: .center)
-                            .background(.orange)
-                            .cornerRadius(10)
+                        Text("제보하기")
+                            .font(.system(size: 20, weight: .bold))
+                            .customButtonFormat()
                             .padding()
                     }
                 }
