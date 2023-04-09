@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D6D180612F4BFB91FC77E30 /* Pods_WhatToEat_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66C0A67EF1D8664F61ACF869 /* Pods_WhatToEat_.framework */; };
 		9A77DB65290EA3980033F946 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A77DB64290EA3980033F946 /* NetworkError.swift */; };
 		9A847C0B2996366A00AC3BD5 /* RestaurantInforViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A847C0A2996366A00AC3BD5 /* RestaurantInforViewExtension.swift */; };
 		9AC7ECCF299711C2003E9409 /* PostMatZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECCE299711C2003E9409 /* PostMatZip.swift */; };
@@ -16,6 +17,7 @@
 		9AC7ECDD2997C134003E9409 /* PostMatZipViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECDC2997C134003E9409 /* PostMatZipViewModel.swift */; };
 		9AC7ECDF2997C20E003E9409 /* DTOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC7ECDE2997C20E003E9409 /* DTOModel.swift */; };
 		A908825528C57BA6006FA849 /* NotionDataDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = A908825428C57BA6006FA849 /* NotionDataDTO.swift */; };
+		A90A24AD29DBAAE50068F9A1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A90A24AC29DBAAE50068F9A1 /* GoogleService-Info.plist */; };
 		A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A90CC3012913FD5C0030DEFF /* Kingfisher */; };
 		A90CC304291402240030DEFF /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90CC303291402240030DEFF /* RestaurantCardView.swift */; };
 		A9140C4B2820FD7900CC2DCA /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */; };
@@ -44,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		12E42AC04B533C53534E886A /* Pods-WhatToEat?.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEat?.release.xcconfig"; path = "Target Support Files/Pods-WhatToEat?/Pods-WhatToEat?.release.xcconfig"; sourceTree = "<group>"; };
+		2F986EB0F96F2BFC87157C53 /* Pods-WhatToEat?.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToEat?.debug.xcconfig"; path = "Target Support Files/Pods-WhatToEat?/Pods-WhatToEat?.debug.xcconfig"; sourceTree = "<group>"; };
+		66C0A67EF1D8664F61ACF869 /* Pods_WhatToEat_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WhatToEat_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A77DB64290EA3980033F946 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		9A847C0A2996366A00AC3BD5 /* RestaurantInforViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInforViewExtension.swift; sourceTree = "<group>"; };
 		9AC7ECCE299711C2003E9409 /* PostMatZip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMatZip.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		9AC7ECDC2997C134003E9409 /* PostMatZipViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostMatZipViewModel.swift; sourceTree = "<group>"; };
 		9AC7ECDE2997C20E003E9409 /* DTOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOModel.swift; sourceTree = "<group>"; };
 		A908825428C57BA6006FA849 /* NotionDataDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDataDTO.swift; sourceTree = "<group>"; };
+		A90A24AC29DBAAE50068F9A1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A90CC303291402240030DEFF /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		A9140C4A2820FD7900CC2DCA /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoView.swift; sourceTree = "<group>"; };
@@ -87,12 +93,30 @@
 			files = (
 				A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */,
 				A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */,
+				1D6D180612F4BFB91FC77E30 /* Pods_WhatToEat_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5695FF6190C7B3AE83108C33 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F986EB0F96F2BFC87157C53 /* Pods-WhatToEat?.debug.xcconfig */,
+				12E42AC04B533C53534E886A /* Pods-WhatToEat?.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7085EAD01F3AF8871E6B402F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				66C0A67EF1D8664F61ACF869 /* Pods_WhatToEat_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9A77DB62290E9F640033F946 /* ViewExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +171,8 @@
 			children = (
 				A9B96081281C10F2004779A6 /* WhatToEat? */,
 				A9B96080281C10F2004779A6 /* Products */,
+				5695FF6190C7B3AE83108C33 /* Pods */,
+				7085EAD01F3AF8871E6B402F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,9 +187,10 @@
 		A9B96081281C10F2004779A6 /* WhatToEat? */ = {
 			isa = PBXGroup;
 			children = (
+				A90A24AC29DBAAE50068F9A1 /* GoogleService-Info.plist */,
+				A95C5B8528E9BFD300EACCBC /* WhatToEat--Info.plist */,
 				A98B1B2729332E190082B779 /* Persistence */,
 				9A77DB63290EA38D0033F946 /* Network */,
-				A95C5B8528E9BFD300EACCBC /* WhatToEat--Info.plist */,
 				A9B96082281C10F2004779A6 /* WhatToEatApp.swift */,
 				A9F3D198281F89F400844B39 /* Views */,
 				A9659F9A28E5E890000196F1 /* Model */,
@@ -220,9 +247,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9B9608D281C10F3004779A6 /* Build configuration list for PBXNativeTarget "WhatToEat?" */;
 			buildPhases = (
+				C50F2AD100B57170B54494FF /* [CP] Check Pods Manifest.lock */,
 				A9B9607B281C10F2004779A6 /* Sources */,
 				A9B9607C281C10F2004779A6 /* Frameworks */,
 				A9B9607D281C10F2004779A6 /* Resources */,
+				3C0E490352F9F32056A9BE53 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,11 +308,54 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90A24AD29DBAAE50068F9A1 /* GoogleService-Info.plist in Resources */,
 				A9B96087281C10F3004779A6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C0E490352F9F32056A9BE53 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhatToEat?/Pods-WhatToEat?-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WhatToEat?/Pods-WhatToEat?-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WhatToEat?/Pods-WhatToEat?-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C50F2AD100B57170B54494FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToEat?-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9B9607B281C10F2004779A6 /* Sources */ = {
@@ -448,6 +520,7 @@
 		};
 		A9B9608E281C10F3004779A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F986EB0F96F2BFC87157C53 /* Pods-WhatToEat?.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -482,6 +555,7 @@
 		};
 		A9B9608F281C10F3004779A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12E42AC04B533C53534E886A /* Pods-WhatToEat?.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

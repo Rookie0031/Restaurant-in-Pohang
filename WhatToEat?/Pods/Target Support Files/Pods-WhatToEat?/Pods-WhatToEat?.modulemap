@@ -1,0 +1,6 @@
+framework module Pods_WhatToEat_ {
+  umbrella header "Pods-WhatToEat?-umbrella.h"
+
+  export *
+  module * { export * }
+}

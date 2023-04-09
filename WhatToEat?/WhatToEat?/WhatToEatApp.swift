@@ -5,6 +5,8 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 
+import Firebase
+import FirebaseAnalytics
 import SwiftUI
 
 @main
@@ -16,6 +18,7 @@ struct WhatToEatApp: App {
             MainTabView()
                 .environmentObject(rootModelData)
                 .onAppear {
+                    setAnalytics()
                     Persistence.loadLocalData { result in
                         switch result {
                         case .failure(let error):
@@ -27,5 +30,9 @@ struct WhatToEatApp: App {
                     }
                 }
         }
+    }
+
+    private func setAnalytics() {
+        FirebaseApp.configure()
     }
 }
