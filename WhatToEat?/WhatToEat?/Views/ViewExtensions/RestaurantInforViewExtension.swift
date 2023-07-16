@@ -18,7 +18,7 @@ extension RestaurantInfoView {
 
                 Spacer()
 
-                FavoriteButton(modelData: modelData, property: $modelData.localData[foodInformationIndex])
+                FavoriteButton()
             }
             .frame(width: 270, alignment: .leading)
 

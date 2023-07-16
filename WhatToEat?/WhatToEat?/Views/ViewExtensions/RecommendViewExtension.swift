@@ -28,14 +28,13 @@ extension RecommendView {
                 .customInfoTitle()
             
             //MARK: ScrollView 데이터를 외부에서 주입하는 방식으로 하면 보일러 플레이트 코드를 줄일 수 있을듯?
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     //TODO: 강제언래핑 삭제
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
-                            foodCategoryIndex = foodCategory.firstIndex(of: category)!
-                            foodCategoryFiltered = modelData.localData.filter { $0.category.select.name == category }
+                            
                         }) {
                             Text(category)
                                 .customCategory()
@@ -50,25 +49,17 @@ extension RecommendView {
             Divider()
         }
     }
-
+    
     func numberOfPeopleQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("몇명이서 먹을건가요?")
                 .customInfoTitle()
-
+            
             HStack {
                 ForEach(peopleCategory, id: \.self) { value in
                     Button(action: {
                         numberOfPeopleIndex = peopleCategory.firstIndex(of: value)!
-                        for foodData in modelData.localData {
-                            var joinedString = ""
-                            for detailedData in foodData.people.multiSelect {
-                                joinedString += detailedData.name
-                            }
-                            if joinedString.contains(value) {
-                                numberOfPeopleFiltered.append(foodData)
-                            }
-                        }
+                        
                     }) {
                         Text(value)
                             .customCategory()
@@ -81,19 +72,17 @@ extension RecommendView {
             Divider()
         }
     }
-
+    
     func priceRangeQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("원하는 가격대가 있나요?")
                 .customInfoTitle()
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(priceCategory, id: \.self) { value in
                         Button(action: {
-                            priceRangeIndex = priceCategory.firstIndex(of: value)!
-                            priceRangeFiltered = modelData.localData.filter { restaurant in
-                                restaurant.price.select.name == value }
+                            
                         }) {
                             Text(value)
                                 .customCategory()
@@ -104,23 +93,21 @@ extension RecommendView {
                     }
                 }
             }
-
+            
             Divider()
         }
     }
-
+    
     func locationPreferenceQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
             Text("선호하는 위치가 있나요?")
                 .customInfoTitle()
-
+            
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack {
                     ForEach(locationCategory, id: \.self) { value in
                         Button(action: {
-                            locationCategoryIndex = locationCategory.firstIndex(of: value)!
-                            locationCategoryFiltered = modelData.localData.filter { restaurant in
-                                restaurant.location.richText.first!.text.content == value }
+                            
                         }) {
                             Text(value)
                                 .customCategory()
@@ -134,13 +121,12 @@ extension RecommendView {
             Divider()
         }
     }
-
+    
     func getRecommendationButton() -> some View {
         VStack {
-            if !modelData.localData.isEmpty {
-                NavigationLink(
-                    destination: AnyView(getDestination().navigationBarTitleDisplayMode(.inline)),
-                    isActive: $isActive) {
+            NavigationLink(
+                destination: AnyView(getDestination().navigationBarTitleDisplayMode(.inline)),
+                isActive: $isActive) {
                     Button {
                         getRecommendation()
                         isActive.toggle()
@@ -151,16 +137,9 @@ extension RecommendView {
                             .padding(.bottom, 20)
                     }
                 }
-            }
-            else {
-                Text("맛집 추천받기")
-                    .font(.system(size: 20, weight: .bold))
-                    .customButtonFormat()
-                    .padding(.bottom, 20)
-            }
         }
     }
-
+    
     func getDestination() -> any View {
         if finalFilteredGroup.isEmpty {
             return NoRecommendationView()
@@ -169,8 +148,8 @@ extension RecommendView {
             return RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement()!)
         }
     }
-
+    
     func getRecommendation() {
-        finalFilteredGroup = self.foodCategoryFiltered.filter{numberOfPeopleFiltered.contains($0)}.filter{priceRangeFiltered.contains($0)}.filter{locationCategoryFiltered.contains($0)}
+//        finalFilteredGroup = self.foodCategoryFiltered.filter{numberOfPeopleFiltered.contains($0)}.filter{priceRangeFiltered.contains($0)}.filter{locationCategoryFiltered.contains($0)}
     }
 }

@@ -8,12 +8,8 @@
 import SwiftUI
 
 struct FavoriteRestaurantView: View {
-
-    @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var modelData: GlobalModelData
-    private var favoriteRestaurants: [Properties] {
-        modelData.localData.filter({$0.favorite.checkbox == true})
-        }
+    
+    private var favoriteRestaurants: [Properties] = []
     
     var body: some View {
         NavigationView {
@@ -27,15 +23,5 @@ struct FavoriteRestaurantView: View {
             }
             .navigationTitle("먹킷리스트")
         }
-        .onChange(of: scenePhase, perform: { phase in
-            if phase == .inactive {
-                print("The scene becomes inactive")
-                Persistence.saveLocalData(data: modelData.localData) { result in
-                    if case .failure(let failure) = result {
-                        fatalError(failure.localizedDescription)
-                    }
-                }
-            }
-        })
     }
 }

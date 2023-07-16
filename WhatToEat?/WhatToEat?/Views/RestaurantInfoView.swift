@@ -10,15 +10,14 @@ import SwiftUI
 struct RestaurantInfoView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var modelData : GlobalModelData
     @State var foodInformation : Properties
 
     var foodInformationIndex: Int {
-        modelData.localData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
+        return 0
     }
 
     var propertyIndex: Int {
-        modelData.localData.firstIndex(where: {$0.id.number == foodInformation.id.number})!
+        return 0
     }
 
     var body: some View {

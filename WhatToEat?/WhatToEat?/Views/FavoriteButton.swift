@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct FavoriteButton: View {
-    @ObservedObject var modelData: GlobalModelData
-    @Binding var property: Properties
+    @State private var isFavorite: Bool = false
+    
 
     var body: some View {
         Button {
-            property.favorite.checkbox.toggle()
 
         } label: {
-            Image(systemName: property.favorite.checkbox ? "heart.fill" : "heart")
+            Image(systemName: isFavorite ? "heart.fill" : "heart")
                 .resizable()
                 .frame(width: 20, height: 20)
-                .foregroundColor(property.favorite.checkbox ? .pink : .gray)
+                .foregroundColor(isFavorite ? .pink : .gray)
         }
     }
 }

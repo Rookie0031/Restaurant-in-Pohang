@@ -17,32 +17,5 @@ extension WhatToEatApp {
         var cafe : [Properties] = []
         var asian : [Properties] = []
 
-        for data in rootModelData.localData {
-            switch data.category.select.name {
-            case "양식" :
-                western.append(data)
-            case "한식" :
-                korean.append(data)
-            case "중식" :
-                chinese.append(data)
-            case "일식" :
-                japanese.append(data)
-            case "기타" :
-                asian.append(data)
-            case "카페/디저트" :
-                cafe.append(data)
-            default :
-                print("정보에 오류가 있는 거 같아요.")
-            }
-        }
-
-        if !rootModelData.localData.isEmpty {
-            rootModelData.categoryFood.append(western)
-            rootModelData.categoryFood.append(korean)
-            rootModelData.categoryFood.append(chinese)
-            rootModelData.categoryFood.append(japanese)
-            rootModelData.categoryFood.append(cafe)
-            rootModelData.categoryFood.append(asian)
-        }
     }
 }
