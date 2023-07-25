@@ -45,7 +45,7 @@ final class PostMatZipViewModel: ObservableObject {
                     print(error?.localizedDescription ?? "error case occured")
                 } else {
                     print("response는 다음과 같습니다")
-                    print(response)
+                    print(response as Any)
                 }
             })
             dataTask.resume()
