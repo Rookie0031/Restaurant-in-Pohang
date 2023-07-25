@@ -10,8 +10,9 @@ import Foundation
 final class FoodListVM: ObservableObject {
 
     @Published var foods: [Properties] = []
+    @Published var isLoading: Bool = false
 
-    func queryFoods(category: String) {
+    func queryFoods(category: String, completion: @escaping ()->()) {
         var result: [Properties] = []
         let parameters = "{\n\"filter\": {\n\"property\": \"category\",\n\"select\": {\n\"equals\": \"\(category)\"\n}\n}\n}"
         let postData = parameters.data(using: .utf8)
@@ -26,6 +27,8 @@ final class FoodListVM: ObservableObject {
         // MARK: 만약 아래 코드로 작성하면 모든 데이터가 수신됨
         // request.allHTTPHeaderFields = DataBaseInfo.headers
 
+        self.isLoading = true
+
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else { return }
             print("data is this \(data)")
@@ -36,6 +39,7 @@ final class FoodListVM: ObservableObject {
                 }
                 DispatchQueue.main.async {
                     self.foods = result
+                    completion()
                 }
             } catch {
                 print("decoing error")

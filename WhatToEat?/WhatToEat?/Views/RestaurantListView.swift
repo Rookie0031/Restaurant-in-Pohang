@@ -35,7 +35,10 @@ struct RestaurantListView: View {
             PostMatZip()
         }
         .onAppear {
-            vm.queryFoods(category: foodCategory[0])
+            vm.queryFoods(category: foodCategory[0]) {
+                vm.isLoading = false
+                print(vm.isLoading)
+            }
         }
     }
     
@@ -47,7 +50,9 @@ struct RestaurantListView: View {
                         currentIndex = foodCategory.firstIndex(of: category)!
                         Task {
                             print("data change")
-                            vm.queryFoods(category: category)
+                            vm.queryFoods(category: category) {
+                                vm.isLoading = false
+                            }
                             print("data change")
                         }
                     }) {
@@ -73,16 +78,22 @@ struct RestaurantListView: View {
     
     private func RestaurantList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
-            LazyVStack(alignment: .center) {
-                ForEach(vm.foods, id: \.self) { value in
-                    NavigationLink {
-                        RestaurantInfoView(foodInformation: value)
-                            .navigationBarTitleDisplayMode(.inline)
-                    } label: {
-                        RestaurantCardView(restaurant: value)
+            if !vm.isLoading {
+                LazyVStack(alignment: .center) {
+                    ForEach(vm.foods, id: \.self) { value in
+                        NavigationLink {
+                            RestaurantInfoView(foodInformation: value)
+                                .navigationBarTitleDisplayMode(.inline)
+                        } label: {
+                            RestaurantCardView(restaurant: value)
+                        }
+                        .padding(.bottom, 15)
                     }
-                    .padding(.bottom, 15)
                 }
+            } else {
+                ProgressView("음식점 데이터를 받아오고 있어요!")
+                    .frame(width: UIScreen.main.bounds.width,height: 500, alignment: .center)
+                    .foregroundColor(.orange)
             }
         }
     }
