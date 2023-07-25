@@ -77,7 +77,7 @@ extension RestaurantInfoView {
                     .descriptionTextStyle()
             }
 
-            Text("\(foodInformation.propertiesDescription.richText.first!.text.content)")
+            Text("\(foodInformation.description.richText.first!.text.content)")
                 .font(.system(size: 20, weight: .semibold))
         }
         .frame(width: 300, alignment: .leading)

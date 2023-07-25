@@ -1,39 +1,36 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  TestDTO.swift
-//  WhatToEat?
-//
-//  Created by 장지수 on 2023/07/17.
-//
-
+//   let test = try? JSONDecoder().decode(Test.self, from: jsonData)
 
 import Foundation
 
 // MARK: - Test
-struct Test: Codable, Equatable, Hashable {
+struct Test: Codable, Hashable, Equatable {
     let object: String
     let results: [ResultInfo]
     let nextCursor: JSONNull?
     let hasMore: Bool
     let type: String
     let pageOrDatabase: PageOrDatabase
-    let developerSurvey: String
+    let developerSurvey: String?
 
     enum CodingKeys: String, CodingKey {
         case object, results
-        case nextCursor
-        case hasMore
+        case nextCursor = "next_cursor"
+        case hasMore = "has_more"
         case type
-        case pageOrDatabase
-        case developerSurvey
+        case pageOrDatabase = "page_or_database"
+        case developerSurvey = "developer_survey"
     }
 }
 
 // MARK: - PageOrDatabase
-struct PageOrDatabase: Codable, Equatable, Hashable {
+struct PageOrDatabase: Codable, Hashable, Equatable {
 }
 
 // MARK: - Result
-struct ResultInfo: Codable, Equatable, Hashable {
+struct ResultInfo: Codable, Hashable, Equatable {
     let object, id, createdTime, lastEditedTime: String
     let createdBy, lastEditedBy: TedBy
     let cover, icon: JSONNull?
@@ -44,36 +41,41 @@ struct ResultInfo: Codable, Equatable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case object, id
-        case createdTime
-        case lastEditedTime
-        case createdBy
-        case lastEditedBy
+        case createdTime = "created_time"
+        case lastEditedTime = "last_edited_time"
+        case createdBy = "created_by"
+        case lastEditedBy = "last_edited_by"
         case cover, icon, parent, archived, properties, url
-        case publicURL
+        case publicURL = "public_url"
     }
 }
 
 // MARK: - TedBy
-struct TedBy: Codable, Equatable, Hashable {
-    let object, id: String
+struct TedBy: Codable, Hashable, Equatable {
+    let object: Object
+    let id: String
+}
+
+enum Object: String, Codable, Hashable, Equatable {
+    case user = "user"
 }
 
 // MARK: - Parent
-struct Parent: Codable, Equatable, Hashable {
+struct Parent: Codable, Hashable, Equatable {
     let type, databaseID: String
 
     enum CodingKeys: String, CodingKey {
         case type
-        case databaseID
+        case databaseID = "database_id"
     }
 }
 
 // MARK: - Properties
-struct Properties: Codable, Equatable, Hashable {
+struct Properties: Codable, Hashable, Equatable {
     let favorite: Favorite
     let imageFile: ImageFile
-    let id: ID
-    let propertiesDescription: Description
+    let id: IDClass
+    let description: Description
     let transportation: People
     let location, imageName: Description
     let category, price: Category
@@ -82,30 +84,47 @@ struct Properties: Codable, Equatable, Hashable {
 }
 
 // MARK: - Category
-struct Category: Codable, Equatable, Hashable {
-    let id, type: String
+struct Category: Codable, Hashable, Equatable {
+    let id: CategoryID
+    let type: CategoryType
     let select: Select
 }
 
+enum CategoryID: String, Codable, Hashable, Equatable {
+    case the5DEw = "%5D_ew"
+    case zefO = "ZefO"
+}
+
 // MARK: - Select
-struct Select: Codable, Equatable, Hashable {
+struct Select: Codable, Hashable, Equatable {
     let id, name, color: String
 }
 
+enum CategoryType: String, Codable, Hashable, Equatable {
+    case select = "select"
+}
+
 // MARK: - Description
-struct Description: Codable, Equatable, Hashable {
-    let id, type: String
+struct Description: Codable, Hashable, Equatable {
+    let id: DescriptionID
+    let type: DescriptionType
     let richText: [RichText]
 
     enum CodingKeys: String, CodingKey {
         case id, type
-        case richText
+        case richText = "rich_text"
     }
 }
 
+enum DescriptionID: String, Codable, Hashable, Equatable {
+    case dmVK = "DmVK"
+    case n605C40 = "N%60%5C%40"
+    case wAH = "W_aH"
+}
+
 // MARK: - RichText
-struct RichText: Codable, Equatable, Hashable {
-    let type: String
+struct RichText: Codable, Hashable, Equatable {
+    let type: RichTextType
     let text: TextInfo
     let annotations: Annotations
     let plainText: String
@@ -113,86 +132,107 @@ struct RichText: Codable, Equatable, Hashable {
 
     enum CodingKeys: String, CodingKey {
         case type, text, annotations
-        case plainText
+        case plainText = "plain_text"
         case href
     }
 }
 
 // MARK: - Annotations
-struct Annotations: Codable, Equatable, Hashable {
+struct Annotations: Codable, Hashable, Equatable {
     let bold, italic, strikethrough, underline: Bool
     let code: Bool
-    let color: String
+    let color: ColorInfo
+}
+
+enum ColorInfo: String, Codable, Hashable, Equatable {
+    case colorDefault = "default"
 }
 
 // MARK: - Text
-struct TextInfo: Codable, Equatable, Hashable {
+struct TextInfo: Codable, Hashable, Equatable {
     let content: String
     let link: JSONNull?
 }
 
+enum RichTextType: String, Codable, Hashable, Equatable {
+    case text = "text"
+}
+
+enum DescriptionType: String, Codable, Hashable, Equatable {
+    case richText = "rich_text"
+}
+
 // MARK: - Favorite
-struct Favorite: Codable, Equatable, Hashable {
+struct Favorite: Codable, Hashable, Equatable {
     let id, type: String
     let checkbox: Bool
 }
 
-// MARK: - ID
-struct ID: Codable, Equatable, Hashable {
+// MARK: - IDClass
+struct IDClass: Codable, Hashable, Equatable {
     let id, type: String
     let number: Int
 }
 
 // MARK: - ImageFile
-struct ImageFile: Codable, Equatable, Hashable {
+struct ImageFile: Codable, Hashable, Equatable {
     let id, type: String
     let files: [FileElement]
 }
 
 // MARK: - FileElement
-struct FileElement: Codable, Equatable, Hashable {
+struct FileElement: Codable, Hashable, Equatable {
     let name, type: String
     let file: FileFile
 }
 
 // MARK: - FileFile
-struct FileFile: Codable, Equatable, Hashable {
+struct FileFile: Codable, Hashable, Equatable {
     let url: String
     let expiryTime: String
 
     enum CodingKeys: String, CodingKey {
         case url
-        case expiryTime
+        case expiryTime = "expiry_time"
     }
 }
 
 // MARK: - Name
-struct Name: Codable, Equatable, Hashable {
+struct Name: Codable, Hashable, Equatable {
     let id, type: String
     let title: [RichText]
 }
 
 // MARK: - People
-struct People: Codable, Equatable, Hashable {
-    let id, type: String
+struct People: Codable, Hashable, Equatable {
+    let id: PeopleID
+    let type: PeopleType
     let multiSelect: [Select]
 
     enum CodingKeys: String, CodingKey {
         case id, type
-        case multiSelect
+        case multiSelect = "multi_select"
     }
+}
+
+enum PeopleID: String, Codable, Hashable, Equatable {
+    case k7BYq = "K%7BYq"
+    case xdko = "xdko"
+}
+
+enum PeopleType: String, Codable, Hashable, Equatable {
+    case multiSelect = "multi_select"
 }
 
 // MARK: - Encode/decode helpers
 
-class JSONNull: Codable, Equatable, Hashable {
+class JSONNull: Codable, Hashable, Equatable {
 
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
 
-    public var hashValue: Int {
-        return 0
+    func hash(into hasher: inout Hasher) {
     }
 
     public init() {}

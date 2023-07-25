@@ -9,7 +9,7 @@ import SwiftUI
 struct RestaurantListView: View {
     
     @State private var foodCategory : [String] = ["양식","한식","중식","일식","카페/디저트", "기타"]
-    @State private var foodDataList: [Properties] = []
+    @StateObject private var vm: FoodListVM = FoodListVM()
     @State private var showModal = false
     @State private var currentIndex = 0
     
@@ -34,26 +34,31 @@ struct RestaurantListView: View {
         .sheet(isPresented: $showModal) {
             PostMatZip()
         }
+        .onAppear {
+            vm.queryFoods(category: foodCategory[0])
+        }
     }
     
     private func FoodCategories() -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack {
-                ForEach(foodCategory, id: \.self) { value in
+                ForEach(foodCategory, id: \.self) { category in
                     Button(action: {
-                        currentIndex = foodCategory.firstIndex(of: value)!
+                        currentIndex = foodCategory.firstIndex(of: category)!
                         Task {
-                            foodDataList = await FoodCategoryFilter.instance.queryFoods(category:value)
+                            print("data change")
+                            vm.queryFoods(category: category)
+                            print("data change")
                         }
                     }) {
-                        foodCategory.firstIndex(of: value)! == currentIndex ?
+                        foodCategory.firstIndex(of: category)! == currentIndex ?
                         
-                        Text(value)
+                        Text(category)
                             .customCategory()
                             .foregroundColor(.white )
                             .background(RoundedRectangle(cornerRadius: 10).fill(.orange))
                         :
-                        Text(value)
+                        Text(category)
                             .customCategory()
                             .foregroundColor(.black)
                             .background(RoundedRectangle(cornerRadius: 10).fill(.white))
@@ -69,7 +74,7 @@ struct RestaurantListView: View {
     private func RestaurantList() -> some View {
         ScrollView(.vertical, showsIndicators: false) {
             LazyVStack(alignment: .center) {
-                ForEach(foodDataList, id: \.self) { value in
+                ForEach(vm.foods, id: \.self) { value in
                     NavigationLink {
                         RestaurantInfoView(foodInformation: value)
                             .navigationBarTitleDisplayMode(.inline)
