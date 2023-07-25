@@ -23,7 +23,7 @@ final class FoodListVM: ObservableObject {
         request.httpMethod = "POST"
         request.httpBody = postData
 
-        // 만약 이 코드로 작성하면 모든 데이터가 수신됨
+        // MARK: 만약 아래 코드로 작성하면 모든 데이터가 수신됨
         // request.allHTTPHeaderFields = DataBaseInfo.headers
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
