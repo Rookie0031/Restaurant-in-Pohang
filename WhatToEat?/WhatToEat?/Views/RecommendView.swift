@@ -23,16 +23,18 @@ struct RecommendView: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .center, spacing: 30) {
-                foodTypeQuestion()
-                numberOfPeopleQuestion()
-                priceRangeQuestion()
-                locationPreferenceQuestion()
-                Spacer()
-                getRecommendationButton()
+            ScrollView {
+                VStack(alignment: .center, spacing: 30) {
+                    foodTypeQuestion()
+                    numberOfPeopleQuestion()
+                    priceRangeQuestion()
+                    locationPreferenceQuestion()
+                    Spacer()
+                    getRecommendationButton()
+                }
+                .padding(20)
+                .navigationTitle("맛집 추천")
             }
-            .padding(20)
-            .navigationTitle("맛집 추천")
         }
     }
 }
