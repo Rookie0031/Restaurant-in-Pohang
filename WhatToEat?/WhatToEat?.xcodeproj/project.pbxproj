@@ -26,7 +26,6 @@
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
 		A93D641928E71C1800D65901 /* CategoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93D641828E71C1800D65901 /* CategoryData.swift */; };
-		A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = A9659F9828E5DF07000196F1 /* NukeUI */; };
 		A98B1B2529332E0D0082B779 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B1B2429332E0D0082B779 /* Persistence.swift */; };
 		A98B1B2A293330250082B779 /* DataBaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B1B29293330250082B779 /* DataBaseInfo.swift */; };
 		A98B1B2E29338EFE0082B779 /* RetryStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B1B2D29338EFE0082B779 /* RetryStrategy.swift */; };
@@ -84,7 +83,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90CC3022913FD5C0030DEFF /* Kingfisher in Frameworks */,
-				A9659F9928E5DF07000196F1 /* NukeUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,7 +225,6 @@
 			);
 			name = "WhatToEat?";
 			packageProductDependencies = (
-				A9659F9828E5DF07000196F1 /* NukeUI */,
 				A90CC3012913FD5C0030DEFF /* Kingfisher */,
 			);
 			productName = "WhatToEat?";
@@ -259,7 +256,6 @@
 			);
 			mainGroup = A9B96076281C10F2004779A6;
 			packageReferences = (
-				A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */,
 				A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = A9B96080281C10F2004779A6 /* Products */;
@@ -542,14 +538,6 @@
 				kind = branch;
 			};
 		};
-		A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/NukeUI.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -557,11 +545,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A90CC3002913FD5C0030DEFF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		A9659F9828E5DF07000196F1 /* NukeUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A9659F9728E5DF07000196F1 /* XCRemoteSwiftPackageReference "NukeUI" */;
-			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

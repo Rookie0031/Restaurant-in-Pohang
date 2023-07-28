@@ -5,15 +5,15 @@
 //  Created by Jisu Jang on 2022/04/29.
 //
 import SwiftUI
-import Foundation
+import Combine
 
 final class FoodListVM: ObservableObject {
 
     @Published var foods: [Properties] = []
     @Published var isLoading: Bool = false
+    var cancellables = Set<AnyCancellable>()
 
-    func queryFoods(category: String, completion: @escaping ()->()) {
-        var result: [Properties] = []
+    func queryFoods(category: String) {
         let parameters = "{\n\"filter\": {\n\"property\": \"category\",\n\"select\": {\n\"equals\": \"\(category)\"\n}\n}\n}"
         let postData = parameters.data(using: .utf8)
 
@@ -29,24 +29,26 @@ final class FoodListVM: ObservableObject {
 
         self.isLoading = true
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else { return }
-            print("data is this \(data)")
-            do {
-                let decodedData = try JSONDecoder().decode(Test.self, from: data)
-                for datum in decodedData.results {
-                    result.append(datum.properties)
-                }
-                DispatchQueue.main.async {
-                    self.foods = result
-                    completion()
-                }
-            } catch {
-                print("decoing error")
-                print(error)
+        URLSession.shared.dataTaskPublisher(for: request)
+             .tryMap(handleOutput)
+             .decode(type: Test.self, decoder: JSONDecoder())
+             .map { decodedData in
+                 decodedData.results.map { $0.properties }
+             }
+             .receive(on: DispatchQueue.main)
+             .sink { completion in
+                 self.isLoading = false
+             } receiveValue: { [weak self] result in
+                 self?.foods = result
+             }
+             .store(in: &cancellables)
+    }
+
+    func handleOutput(output: URLSession.DataTaskPublisher.Output) throws -> Data {
+        guard let response = output.response as? HTTPURLResponse,
+            response.statusCode >= 200 && response.statusCode < 300 else {
+                throw URLError(.badServerResponse)
             }
-        }
-        print("before task resume \(result.count)")
-        task.resume()
+        return output.data
     }
 }

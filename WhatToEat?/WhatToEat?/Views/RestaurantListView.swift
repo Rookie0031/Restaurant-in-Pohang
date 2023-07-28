@@ -35,10 +35,7 @@ struct RestaurantListView: View {
             PostMatZip()
         }
         .onAppear {
-            vm.queryFoods(category: foodCategory[0]) {
-                vm.isLoading = false
-                print(vm.isLoading)
-            }
+            vm.queryFoods(category: foodCategory[0])
         }
     }
     
@@ -50,9 +47,7 @@ struct RestaurantListView: View {
                         currentIndex = foodCategory.firstIndex(of: category)!
                         Task {
                             print("data change")
-                            vm.queryFoods(category: category) {
-                                vm.isLoading = false
-                            }
+                            vm.queryFoods(category: category)
                             print("data change")
                         }
                     }) {
