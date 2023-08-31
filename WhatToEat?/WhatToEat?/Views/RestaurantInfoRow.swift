@@ -18,9 +18,11 @@ struct RestaurantInfoRow: View {
                         Text("이미지를 받아오고 있어요!")
                         ProgressView()
                     }
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(5)
                 }.retry(maxCount: 3, interval: .seconds(5)) //재시도
                 .onSuccess {r in //성공
-                    print("succes: \(r)")
+                    print("succes:")
                 }
                 .onFailure { e in //실패
                     print("failure: \(e)")

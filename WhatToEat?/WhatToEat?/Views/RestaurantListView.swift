@@ -9,7 +9,7 @@ import SwiftUI
 struct RestaurantListView: View {
     
     @State private var foodCategory : [String] = ["양식","한식","중식","일식","카페/디저트", "기타"]
-    @StateObject private var vm: FoodListVM = FoodListVM()
+    @ObservedObject var vm: FoodListVM
     @State private var showModal = false
     @State private var currentIndex = 0
     

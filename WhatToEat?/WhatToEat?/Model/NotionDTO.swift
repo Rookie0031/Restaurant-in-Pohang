@@ -6,7 +6,7 @@
 import Foundation
 
 // MARK: - Test
-struct Test: Codable, Hashable, Equatable {
+struct NotionDTO: Codable, Hashable, Equatable {
     let object: String
     let results: [ResultInfo]
     let nextCursor: JSONNull?
