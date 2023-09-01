@@ -10,7 +10,7 @@ import SwiftUI
 struct RestaurantInfoView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @ObservedObject var viewModel: FoodListVM = FoodListVM()
+    @ObservedObject var viewModel: FoodListVM
     var foodInformation : Properties
 
     var body: some View {
@@ -39,7 +39,7 @@ struct RestaurantInfoView: View {
 
                 Spacer()
 
-                FavoriteButton(pageId: foodInformation.imageName.richText.first!.plainText, vm: viewModel)
+                FavoriteButton(pageId: foodInformation.imageName.richText.first!.plainText, data: foodInformation, vm: viewModel)
             }
             .frame(width: 270, alignment: .leading)
 

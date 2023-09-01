@@ -23,6 +23,7 @@ struct MainTabView: View {
             if let encodedData = UserDefaults.standard.data(forKey: "MyFavorites"),
                let decodedArray = try? JSONDecoder().decode([String].self, from: encodedData) {
                 favoriteFoods = decodedArray
+                viewModel.loadFavorites(pageIdList: favoriteFoods)
             }
         }
     }

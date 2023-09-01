@@ -77,7 +77,7 @@ struct RestaurantListView: View {
                 LazyVStack(alignment: .center) {
                     ForEach(vm.foods, id: \.self) { value in
                         NavigationLink {
-                            RestaurantInfoView(foodInformation: value)
+                            RestaurantInfoView(viewModel: vm, foodInformation: value)
                                 .navigationBarTitleDisplayMode(.inline)
                         } label: {
                             RestaurantCardView(restaurant: value)

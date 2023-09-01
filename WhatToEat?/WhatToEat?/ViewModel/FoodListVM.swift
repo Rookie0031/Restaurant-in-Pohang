@@ -69,9 +69,12 @@ final class FoodListVM: ObservableObject {
                     self.isLoading = false
                 } receiveValue: { [weak self] result in
                     print("receive result work")
+
                     var isDuplicated: Bool = false
+
                     let names = self!.favorites
                         .map { $0.imageName.richText.first!.plainText }
+
                     let loadedNames = result
                         .map { $0.imageName.richText.first!.plainText }
 
@@ -81,7 +84,6 @@ final class FoodListVM: ObservableObject {
                             isDuplicated = true
                         }
                     }
-
                     if !isDuplicated {
                         self?.favorites += result
                     }

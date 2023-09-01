@@ -11,11 +11,10 @@ struct RestaurantInfoRow: View {
     let restaurant : Properties
 
     var body: some View {
-        HStack {
+        HStack(spacing: 15) {
             KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
                 .placeholder { //플레이스 홀더 설정
                     VStack {
-                        Text("이미지를 받아오고 있어요!")
                         ProgressView()
                     }
                     .frame(width: 50, height: 50)

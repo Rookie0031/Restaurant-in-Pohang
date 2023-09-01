@@ -145,7 +145,7 @@ extension RecommendView {
             return NoRecommendationView()
         } else {
             //MARK: 강제언래핑 삭제
-            return RestaurantInfoView(foodInformation: finalFilteredGroup.randomElement()!)
+            return RestaurantInfoView(viewModel: FoodListVM(), foodInformation: finalFilteredGroup.randomElement()!)
         }
     }
     

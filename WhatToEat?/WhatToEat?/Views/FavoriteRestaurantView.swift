@@ -16,7 +16,7 @@ struct FavoriteRestaurantView: View {
             if !vm.isLoading {
                 List(vm.favorites, id: \.id.number) {restaurant in
                     NavigationLink{
-                        RestaurantInfoView(foodInformation: restaurant)
+                        RestaurantInfoView(viewModel: vm, foodInformation: restaurant)
                             .navigationBarTitleDisplayMode(.inline)
                     } label: {
                         RestaurantInfoRow(restaurant: restaurant)
@@ -26,9 +26,6 @@ struct FavoriteRestaurantView: View {
             } else {
                 ProgressView("먹킷리스트를 받아오고 있어요!")
             }
-        }
-        .onAppear {
-            vm.loadFavorites(pageIdList: favoriteFoods)
         }
     }
 }
