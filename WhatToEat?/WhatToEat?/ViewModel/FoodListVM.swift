@@ -48,7 +48,7 @@ final class FoodListVM: ObservableObject {
 
     func loadFavorites(pageIdList: [String]) {
         for pageId in pageIdList {
-            let parameters = "{\n  \"filter\": {\n    \"property\": \"imageName\",\n    \"rich_text\": {\n      \"contains\": \"\(pageId)\"\n    }\n  }\n}"
+            let parameters = "{\n\"filter\": {\n\"property\": \"imageName\",\n\"rich_text\": {\n\"contains\": \"\(pageId)\"\n}\n}\n}"
             let postData = parameters.data(using: .utf8)
             var request = URLRequest(url: URL(string: "https://api.notion.com/v1/databases/\(DataBaseInfo.databaseID)/query")!,timeoutInterval: Double.infinity)
             request.addValue("2022-06-28", forHTTPHeaderField: "Notion-Version")
