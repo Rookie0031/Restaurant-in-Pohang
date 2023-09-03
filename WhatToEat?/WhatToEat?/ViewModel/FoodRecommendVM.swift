@@ -15,7 +15,40 @@ final class FoodRecommendVM: ObservableObject {
     var cancellables = Set<AnyCancellable>()
 
     func filterFoods(category: String, people: String, price: String, location: String) {
-        let parameters = "{\n    \"filter\": {\n        \"and\": [\n            {\n                \"property\": \"category\",\n                \"select\": {\n                    \"equals\": \"\(category)\"\n                }\n            },\n            {\n                \"property\": \"people\",\n                \"multi_select\": {\n                    \"contains\": \"\(people)\"\n                }\n            },\n            {\n                \"property\": \"price\",\n                \"select\": {\n                    \"equals\": \"\(price)\"\n                }\n            },\n            {\n                \"property\": \"location\",\n                \"rich_text\": {\n                    \"contains\": \"\(location)\"\n                }\n            }\n        ]\n    }\n}"
+
+        let parameters = """
+            {
+                "filter": {
+                    "and": [
+                        {
+                            "property": "category",
+                            "select": {
+                                "equals": "\(category)"
+                            }
+                        },
+                        {
+                            "property": "people",
+                            "multi_select": {
+                                "contains": "\(people)"
+                            }
+                        },
+                        {
+                            "property": "price",
+                            "select": {
+                                "equals": "\(price)"
+                            }
+                        },
+                        {
+                            "property": "location",
+                            "rich_text": {
+                                "contains": "\(location)"
+                            }
+                        }
+                    ]
+                }
+            }
+            """
+
         let postData = parameters.data(using: .utf8)
 
         var request = URLRequest(url: URL(string: "https://api.notion.com/v1/databases/\(DataBaseInfo.databaseID)/query")!,timeoutInterval: Double.infinity)

@@ -177,7 +177,7 @@ extension RecommendView {
         if vm.filteredFoods.isEmpty {
             return NoRecommendationView()
         } else {
-            return RestaurantInfoView(viewModel: FoodListVM(), foodInformation: vm.filteredFoods.randomElement()!)
+            return RestaurantInfoView(viewModel: foodListVM, foodInformation: vm.filteredFoods.randomElement()!)
         }
     }
 
