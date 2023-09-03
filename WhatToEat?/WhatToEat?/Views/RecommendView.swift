@@ -6,31 +6,31 @@
 import SwiftUI
 
 struct RecommendView: View {
-
-    // MARK: 현재 로컬 내에서 필터링 하도록 처리되어있는데, notion DB에 쿼리하도록 개선할 수 있음
-
-    @State var finalFilteredGroup : [Properties] = []
-    
-    @State var foodCategoryIndex : Int = 0
-    @State var numberOfPeopleIndex : Int = 0
-    @State var priceRangeIndex : Int = 0
-    @State var locationCategoryIndex : Int = 0
-
-    @State var isActive = false
+    @StateObject private var vm: FoodRecommendVM = FoodRecommendVM()
+    @ObservedObject var foodListVM: FoodListVM
+    @State private var foodCategoryIndex : Int = 0
+    @State private var numberOfPeopleIndex : Int = 0
+    @State private var priceRangeIndex : Int = 0
+    @State private var locationCategoryIndex : Int = 0
+    @State private var isActive = false
 
     var body: some View {
         NavigationView {
-            ScrollView {
-                VStack(alignment: .center, spacing: 30) {
-                    foodTypeQuestion()
-                    numberOfPeopleQuestion()
-                    priceRangeQuestion()
-                    locationPreferenceQuestion()
-                    Spacer()
-                    getRecommendationButton()
+            if !vm.isLoading {
+                ScrollView {
+                    VStack(alignment: .center, spacing: 30) {
+                        foodTypeQuestion()
+                        numberOfPeopleQuestion()
+                        priceRangeQuestion()
+                        locationPreferenceQuestion()
+                        Spacer()
+                        getRecommendationButton()
+                    }
+                    .padding(20)
+                    .navigationTitle("맛집 추천")
                 }
-                .padding(20)
-                .navigationTitle("맛집 추천")
+            } else {
+                ProgressView("추천을 받아오고 있어요!")
             }
         }
     }
@@ -51,7 +51,6 @@ extension RecommendView {
     }
 }
 
-//MARK: View inside the stack
 extension RecommendView {
     func foodTypeQuestion() -> some View {
         VStack(alignment: .leading, spacing: 5) {
@@ -65,7 +64,8 @@ extension RecommendView {
                     //TODO: 강제언래핑 삭제
                     ForEach(foodCategory, id: \.self) { category in
                         Button(action: {
-
+                            foodCategoryIndex = foodCategory.firstIndex(where: { $0 == category
+                            })!
                         }) {
                             Text(category)
                                 .customCategory()
@@ -113,7 +113,8 @@ extension RecommendView {
                 HStack {
                     ForEach(priceCategory, id: \.self) { value in
                         Button(action: {
-
+                            priceRangeIndex = priceCategory.firstIndex(where: { $0 == value
+                            })!
                         }) {
                             Text(value)
                                 .customCategory()
@@ -138,7 +139,8 @@ extension RecommendView {
                 HStack {
                     ForEach(locationCategory, id: \.self) { value in
                         Button(action: {
-
+                            locationCategoryIndex = locationCategory.firstIndex(where: { $0 == value
+                            })!
                         }) {
                             Text(value)
                                 .customCategory()
@@ -172,15 +174,17 @@ extension RecommendView {
     }
 
     func getDestination() -> any View {
-        if finalFilteredGroup.isEmpty {
+        if vm.filteredFoods.isEmpty {
             return NoRecommendationView()
         } else {
-            //MARK: 강제언래핑 삭제
-            return RestaurantInfoView(viewModel: FoodListVM(), foodInformation: finalFilteredGroup.randomElement()!)
+            return RestaurantInfoView(viewModel: FoodListVM(), foodInformation: vm.filteredFoods.randomElement()!)
         }
     }
 
     func getRecommendation() {
-//        finalFilteredGroup = self.foodCategoryFiltered.filter{numberOfPeopleFiltered.contains($0)}.filter{priceRangeFiltered.contains($0)}.filter{locationCategoryFiltered.contains($0)}
+        vm.filterFoods(category: foodCategory[foodCategoryIndex],
+                       people: peopleCategory[numberOfPeopleIndex],
+                       price: priceCategory[priceRangeIndex],
+                       location: locationCategory[locationCategoryIndex])
     }
 }

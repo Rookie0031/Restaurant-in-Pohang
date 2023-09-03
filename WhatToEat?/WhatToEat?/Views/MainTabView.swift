@@ -14,7 +14,7 @@ struct MainTabView: View {
         TabView {
             RestaurantListView(vm: viewModel)
                 .tabItem { Label("맛집", systemImage: "house")}
-            RecommendView()
+            RecommendView(foodListVM: viewModel)
                 .tabItem { Label("추천", systemImage: "square.text.square") }
             FavoriteRestaurantView(vm: viewModel)
                 .tabItem { Label("먹킷리스트", systemImage: "person")}
