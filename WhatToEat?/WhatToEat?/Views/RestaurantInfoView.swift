@@ -43,20 +43,28 @@ struct RestaurantInfoView: View {
             }
             .frame(width: 270, alignment: .leading)
 
-            KFImage(URL(string: foodInformation.imageFile.files.first!.file.url))
-                .retry(RetryWhenFailed())
-                .retry(maxCount: 3, interval: .seconds(10))
-                .placeholder {
-                    VStack {
-                        Text("이미지를 받아오고 있어요!")
-                        ProgressView()
-                    }
+            KFImage(source: Source.network(
+                KF.ImageResource(
+                    downloadURL:
+                        URL(string: foodInformation.imageFile.files.first!.file.url)!,
+                    cacheKey: foodInformation.imageName.richText.first!.plainText)))
+            .retry(RetryWhenFailed())
+            .retry(maxCount: 3, interval: .seconds(10))
+            .placeholder {
+                VStack {
+                    Text("이미지를 받아오고 있어요!")
+                    ProgressView()
                 }
-                .onFailure { print("failure: \($0)")}
-                .resizable()
-                .frame(width: 300, height: 300)
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(20)
+            }
+            .onSuccess({ _ in
+                print("This is caching key")
+                print(foodInformation.imageName.richText.first!.plainText)
+            })
+            .onFailure { print("failure: \($0)")}
+            .resizable()
+            .frame(width: 300, height: 300)
+            .aspectRatio(contentMode: .fit)
+            .cornerRadius(20)
         }
         .padding(.top, 10)
         .cornerRadius(15)

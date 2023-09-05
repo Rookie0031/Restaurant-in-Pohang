@@ -115,6 +115,9 @@ struct PostMatZip: View {
                             viewModel.createNotionPage {
                                 self.presentationMode.wrappedValue.dismiss()
                             }
+                            print("이미지 데이터입니다")
+                            print(viewModel.imageData)
+
                         } label: {
                             Text("제보하기")
                                 .font(.system(size: 20, weight: .bold))
@@ -131,6 +134,9 @@ struct PostMatZip: View {
                 }
             }
         }
+    }
+
+    private func changeImageData(data: Data) {
     }
 }
 

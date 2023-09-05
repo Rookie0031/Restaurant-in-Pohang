@@ -13,7 +13,11 @@ struct RestaurantCardView: View {
     var body: some View {
         ZStack {
             ZStack {
-                KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
+                KFImage(source: Source.network(
+                    KF.ImageResource(
+                        downloadURL:
+                            URL(string: restaurant.imageFile.files.first!.file.url)!,
+                        cacheKey: restaurant.imageName.richText.first!.plainText)))
                     .placeholder {
                         VStack {
                             Text("이미지를 받아오고 있어요!")
