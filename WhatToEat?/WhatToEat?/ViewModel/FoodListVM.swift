@@ -40,7 +40,10 @@ final class FoodListVM: ObservableObject {
             .sink { completion in
                 self.isLoading = false
             } receiveValue: { [weak self] result in
-                print("receive value work")
+                let test = result.first!
+                print("This is first image name: \(test.imageName.richText.first!.plainText)")
+                print("This is first image URL: \(test.imageFile.files.first!.file.url)")
+
                 self?.foods = result
             }
             .store(in: &cancellables)

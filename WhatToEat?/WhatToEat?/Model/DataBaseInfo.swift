@@ -13,6 +13,8 @@ final class DataBaseInfo {
 
     static let databaseID = "206c4793c7e6428eb8235279a3e445af"
 
+    static let userSuggestionDatabaseID = "954822dab55d419182fe16f2120b4f03"
+
     static let readURL = "https://api.notion.com/v1/databases/\(databaseID)/query"
     
     static let headers = [

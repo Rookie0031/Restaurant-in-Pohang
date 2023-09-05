@@ -20,6 +20,7 @@
 		A920BD992AA085CB0093FDDE /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920BD982AA085CB0093FDDE /* Global.swift */; };
 		A9274EC028221AF700E99F2F /* RestaurantInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */; };
 		A9274EC22822600100E99F2F /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9274EC12822600100E99F2F /* ColorData.swift */; };
+		A92C98882AA5885100D9772E /* KF+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92C98872AA5885100D9772E /* KF+extension.swift */; };
 		A93A010E281E324A0069B86A /* TextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A010D281E324A0069B86A /* TextModifier.swift */; };
 		A93A0112281E39860069B86A /* ImageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0111281E39860069B86A /* ImageModifier.swift */; };
 		A93A0114281E46D00069B86A /* ButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93A0113281E46D00069B86A /* ButtonModifier.swift */; };
@@ -52,6 +53,7 @@
 		A920BD982AA085CB0093FDDE /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		A9274EBF28221AF700E99F2F /* RestaurantInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantInfoView.swift; sourceTree = "<group>"; };
 		A9274EC12822600100E99F2F /* ColorData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
+		A92C98872AA5885100D9772E /* KF+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KF+extension.swift"; sourceTree = "<group>"; };
 		A93A010D281E324A0069B86A /* TextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextModifier.swift; sourceTree = "<group>"; };
 		A93A0111281E39860069B86A /* ImageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModifier.swift; sourceTree = "<group>"; };
 		A93A0113281E46D00069B86A /* ButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonModifier.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 				A98B1B2D29338EFE0082B779 /* RetryStrategy.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A92C98892AA58E3E00D9772E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				A92C98872AA5885100D9772E /* KF+extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		A9659F9A28E5E890000196F1 /* Model */ = {
@@ -146,6 +156,7 @@
 				9A77DB63290EA38D0033F946 /* Network */,
 				A95C5B8528E9BFD300EACCBC /* WhatToEat--Info.plist */,
 				A9B96082281C10F2004779A6 /* WhatToEatApp.swift */,
+				A92C98892AA58E3E00D9772E /* Extension */,
 				A9F3D198281F89F400844B39 /* Views */,
 				A9659F9A28E5E890000196F1 /* Model */,
 				A9EC6C37281FCB4700CD5B1E /* ViewModel */,
@@ -284,6 +295,7 @@
 				A9C2DB312823F98700CE7D00 /* NoRecommendationView.swift in Sources */,
 				A9BC43F52AA45462005623E8 /* FoodRecommendVM.swift in Sources */,
 				A9BDE9C5281F5D1C0061C6A3 /* RestaurantListView.swift in Sources */,
+				A92C98882AA5885100D9772E /* KF+extension.swift in Sources */,
 				9AC7ECD529975150003E9409 /* PictureViewModel.swift in Sources */,
 				A920BD992AA085CB0093FDDE /* Global.swift in Sources */,
 				9A2F27782A6440F600A3CE59 /* NotionDTO.swift in Sources */,
@@ -428,7 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatToEat?/Preview Content\"";
 				DEVELOPMENT_TEAM = YYP248S73Y;
 				ENABLE_PREVIEWS = YES;
@@ -447,7 +459,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JisuJang.WhatToEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -462,7 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"WhatToEat?/Preview Content\"";
 				DEVELOPMENT_TEAM = YYP248S73Y;
 				ENABLE_PREVIEWS = YES;
@@ -481,7 +493,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.4;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JisuJang.WhatToEat-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
