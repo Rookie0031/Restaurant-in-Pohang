@@ -12,7 +12,11 @@ struct RestaurantInfoRow: View {
 
     var body: some View {
         HStack(spacing: 15) {
-            KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
+            KFImage(source: Source.network(
+                KF.ImageResource(
+                    downloadURL:
+                        URL(string: restaurant.imageFile.files.first!.file.url)!,
+                    cacheKey: restaurant.imageName.richText.first!.plainText)))
                 .placeholder { //플레이스 홀더 설정
                     VStack {
                         ProgressView()

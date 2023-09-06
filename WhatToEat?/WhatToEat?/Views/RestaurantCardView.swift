@@ -18,6 +18,7 @@ struct RestaurantCardView: View {
                         downloadURL:
                             URL(string: restaurant.imageFile.files.first!.file.url)!,
                         cacheKey: restaurant.imageName.richText.first!.plainText)))
+
                     .placeholder {
                         VStack {
                             Text("이미지를 받아오고 있어요!")
