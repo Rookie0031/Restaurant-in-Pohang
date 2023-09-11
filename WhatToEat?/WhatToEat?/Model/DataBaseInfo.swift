@@ -8,7 +8,8 @@
 import Foundation
 
 final class DataBaseInfo {
-    static let token = "secret_iDuf0tFUBdrlNDjOL7LhL2uUOr0tkSEC7f9DttlAKEx"
+    
+    static let token = "secret_Wr03qVPMmjssmtYi8vEHc7zmWnG6PO5AjtoZG7QVkpB"
 
     static let databaseID = "206c4793c7e6428eb8235279a3e445af"
 

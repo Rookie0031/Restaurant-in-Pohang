@@ -8,10 +8,9 @@ import SwiftUI
 import Kingfisher
 
 struct RestaurantCardView: View {
-    var restaurant: Properties
-
+    let restaurant: Properties
+    
     var body: some View {
-
         ZStack {
             ZStack {
                 KFImage(URL(string: restaurant.imageFile.files.first!.file.url))
@@ -28,7 +27,7 @@ struct RestaurantCardView: View {
                     .frame(width: UIScreen.main.bounds.width - 40, height: UIScreen.main.bounds.width * 0.75)
                     .cornerRadius(12)
             }
-
+            
             Text("\(restaurant.name.title.first!.text.content)")
                 .foregroundColor(.white)
                 .font(.system(size: 32).weight(.heavy))

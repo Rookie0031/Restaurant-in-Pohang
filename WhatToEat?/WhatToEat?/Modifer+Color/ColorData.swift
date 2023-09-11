@@ -38,6 +38,7 @@ extension Color {
     static let subBlack :Color = Color(hex: "353535")
     static let detailBlack : Color = Color(hex: "434343")
     static let lightOrange :Color = Color(hex: "#FF994A")
-    public static let lightGray : Color = Color(hex: "#F2F2F7")
+    static let backgroundGray = Color(hex: "#FCFAFA")
+    static let lightGray : Color = Color(hex: "#F2F2F7")
 
 }

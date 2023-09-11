@@ -10,16 +10,8 @@ import SwiftUI
 struct RestaurantInfoView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @EnvironmentObject var modelData : ModelData
-    @State var foodInformation : Properties
-
-    var foodInformationIndex: Int {
-        modelData.localData.firstIndex(where: { $0.id.number == foodInformation.id.number })!
-    }
-
-    var propertyIndex: Int {
-        modelData.localData.firstIndex(where: {$0.id.number == foodInformation.id.number})!
-    }
+    @ObservedObject var viewModel: FoodListVM
+    var foodInformation : Properties
 
     var body: some View {
         ZStack(alignment: .center) {
@@ -47,7 +39,7 @@ struct RestaurantInfoView: View {
 
                 Spacer()
 
-                FavoriteButton(modelData: modelData, property: $modelData.localData[foodInformationIndex])
+                FavoriteButton(pageId: foodInformation.imageName.richText.first!.plainText, data: foodInformation, vm: viewModel)
             }
             .frame(width: 270, alignment: .leading)
 
@@ -106,7 +98,7 @@ struct RestaurantInfoView: View {
                     .descriptionTextStyle()
             }
 
-            Text("\(foodInformation.propertiesDescription.richText.first!.text.content)")
+            Text("\(foodInformation.description.richText.first!.text.content)")
                 .font(.system(size: 20, weight: .semibold))
         }
         .frame(width: 300, alignment: .leading)

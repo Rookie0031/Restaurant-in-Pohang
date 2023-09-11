@@ -4,12 +4,8 @@
 //
 //  Created by Jisu Jang on 2022/05/01.
 //
-
-
-import Foundation
 import SwiftUI
 
-// 1. custom button format
 struct ButtonModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -17,13 +13,7 @@ struct ButtonModifier: ViewModifier {
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.065, alignment: .center)
             .foregroundColor(.white)
             .background(.orange)
-            .cornerRadius(UIScreen.main.bounds.width * 0.05)
-    }
-}
-
-extension View {
-    func customButtonFormat() -> some View {
-        modifier(ButtonModifier())
+            .cornerRadius(UIScreen.main.bounds.width * 0.03)
     }
 }
 
@@ -38,9 +28,9 @@ struct CategoryModifier: ViewModifier {
 }
 
 extension View {
-    func customCategory() -> some View {
-        modifier(CategoryModifier())
-    }
+    func customButtonFormat() -> some View { modifier(ButtonModifier()) }
+    
+    func customCategory() -> some View { modifier(CategoryModifier()) }
 }
 
 

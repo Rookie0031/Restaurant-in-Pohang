@@ -9,23 +9,10 @@ import SwiftUI
 
 @main
 struct WhatToEatApp: App {
-    @StateObject var rootModelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
             MainTabView()
-                .environmentObject(rootModelData)
-                .onAppear {
-                    Persistence.loadLocalData { result in
-                        switch result {
-                        case .failure(let error):
-                            fatalError(error.localizedDescription)
-                        case .success(let data):
-                            rootModelData.localData = data
-                            setFoodCategory()
-                        }
-                    }
-                }
         }
     }
 }

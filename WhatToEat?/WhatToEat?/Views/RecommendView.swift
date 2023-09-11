@@ -8,7 +8,6 @@ import SwiftUI
 struct RecommendView: View {
 
     // MARK: 현재 로컬 내에서 필터링 하도록 처리되어있는데, notion DB에 쿼리하도록 개선할 수 있음
-    @ObservedObject var modelData : ModelData
     @State var foodCategoryFiltered : [Properties] = []
     @State var numberOfPeopleFiltered : [Properties] = []
     @State var priceRangeFiltered : [Properties] = []
@@ -24,16 +23,18 @@ struct RecommendView: View {
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .center, spacing: 30) {
-                foodTypeQuestion()
-                numberOfPeopleQuestion()
-                priceRangeQuestion()
-                locationPreferenceQuestion()
-                Spacer()
-                getRecommendationButton()
+            ScrollView {
+                VStack(alignment: .center, spacing: 30) {
+                    foodTypeQuestion()
+                    numberOfPeopleQuestion()
+                    priceRangeQuestion()
+                    locationPreferenceQuestion()
+                    Spacer()
+                    getRecommendationButton()
+                }
+                .padding(20)
+                .navigationTitle("맛집 추천")
             }
-            .padding(20)
-            .navigationTitle("맛집 추천")
         }
     }
 }

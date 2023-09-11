@@ -9,33 +9,23 @@ import SwiftUI
 
 struct FavoriteRestaurantView: View {
 
-    @Environment(\.scenePhase) private var scenePhase
-    @ObservedObject var modelData: ModelData
-    private var favoriteRestaurants: [Properties] {
-        modelData.localData.filter({$0.favorite.checkbox == true})
-        }
+    @ObservedObject var vm: FoodListVM
     
     var body: some View {
         NavigationView {
-            List(favoriteRestaurants, id: \.id.number) {restaurant in
-                NavigationLink{
-                    RestaurantInfoView(foodInformation: restaurant)
-                        .navigationBarTitleDisplayMode(.inline)
-                } label: {
-                    RestaurantInfoRow(restaurant: restaurant)
-                }
-            }
-            .navigationTitle("먹킷리스트")
-        }
-        .onChange(of: scenePhase, perform: { phase in
-            if phase == .inactive {
-                print("The scene becomes inactive")
-                Persistence.saveLocalData(data: modelData.localData) { result in
-                    if case .failure(let failure) = result {
-                        fatalError(failure.localizedDescription)
+            if !vm.isLoading {
+                List(vm.favorites, id: \.id.number) {restaurant in
+                    NavigationLink{
+                        RestaurantInfoView(viewModel: vm, foodInformation: restaurant)
+                            .navigationBarTitleDisplayMode(.inline)
+                    } label: {
+                        RestaurantInfoRow(restaurant: restaurant)
                     }
                 }
+                .navigationTitle("먹킷리스트")
+            } else {
+                ProgressView("먹킷리스트를 받아오고 있어요!")
             }
-        })
+        }
     }
 }

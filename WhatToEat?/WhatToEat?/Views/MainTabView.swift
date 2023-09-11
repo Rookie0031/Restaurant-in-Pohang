@@ -4,27 +4,26 @@
 //
 //  Created by Jisu Jang on 2022/04/29.
 //
-
 import SwiftUI
 
 struct MainTabView: View {
+    @StateObject private var viewModel: FoodListVM = FoodListVM()
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool = false
-    @EnvironmentObject var modelData: ModelData
 
     var body: some View {
         TabView {
-            RestaurantListView(modelData: modelData)
+            RestaurantListView(vm: viewModel)
                 .tabItem { Label("맛집", systemImage: "house")}
-            RecommendView(modelData: modelData)
+            RecommendView()
                 .tabItem { Label("추천", systemImage: "square.text.square") }
-            FavoriteRestaurantView(modelData: modelData)
+            FavoriteRestaurantView(vm: viewModel)
                 .tabItem { Label("먹킷리스트", systemImage: "person")}
         }
-        .task {
-            if !isFirstLaunch {
-                await modelData.getFromNotionDB()
-                modelData.localData = modelData.serverData
-                isFirstLaunch = true
+        .onAppear {
+            if let encodedData = UserDefaults.standard.data(forKey: "MyFavorites"),
+               let decodedArray = try? JSONDecoder().decode([String].self, from: encodedData) {
+                favoriteFoods = decodedArray
+                viewModel.loadFavorites(pageIdList: favoriteFoods)
             }
         }
     }
